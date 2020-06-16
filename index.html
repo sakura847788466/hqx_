@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>风暴潮灾害风险查询系统</title>
+    <link rel="shortcut icon" href="./image/favicon.ico" />
+    <link href="./Cesium/Widgets/widgets.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link type="text/css" rel="stylesheet" href="font/iconfont.css" />
+    <link type="text/css" rel="stylesheet" href="layui/css/layui.css" />
+    <script type="text/javascript" src="js/echarts.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/pako.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="layui/layui.js"></script>
+    <script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="js/getData.js"></script>
+    <script type="text/javascript" src="js/function.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script src="./Cesium/Cesium.js"></script>
+    <script type="text/javascript" src="js/echart.js"></script>
+    <script type="text/javascript" src="js/viewerCesiumNavigationMixin.min.js"></script>
+    <script type="text/javascript" src="js/typhoon/Tools-18PrimitiveTriangles.js"></script>
+    <script type="text/javascript" src="js/typhoon/Tools-21EllipseGeometryLibraryEx.js"></script>
+    <script type="text/javascript" src="js/typhoon/moment.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid" id="container-fluid">
+        <div class="container" style="width: 100%;height: 100%">
+            <div class="left">
+                <div class="logo"></div>
+                <div class="line"></div>
+                <div class="nav-list">
+                    <div class="nav-item nav-click" id="typhoon-nav">
+                        <i class="iconfont nav-icon">&#xe6f0;</i>
+                        <span class="nav-txt">台风查询</span>
+                    </div>
+                    <div class="nav-item" id="danger-nav">
+                        <i class="iconfont nav-icon">&#xe615;</i>
+                        <span class="nav-txt">风险分析</span>
+                    </div>
+                    <div class="nav-item" id="crow-nav">
+                        <i class="iconfont nav-icon">&#xe62e;</i>
+                        <span class="nav-txt">卫星云图</span>
+                    </div>
+                    <div class="nav-item" id="report-nav">
+                        <i class="iconfont nav-icon">&#xe624;</i>
+                        <span class="nav-txt">近岸预报</span>
+                    </div>
+                    <!-- ada -->
+                    <div class="nav-item " id="weather-nav">
+                        <i class="iconfont nav-icon">&#xe6f0;</i>
+                        <span class="nav-txt">天气预报</span>
+                    </div>
+                    <div class="nav-item " id="area-nav">
+                        <i class="iconfont nav-icon">&#xe6f0;</i>
+                        <span class="nav-txt">海区预报</span>
+                    </div>
+                </div>
+                <div class="change-control-wrap">
+                    <!-- <div class="nav-change">
+                        <i class="iconfont nav-changeIcon">&#xeb0d;</i>
+                        <span class="nav-changeTxt">切换至数据管理系统</span>
+                    </div> -->
+                    <div class="nav-control">
+                        <i class="iconfont nav-open">&#xeb0f;</i>
+                        <i class="iconfont nav-close" style="display: none;">&#xeb0b;</i>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <!-- 底部地球 -->
+                <div id="cesiumContainer">
+                    <div id="toolTip" class="measure-mouse-tip" style="z-index: 11;display:none;color:rgb(236, 159, 30);border: 1px solid rgb(236, 159, 30);position:absolute;font-size:12px;color:#fff">
+                        单击开始，双击结束
+                    </div>
+                </div>
+                <!--头部导航-->
+                <div class="header-nav">
+                    <div class="header-nav-left">
+                        <i class="iconfont sm-icon">&#xeb43;</i>
+                        <div class="typhoon-current-state-wrap">
+                            <ul class="typhoon-current-state" style="left: 0;">
+                            </ul>
+                        </div>
+                        <!--<div class="typhoon-current-no">目前太平洋海域无活动台风</div>-->
+                    </div>
+                    <ul class="header-nav-right">
+                        <li class="header-nav-li">
+                            <div class="header-nav-item">
+                                <i class="iconfont sm-icon">&#xeabd;</i>
+                                <span>一张图</span>
+                                <i class="iconfont fold-icon">&#xeb06;</i>
+                            </div>
+                            <div class="nav-fold-drop nav-fold-five">
+                                <ul class="nav-fold-list"></ul>
+                                <ul class="nav-fold-list"></ul>
+                                <ul class="nav-fold-list"></ul>
+                                <ul class="nav-fold-list"></ul>
+                                <ul class="nav-fold-list"></ul>
+                                <ul class="nav-fold-list"></ul>
+                            </div>
+                        </li>
+                        <li class="header-nav-li">
+                            <div class="header-nav-item">
+                                <i class="iconfont sm-icon">&#xeaf3;</i>
+                                <span>图层</span>
+                                <i class="iconfont fold-icon">&#xeb06;</i>
+                            </div>
+                            <div class="nav-fold-drop nav-fold-four">
+                                <ul class="nav-fold-level">
+                                    <li>
+                                        <i class="iconfont checkbox-uncheck">&#xeadc;</i>
+                                        <i class="iconfont checkbox-check">&#xead8;</i>
+                                        <span>近岸海域预报单元</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="header-nav-li">
+                            <div class="header-nav-item">
+                                <i class="iconfont sm-icon">&#xead5;</i>
+                                <span>工具</span>
+                                <i class="iconfont fold-icon">&#xeb06;</i>
+                            </div>
+                            <div class="nav-fold-drop nav-fold-three">
+                                <ul>
+                                    <li>
+                                        <i class="iconfont fold-icon">&#xeac1;</i>
+                                        <span>测距</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="header-nav-li">
+                            <div class="header-nav-item">
+                                <i class="iconfont sm-icon">&#xeb32;</i>
+                                <span>天地图遥感图</span>
+                                <i class="iconfont fold-icon">&#xeb06;</i>
+                            </div>
+                            <div class="nav-fold-drop nav-fold-two">
+                                <ul>
+                                    <li>
+                                        <i class="iconfont fold-icon">&#xe62f;</i>
+                                        <span>天地图交通图</span>
+                                    </li>
+                                    <li class="active">
+                                        <i class="iconfont fold-icon">&#xe607;</i>
+                                        <span>天地图遥感图</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="header-nav-li">
+                            <div class="header-nav-item">
+                                <i class="iconfont sm-icon">&#xeb33;</i>
+                                <span>揭阳市</span>
+                                <i class="iconfont fold-icon">&#xeb06;</i>
+                            </div>
+                            <div class="nav-fold-drop nav-fold-one">
+                                <!--<span>揭阳市</span>-->
+                                <ul class="nav-fold-area">
+                                    <li class="active"><span>揭阳市</span></li>
+                                    <li><span>惠来县</span></li>
+                                    <li><span>榕城区</span></li>
+                                    <li><span>揭西县</span></li>
+                                    <li><span>揭东区</span></li>
+                                    <li><span>普宁市</span></li>
+                                    <li><span>南海</span></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!--预报机构-->
+                <div class="report-organ">
+                    <div class="report-organ-open">
+                        <div class="report-organ-btn">
+                            <i class="iconfont">&#xeb05;</i>
+                        </div>
+                    </div>
+                    <div class="report-organ-close">
+                        <div class="report-organ-btn">
+                            <i class="iconfont">&#xeb03;</i>
+                        </div>
+                        <div class="report-organ-list" style="display: none;">
+                            <p class="report-organ-title">预报图例</p>
+                            <ul>
+                                <li class="report-organ-item" data-text="中国">
+                                    <div class="report-item">
+                                        <img src="./image/tuli/sun.png" alt="">
+                                        <span>晴天</span>
+                                    </div>
+                                    <div class="report-item" style="display: flex;">
+                                        <img src="./image/tuli/cloudy.png" alt="">
+                                        <span>多云</span>
+                                    </div>
+
+                                </li>
+                                <li class="report-organ-item" data-text="日本">
+                                    <div class="report-item">
+                                        <img src="./image/tuli/yin.png" alt="">
+                                        <span>阴</span>
+                                    </div>
+                                    <div class="report-item" style="display: flex;">
+                                        <img src="./image/tuli/showRain.png" alt="">
+                                        <span>阵雨</span>
+                                    </div>
+                                </li>
+                                <li class="report-organ-item" data-text="美国">
+                                    <div class="report-item">
+                                        <img src="./image/tuli/thunderShower.png" alt="">
+                                        <span>雷阵雨</span>
+                                    </div>
+                                </li>
+                                <li class="report-organ-item" data-text="中国香港">
+                                    <div class="report-item" style="margin-right:0;">
+                                        <img src="./image/tuli/tadr.png" alt="">
+
+                                        <span>雷阵雨伴有冰雹</span>
+                                    </div>
+                                </li>
+                                <li class="report-organ-item" data-text="中国台湾">
+                                    <div class="report-item">
+                                        <img src="./image/tuli/rainAsnow.png" alt="">
+
+                                        <span>雨夹雪</span>
+                                    </div>
+                                    <div class="report-item" style="display: flex;">
+                                        <img src="./image/tuli/Srain.png" alt="">
+
+                                        <span>小雨</span>
+                                    </div>
+                                </li>
+                                <li class="report-organ-item" data-text="中国台湾">
+                                    <div class="report-item">
+                                        <img src="./image/tuli/Mrain.png" alt="">
+
+                                        <span>中雨</span>
+                                    </div>
+                                    <div class="report-item" style="display: flex;">
+                                        <img src="./image/tuli/Suprain.png" alt="">
+
+                                        <span>暴雨</span>
+                                    </div>
+                                </li>
+                                <li class="report-organ-item" data-text="中国台湾">
+                                    <div class="report-item">
+                                        <img src="./image/tuli/Brain.png" alt="">
+
+                                        <span>大暴雨</span>
+                                    </div>
+                                    <div class="report-item" style="display: flex;">
+                                        <img src="./image/tuli/showSnow.png" alt="">
+
+                                        <span>阵雪</span>
+                                    </div>
+                                </li>
+                                <li class="report-organ-item" data-text="中国台湾">
+                                    <div class="report-item">
+                                        <img src="./image/tuli/Ssnow.png" alt="">
+
+                                        <span>小雪</span>
+                                    </div>
+                                    <div class="report-item" style="display: flex;">
+                                        <img src="./image/tuli/Msnow.png" alt="">
+
+                                        <span>中雪</span>
+                                    </div>
+                                </li>
+                                <li class="report-organ-item" data-text="中国台湾">
+                                    <div class="report-item">
+                                        <img src="./image/tuli/Bsnow.png" alt="">
+
+                                        <span>大雪</span>
+                                    </div>
+                                    <div class="report-item" style="display: flex;">
+                                        <img src="./image/tuli/Supsnow.png" alt="">
+
+                                        <span>暴雪</span>
+                                    </div>
+                                </li>
+                                <li class="report-organ-item" data-text="中国台湾">
+                                    <div class="report-item">
+                                        <img src="./image/tuli/fog.png" alt="">
+
+                                        <span>雾</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="report-organ-list1">
+                            <!--<p class="report-organ-title">预报机构</p>-->
+                            <ul>
+                                <li class="report-organ-item" data-text="中国">
+                                    <i class="iconfont checkbox-uncheck">&#xeadc;</i>
+                                    <i class="iconfont checkbox-check">&#xead8;</i>
+                                </li>
+                                <li class="report-organ-item" data-text="日本">
+                                    <i class="iconfont checkbox-uncheck">&#xeadc;</i>
+                                    <i class="iconfont checkbox-check">&#xead8;</i>
+                                </li>
+                                <li class="report-organ-item" data-text="美国">
+                                    <i class="iconfont checkbox-uncheck">&#xeadc;</i>
+                                    <i class="iconfont checkbox-check">&#xead8;</i>
+                                </li>
+                                <li class="report-organ-item" data-text="中国香港">
+                                    <i class="iconfont checkbox-uncheck">&#xeadc;</i>
+                                    <i class="iconfont checkbox-check">&#xead8;</i>
+                                </li>
+                                <li class="report-organ-item" data-text="中国台湾">
+                                    <i class="iconfont checkbox-uncheck">&#xeadc;</i>
+                                    <i class="iconfont checkbox-check">&#xead8;</i>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- 右侧二级侧导航 -->
+                <div class="subnav-context-wrap">
+                    <div class="subnav-context" style="display: block;">
+                        <div class="search-condition">
+                            <div class="subnav-title">
+                                <div class="menu-subtxt">
+                                    <img src="image/search-condition.png" />
+                                </div>
+                            </div>
+                            <div class="form-item-wrap form-item-year">
+                                <div class="form-item-txt">
+                                    <span>选择年份</span>
+                                </div>
+                                <div class="drop-down-wrap">
+                                    <div class="drop-down-select">
+                                        <div class="drop-down-txt">
+                                            <div class="drop-down-txt-cxt">
+                                                <span class="drop-down-txt-name">全部</span>
+                                                <span class="drop-down-txt-clear">
+														<i class="iconfont">&#xeaf2;</i>
+													</span>
+                                            </div>
+                                            <span class="drop-down-txt-num">+1</span>
+                                        </div>
+                                        <i class="iconfont drop-down-icon">&#xeb06;</i>
+                                    </div>
+                                    <div class="drop-down-list scrollbarStyle" style="height: 400px;overflow-y: scroll;">
+                                        <ul class="drop-down-group drop-down-group-year">
+                                            <li class="checked-all">
+                                                <span>全部</span>
+                                                <i class="iconfont checkbox-uncheck">&#xeadc;</i>
+                                                <i class="iconfont checkbox-check">&#xead8;</i>
+                                            </li>
+                                            <!--<li class="checked">
+													<span>2019</span>
+													<i class="iconfont">&#xeaf1;</i>
+												</li>
+												<li class="checked">
+													<span>2018</span>
+													<i class="iconfont">&#xeaf1;</i>
+												</li>
+												<li class="checked">
+													<span>2017</span>
+													<i class="iconfont">&#xeaf1;</i>
+												</li>
+												<li class="checked">
+													<span>2016</span>
+													<i class="iconfont">&#xeaf1;</i>
+												</li>
+												<li class="checked">
+													<span>2015</span>
+													<i class="iconfont">&#xeaf1;</i>
+												</li>
+												<li class="checked">
+													<span>2014</span>
+													<i class="iconfont">&#xeaf1;</i>
+												</li>-->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-item-wrap form-item-strong">
+                                <div class="form-item-txt">
+                                    <span>选择强度</span>
+                                </div>
+                                <div class="drop-down-wrap">
+                                    <div class="drop-down-select">
+                                        <span class="drop-down-txt">
+												<div class="drop-down-txt-cxt">
+													<span class="drop-down-txt-name">全部</span>
+                                        <span class="drop-down-txt-clear">
+														<i class="iconfont">&#xeaf2;</i>
+													</span>
+                                    </div>
+                                    <span class="drop-down-txt-num">+1</span>
+                                    </span>
+                                    <i class="iconfont drop-down-icon">&#xeb06;</i>
+                                </div>
+                                <div class="drop-down-list scrollbarStyle">
+                                    <ul class="drop-down-group drop-down-group-strong">
+                                        <li class="checked-all checked">
+                                            <span>全部</span>
+                                            <i class="iconfont checkbox-uncheck">&#xeadc;</i>
+                                            <i class="iconfont checkbox-check">&#xead8;</i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-item-wrap form-item-month">
+                            <div class="form-item-txt">
+                                <span>选择月份</span>
+                            </div>
+                            <div class="drop-down-wrap">
+                                <div class="drop-down-select">
+                                    <span class="drop-down-txt">
+												<div class="drop-down-txt-cxt">
+													<span class="drop-down-txt-name">全部</span>
+                                    <span class="drop-down-txt-clear">
+														<i class="iconfont">&#xeaf2;</i>
+													</span>
+                                </div>
+                                <span class="drop-down-txt-num">+1</span>
+                                </span>
+                                <i class="iconfont drop-down-icon">&#xeb06;</i>
+                            </div>
+                            <div class="drop-down-list scrollbarStyle">
+                                <ul class="drop-down-group drop-down-group-month">
+                                    <li class="checked-all checked">
+                                        <span>全部</span>
+                                        <i class="iconfont checkbox-uncheck">&#xeadc;</i>
+                                        <i class="iconfont checkbox-check">&#xead8;</i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-condition-btn">
+                        <button>查询</button>
+                    </div>
+                </div>
+                <div class="search-result">
+                    <div class="subnav-title">
+                        <div class="menu-subtxt">
+                            <img src="image/search-result.png" />
+                        </div>
+                    </div>
+                    <div class="search-result-head">
+                        <div class="search-result-cancel">取消选择</div>
+                        <div class="search-result-num">共<span>0</span>/<span>0</span>个选项</div>
+                    </div>
+                    <!--台风查询结果-->
+                    <div class="search-result-list-wrap scrollbarStyle">
+                        <ul class="search-result-list">
+                        </ul>
+                        <div class="search-loading"><span>加载中...</span></div>
+                        <div class="check_more" style="display: none;"><span>加载更多</span></div>
+                        <div class="no_more" style="display:none;"><span>没有更多台风啦</span></div>
+                    </div>
+                    <div class="search-result-checked scrollbarStyle scrollbarStyleX">
+                        <ul>
+                        </ul>
+                    </div>
+                    <div class="typhoon-checked-current" style="display: none;">1217 玛娃 SDFEC</div>
+                </div>
+                <div class="path-info">
+                    <!--<div class="subnav-title">
+									<div class="menu-subtxt">
+										<img src="image/path-info.png" />
+									</div>
+								</div>-->
+                    <ul class="typhoon-table-head" style="display: none;">
+                        <li>时间</li>
+                        <li>风速</li>
+                        <li>移向</li>
+                        <li>强度</li>
+                    </ul>
+                    <div class="path-info-table scrollbarStyle">
+                        <table class="info-table typhoon-info-table" style="display: none;">
+                            <tbody style="height:200px;overflow:auto;">
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div class="subnav-context" style="display: none;width:220px;height:0;padding:0;">
+                <div class="btuBox1 flex_csb">
+                    <button class="btn-nav1 btn-active">海区气象风险</button>
+                    <button class="btn-nav1">船舶气象风险</button>
+                    <button class="btn-nav1">航线气象风险</button>
+                </div>
+            </div>
+            <div class="subnav-context" style="display: none;">
+                <div class="SatelliteCloud">
+                    <div class="Satell-title">
+                        <img src="./image/statell-title.png" alt="">
+                    </div>
+                    <div class="conditions">云图条件</div>
+                    <div class="conditions timeSlect">
+                        <div>
+                            <input type="radio" name="all" id="0" value="6" checked/> 6小时
+                        </div>
+                        <div>
+                            <input type="radio" name="all" id="0" value="12" /> 12小时
+                        </div>
+                        <div>
+                            <input type="radio" name="all" id="0" value="24" /> 24小时
+                        </div>
+                    </div>
+                    <div class="conditions">播放速度</div>
+                    <div class="conditions timeSlect setTime">
+                        <div>
+                            <input type="radio" name="time" value="250" id="1" checked/> 0.25秒
+                        </div>
+                        <div>
+                            <input type="radio" name="time" value="500" id="1" /> 0.5秒
+                        </div>
+                        <div>
+                            <input type="radio" name="time" value="1000" id="1" /> 1秒
+                        </div>
+                    </div>
+                    <div class="timeList  scrollbarStyle">
+                        <ul>
+                            <li class="li-item">2020-01-12 12:22:01</li>
+                            <li class="li-item">2020-01-12 12:22:01</li>
+                            <li class="li-item">2020-01-12 12:22:01</li>
+                            <li class="li-item">2020-01-12 12:22:01</li>
+                            <li class="li-item">2020-01-12 12:22:01</li>
+                            <li class="li-item">2020-01-12 12:22:01</li>
+                            <li class="li-item">2020-01-12 12:22:01</li>
+                            <li class="li-item">2020-01-12 12:22:01</li>
+                            <li class="li-item">2020-01-12 12:22:01</li>
+                            <li class="li-item">2020-01-12 12:22:01</li>
+                            <li class="li-item">2020-01-12 12:22:01</li>
+                            <li class="li-item">2020-01-12 12:22:01</li>
+                            <li class="li-item">2020-01-12 12:22:01</li>
+                            <li class="li-item">2020-01-12 12:22:01</li>
+                            <li class="li-item">2020-01-12 12:22:01</li>
+                            <li class="li-item">2020-01-12 12:22:01</li>
+                            <li class="li-item">2020-01-12 12:22:01</li>
+                            <li class="li-item">2020-01-12 12:22:01</li>
+                            <li class="li-item">2020-01-12 12:22:01</li>
+                            <li class="li-item">2020-01-12 12:22:01</li>
+                        </ul>
+                    </div>
+                    <div class="aimate-btn">动画播放</div>
+                </div>
+            </div>
+            <div class="subnav-context" style="display: none;width: 348px;">
+                <div class="nearshore-report">
+                    <div class="subnav-title">
+                        <div class="menu-subtxt">
+                            <img src="image/nearshore-report.png" />
+                        </div>
+                    </div>
+                    <h4 class="report-title">最新消息</h4>
+                    <p class="report-content scrollbarStyle"></p>
+                    <p class="report-time"></p>
+                </div>
+            </div>
+            <!-- ada -->
+            <div class="subnav-context" style="top:59px;width:220px;display: none;">
+                <div class="but_box">
+                    <button class="btn-nav btn-active">城市天气</button>
+                </div>
+                <div class="but_box">
+                    <button class="btn-nav">海区天气</button>
+                </div>
+                <div class="but_box">
+                    <button class="btn-nav">港口天气</button>
+                </div>
+            </div>
+            <div class="subnav-context" style="display:none;width:220px;">
+                <div class="btuBox2 flex_csb">
+                    <button class="btn-nav2 btn-active">海浪</button>
+                    <button class="btn-nav2">海面风场</button>
+                    <button class="btn-nav2">海温</button>
+                    <button class="btn-nav2">风浪</button>
+                </div>
+            </div>
+            <!-- ada -->
+        </div>
+        <!-- 海区简介 -->
+        <div class="areaDetailBox">
+            <div class="areaTitle">
+                <img src="./image/title.png" alt="">
+            </div>
+            <div class="box_list scrollbarStyle">
+                <div class="box_item">
+                    <div class="title_s">南海北海区</div>
+                    <div class="area-item">
+                        <div>
+                            <span>海温(°C):</span><span>24.2-25</span>
+                        </div>
+                        <div>
+                            <span>风速(m/s):</span><span>3.9-4</span>
+                        </div>
+                    </div>
+                    <div class="area-item">
+                        <div>
+                            <span>海浪(m):</span><span>0.7-0.9</span>
+                        </div>
+                        <div>
+                            <span>风向:</span><span>东北</span>
+                        </div>
+                    </div>
+                    <div class="area-item">
+                        <div>
+                            <span>风浪(m):</span><span>45-60</span>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box_item">
+                    <div class="title_s">南海北海区</div>
+                    <div class="area-item">
+                        <div>
+                            <span>海温(°C):</span><span>24.2-25</span>
+                        </div>
+                        <div>
+                            <span>风速(m/s):</span><span>3.9-4</span>
+                        </div>
+                    </div>
+                    <div class="area-item">
+                        <div>
+                            <span>海浪(m):</span><span>0.7-0.9</span>
+                        </div>
+                        <div>
+                            <span>风向:</span><span>东北</span>
+                        </div>
+                    </div>
+                    <div class="area-item">
+                        <div>
+                            <span>风浪(m):</span><span>45-60</span>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box_item">
+                    <div class="title_s">南海北海区</div>
+                    <div class="area-item">
+                        <div>
+                            <span>海温(°C):</span><span>24.2-25</span>
+                        </div>
+                        <div>
+                            <span>风速(m/s):</span><span>3.9-4</span>
+                        </div>
+                    </div>
+                    <div class="area-item">
+                        <div>
+                            <span>海浪(m):</span><span>0.7-0.9</span>
+                        </div>
+                        <div>
+                            <span>风向:</span><span>东北</span>
+                        </div>
+                    </div>
+                    <div class="area-item">
+                        <div>
+                            <span>风浪(m):</span><span>45-60</span>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box_item">
+                    <div class="title_s">南海北海区</div>
+                    <div class="area-item">
+                        <div>
+                            <span>海温(°C):</span><span>24.2-25</span>
+                        </div>
+                        <div>
+                            <span>风速(m/s):</span><span>3.9-4</span>
+                        </div>
+                    </div>
+                    <div class="area-item">
+                        <div>
+                            <span>海浪(m):</span><span>0.7-0.9</span>
+                        </div>
+                        <div>
+                            <span>风向:</span><span>东北</span>
+                        </div>
+                    </div>
+                    <div class="area-item">
+                        <div>
+                            <span>风浪(m):</span><span>45-60</span>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box_item">
+                    <div class="title_s">南海北海区</div>
+                    <div class="area-item">
+                        <div>
+                            <span>海温(°C):</span><span>24.2-25</span>
+                        </div>
+                        <div>
+                            <span>风速(m/s):</span><span>3.9-4</span>
+                        </div>
+                    </div>
+                    <div class="area-item">
+                        <div>
+                            <span>海浪(m):</span><span>0.7-0.9</span>
+                        </div>
+                        <div>
+                            <span>风向:</span><span>东北</span>
+                        </div>
+                    </div>
+                    <div class="area-item">
+                        <div>
+                            <span>风浪(m):</span><span>45-60</span>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box_item">
+                    <div class="title_s">南海北海区</div>
+                    <div class="area-item">
+                        <div>
+                            <span>海温(°C):</span><span>24.2-25</span>
+                        </div>
+                        <div>
+                            <span>风速(m/s):</span><span>3.9-4</span>
+                        </div>
+                    </div>
+                    <div class="area-item">
+                        <div>
+                            <span>海浪(m):</span><span>0.7-0.9</span>
+                        </div>
+                        <div>
+                            <span>风向:</span><span>东北</span>
+                        </div>
+                    </div>
+                    <div class="area-item">
+                        <div>
+                            <span>风浪(m):</span><span>45-60</span>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 风险分析 -->
+        <div class="riskAnalysis" style="display: none;">
+            <div class="areaTitle">
+                <img src="./image/boat.png" alt="">
+            </div>
+            <div class="box_list scrollbarStyle">
+                <div class="box_item">
+                    <div class="title_s">船只名称</div>
+                    <div class="area-item">
+                        <div>
+                            <span>风力</span><span>4级</span>
+                        </div>
+                        <div>
+                            <span>海浪</span><span>1.2m</span>
+                        </div>
+                        <div>
+                            <span>阵风等级</span><span>3级</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="box_item">
+                    <div class="title_s">船只名称</div>
+                    <div class="area-item">
+                        <div>
+                            <span>风力</span><span>4级</span>
+                        </div>
+                        <div>
+                            <span>海浪</span><span>1.2m</span>
+                        </div>
+                        <div>
+                            <span>阵风等级</span><span>3级</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="box_item">
+                    <div class="title_s">船只名称</div>
+                    <div class="area-item">
+                        <div>
+                            <span>风力</span><span>4级</span>
+                        </div>
+                        <div>
+                            <span>海浪</span><span>1.2m</span>
+                        </div>
+                        <div>
+                            <span>阵风等级</span><span>3级</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="box_item">
+                    <div class="title_s">船只名称</div>
+                    <div class="area-item">
+                        <div>
+                            <span>风力</span><span>4级</span>
+                        </div>
+                        <div>
+                            <span>海浪</span><span>1.2m</span>
+                        </div>
+                        <div>
+                            <span>阵风等级</span><span>3级</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 船只轨迹 -->
+        <div class="boatRunDirection" style="display: none;">
+            <div class="areaTitle">
+                <img src="./image/boatRunDirection.png" alt="">
+            </div>
+            <div class="direction">
+                <span>时间</span>
+                <span>精度</span>
+                <span>纬度</span>
+            </div>
+            <div class="time-list">
+                <div class="time-item">
+                    <span>2020-01-12 00:00:00</span>
+                    <span>117-3-43.1E</span>
+                    <span>23-32-12.2N</span>
+                </div>
+                <div class="time-item">
+                    <span>2020-01-12 00:00:00</span>
+                    <span>117-3-43.1E</span>
+                    <span>23-32-12.2N</span>
+                </div>
+                <div class="time-item">
+                    <span>2020-01-12 00:00:00</span>
+                    <span>117-3-43.1E</span>
+                    <span>23-32-12.2N</span>
+                </div>
+                <div class="time-item">
+                    <span>2020-01-12 00:00:00</span>
+                    <span>117-3-43.1E</span>
+                    <span>23-32-12.2N</span>
+                </div>
+                <div class="time-item">
+                    <span>2020-01-12 00:00:00</span>
+                    <span>117-3-43.1E</span>
+                    <span>23-32-12.2N</span>
+                </div>
+                <div class="time-item">
+                    <span>2020-01-12 00:00:00</span>
+                    <span>117-3-43.1E</span>
+                    <span>23-32-12.2N</span>
+                </div>
+            </div>
+        </div>
+        <!-- 船只详情 -->
+        <div class="detailInfo_box" style="display: none;">
+            <div class="title">
+                查看详情
+                <span class="closeDetailBox" onclick="closeDetailBox()">X</span>
+            </div>
+            <div class="container_detail">
+                <h1>船只名称</h1>
+                <ul>
+                    <li>
+                        <div>
+                            <span>MMSI</span>
+                            <span>413055180</span>
+                        </div>
+                        <div>
+                            <span>预到港</span>
+                            <span>广州</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <span>IMO</span>
+                            <span>0</span>
+                        </div>
+                        <div>
+                            <span>预到时间</span>
+                            <span>6-13 08：00</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <span>呼号</span>
+                            <span>413055180</span>
+                        </div>
+                        <div>
+                            <span>经度</span>
+                            <span>117-3-43.1E</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <span>中文名称</span>
+                            <span>引航1</span>
+                        </div>
+                        <div>
+                            <span>纬度</span>
+                            <span>23-32-12.2N</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <span>国籍</span>
+                            <span> 中国</span>
+                        </div>
+                        <div>
+                            <span>船首向</span>
+                            <span>未知</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <span>船长</span>
+                            <span> 22米</span>
+                        </div>
+                        <div>
+                            <span>船迹向</span>
+                            <span>82.1度</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <span>船长</span>
+                            <span> 22米</span>
+                        </div>
+                        <div>
+                            <span>船迹向</span>
+                            <span>82.1度</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <span>船宽</span>
+                            <span> 5米</span>
+                        </div>
+                        <div>
+                            <span>状态/航速</span>
+                            <span>在航(主机推动)/0.0节</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <span>载重吨</span>
+                            <span> 67</span>
+                        </div>
+                        <div>
+                            <span>吃水</span>
+                            <span>1.5米</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <span>总吨</span>
+                            <span> 52</span>
+                        </div>
+                        <div>
+                            <span>更新时间</span>
+                            <span>2020-06-15 00:00:00</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <span>净吨</span>
+                            <span> 67</span>
+                        </div>
+                        <div>
+                            <span>船舶类型</span>
+                            <span>客船</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <span>风力</span>
+                            <span> 4级</span>
+                        </div>
+                        <div>
+                            <span>海浪</span>
+                            <span>1.2米</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <!-- 船只信息弹窗 -->
+        <div class="boatInfoBox" style="display:none;">
+            <ul>
+                <li>
+                    <span>MMSI</span>
+                    <p>41294568</p>
+                </li>
+                <li>
+                    <span>中文名称</span>
+                    <p>船只名称</p>
+                </li>
+                <li>
+                    <span>经度</span>
+                    <p>117-3-43.1E</p>
+                </li>
+                <li>
+                    <span>维度</span>
+                    <p>117-3-43.1E</p>
+                </li>
+                <li>
+                    <span>风力</span>
+                    <p>4级</p>
+                </li>
+            </ul>
+            <div class="toDetail" data-id="4521546456Ada">查看详情</div>
+            <div class="direct_iconArea"></div>
+        </div>
+        <!--渐变器 -->
+        <div class="lineThrouth"></div>
+        <!-- 规划路线 -->
+        <div class="road-check-btn">
+            <i class="iconfont checkbox-uncheck" style="display: none;">&#xeadc;</i>
+            <i class="iconfont checkbox-check">&#xead8;</i>
+            <span>标注路线</span>
+        </div>
+        <!-- 云图右上角时间显示,经纬度 -->
+        <div class="timeShow">2020-06-11 12:07:45</div>
+        <div class="tutide">116°15'47'' 22°56'10''</div>
+        <!--还原按钮-->
+        <div class="reback-center-btn">
+            <img src="./image/reback.png">
+        </div>
+        <!-- 云图示例 -->
+        <!-- <div class="img_box">
+            <img alt="" src="./image/cloudImage/Fy2E_202006090015.jpg" class="cloudImg">
+        </div> -->
+        <!-- 海区预报弹窗 -->
+        <div class="area-info" style="display:none;">
+            <div class="areaInfo-title">编号：<span>664</span></div>
+            <ul>
+                <li>
+                    <span>海域</span>
+                    <p>南海东北部</p>
+                </li>
+                <li>
+                    <span>中心</span>
+                    <p>(117.75,112.7)</p>
+                </li>
+                <li>
+                    <span>浪高</span>
+                    <p>0.7m</p>
+                </li>
+            </ul>
+            <div class="direct_iconArea"></div>
+        </div>
+        <!-- 天气预报弹窗 -->
+        <div class="weatherInfo" style="display: none;"></div>
+        <!-- 弹窗 -->
+        <div class="station-info" style="display: none;">
+            <p class="station-info-title">广东国鑫实业股份有限公司</p>
+            <ul class="station-info-list">
+                <li>
+                    <span>所属港口/企业</span>
+                    <p>揭阳榕江港区</p>
+                </li>
+                <li>
+                    <span>类型(A/B/C/D/E)</span>
+                    <p>B</p>
+                </li>
+                <li>
+                    <span>泊位个数（个）</span>
+                    <p>3</p>
+                </li>
+                <li>
+                    <span>船舶通航量（艘）</span>
+                    <p>-</p>
+                </li>
+                <li>
+                    <span>建设规模</span>
+                    <p>1#泊位5000、2#泊位5000</p>
+                </li>
+            </ul>
+            <div class="direct_icon"></div>
+        </div>
+        <div class="typhoon-info" style="display: none;">
+            <div class="typhoon-info-title">
+                <h4>1216 玛娃</h4>
+                <p>09/12 12:00</p>
+            </div>
+            <ul class="typhoon-info-list">
+                <li>
+                    <span>预报机构</span>
+                    <p>中国台湾</p>
+                </li>
+                <li>
+                    <span>中心位置</span>
+                    <p>130.10° / 25.70°</p>
+                </li>
+                <li>
+                    <span>风速风力</span>
+                    <p>28米/秒，<em style="color:#FF0000;">10级(强热带风暴)</em></p>
+                </li>
+                <li>
+                    <span>中心气压</span>
+                    <p>985百帕</p>
+                </li>
+                <li>
+                    <span>移速移向</span>
+                    <p>30公里/小时，北北东</p>
+                </li>
+            </ul>
+            <ul class="typhoon-circle-list">
+                <li>
+                    <span>七级半径</span>
+                    <p>100~180公里</p>
+                </li>
+                <li>
+                    <span>十级半径</span>
+                    <p>40~60公里</p>
+                </li>
+                <li>
+                    <span>十二级半径</span>
+                    <p>40~60公里</p>
+                </li>
+            </ul>
+            <div class="direct_icon"></div>
+        </div>
+        <div class="report-dialog" style="display: none;">
+            <div class="report-dialog-header">揭阳惠来海域未来三日海况预报</div>
+            <ul class="report-table">
+                <li class="report-table-left">
+                    <span>浪高(m)</span>
+                    <span>浪级</span>
+                    <span>海面风</span>
+                    <span>水温(℃)</span>
+                </li>
+                <!-- ada添加前进后退坐标等 -->
+                <div class="nav-right">
+                    <ul class="nav-ul">
+                        <!-- 渲染信息 -->
+                    </ul>
+                </div>
+            </ul>
+            <div class="prev">
+                <i class="iconfont">&#xeb05;</i>
+            </div>
+            <div class="next">
+                <i class="iconfont">&#xeb03;</i>
+            </div>
+            <div class="report-echart">
+                <div id="reportEchart" style=="width100%;height:100px;"></div>
+            </div>
+            <div class="report-close"></div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/riskZoning.js"></script>
+    <script type="text/javascript" src="js/typhoon/typhoon.js"></script>
+    <script type="text/javascript" src="js/disasterBody.js"></script>
+    <script type="text/javascript" src="js/cameraViewSwitching.js"></script>
+    <script type="text/javascript" src="js/measureDistance.js"></script>
+    <script language="Javascript">
+        // document.oncontextmenu = new Function("event.returnValue=false");
+        // document.onselectstart = new Function("event.returnValue=false");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1826 @@
+
+/*滚动条样式*/
+.scrollbarStyle::-webkit-scrollbar{
+    width:6px;
+    height:10px;
+}
+.scrollbarStyle::-webkit-scrollbar-thumb{
+    border-radius:3px;
+    background-color:#EBEEF3;
+}
+.scrollbarStyle::-webkit-scrollbar-corner{
+    background:none;
+}
+
+.menu-title{
+    margin: 20px 0px 20px 10px;
+}
+
+.table-operate{
+    margin:0px 0px 24px 40px;
+}
+.table-operate::after{
+    content: '';
+    display: block;
+    height: 0px;
+    clear: both;
+}
+.table-search{
+    float: left;
+    width:400px;
+    height:40px;
+    border:1px solid rgba(229,229,229,1);
+    border-radius:5px;
+}
+.search-icon{
+    cursor: pointer;
+    font-size: 24px!important;
+    margin: 0px 16px 0px 24px;
+    color: #3F4D5B;
+    vertical-align: middle;
+}
+.search-input{
+    outline: none;
+    border: none;
+    width: 325px;
+    height: 38px;
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #919191;
+}
+.table-menu{
+    float: right;
+}
+.table-menu::after{
+    content: '';
+    display: block;
+    height: 0px;
+    clear: both;
+}
+.table-menuItem{
+    float: left;
+    margin-right: 40px;
+    cursor: pointer;
+}
+.menu-icon{
+    font-size: 18px!important;
+    color: #9294B2;
+    margin-right: 12px;
+}
+.table-menuTxt{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #9294B2;
+}
+.table-menuClick .menu-icon{
+    color: #1C9BC9;
+}
+.table-menuClick .table-menuTxt{
+    color: #1C9BC9;
+}
+
+.info-condition{
+    margin: 0px 0px 40px 40px;
+}
+.info-condition::after{
+    content: '';
+    height: 0;
+    display: block;
+    clear: both;
+}
+.info-item{
+    cursor: pointer;
+    position: relative;
+    width: 200px;
+    float: left;
+    margin-right: 80px;
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #9294B2;
+}
+.info-selectIcon{
+    position: absolute;
+    right: 0px;
+}
+.time-input::-webkit-input-placeholder{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #9294B2;
+}
+.time-input::-ms-input-placeholder{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #9294B2;
+}
+.time-input::-moz-placeholder{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #9294B2;
+}
+.time-input{
+    cursor: pointer;
+    outline: none;
+    border: none;
+    width: 200px;
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #9294B2;
+}
+.info-item-select{
+    cursor: pointer;
+}
+.info-item-drop{
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 35px;
+    z-index: 3;
+    width:160px;
+    /*height:208px;*/
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 2px 10px rgba(0,0,0,0.1);
+    border-radius:5px 0px 0px 5px;
+    padding-top: 20px;
+}
+.forecastType-list-item{
+    padding-left:20px;
+    height: 36px;
+    line-height: 36px;
+    cursor: pointer;
+}
+.forecastType-radio-uncheck{
+    margin-right: 12px;
+    vertical-align: middle;
+}
+.forecastType-radio-check{
+    margin-right: 12px;
+    display: none;
+    vertical-align: middle;
+}
+.forecastType-list-text{
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #0B0E36;
+}
+.forecastType-list-item:hover .forecastType-list-text{
+    color: #1C9BC9;
+}
+.forecastType-list-click .forecastType-radio-uncheck{
+    display: none;
+}
+.forecastType-list-click .forecastType-radio-check{
+    display: inline-block;
+    color: #1C9BC9;
+}
+.uploadStatus-list-item{
+    padding-left:20px;
+    height: 36px;
+    line-height: 36px;
+    cursor: pointer;
+}
+.uploadStatus-radio-uncheck{
+    margin-right: 12px;
+    vertical-align: middle;
+}
+.uploadStatus-radio-check{
+    margin-right: 12px;
+    display: none;
+    vertical-align: middle;
+}
+.uploadStatus-list-text{
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #0B0E36;
+}
+.uploadStatus-list-item:hover .uploadStatus-list-text{
+    color: #1C9BC9;
+}
+.uploadStatus-list-click .uploadStatus-radio-uncheck{
+    display: none;
+}
+.uploadStatus-list-click .uploadStatus-radio-check{
+    display: inline-block;
+    color: #1C9BC9;
+}
+
+
+.info-content{
+    /*width: 1517px;*/
+    width:98%;
+    /*height: 660px;*/
+    margin-left: 40px;
+    overflow: hidden;
+}
+.info-table{
+    /*width: 1517px;*/
+    width:98%;
+    border-collapse: collapse;
+    border: none;
+}
+.info-table thead tr{
+    height: 56px;
+    line-height: 56px;
+    background:rgba(235,238,243,1);
+    border-radius:5px;
+}
+.info-table tbody tr{
+    height: 56px;
+    line-height: 56px;
+    border-radius:5px;
+    box-sizing: border-box;
+}
+.info-table tbody tr:hover{
+    box-sizing: border-box;
+    background:rgba(28,155,201,0.11);
+    /*border:1px solid rgba(28,155,201,1);*/
+}
+.info-table tr th,.info-table tr td{
+    text-align: left;
+    padding: 0px 15px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    white-space: nowrap;
+}
+.info-table tr th{
+    font-size:12px;
+    color: #9294B2;
+}
+.info-table tr td{
+    font-size:14px;
+    color: #0B0E36;
+}
+.checkbox-uncheck{
+    cursor: pointer;
+    font-size: 20px!important;
+    color: #9294B2;
+}
+.checkbox-check{
+    cursor: pointer;
+    font-size: 20px!important;
+    color: #9294B2;
+    display: none;
+}
+.check-click .checkbox-uncheck{
+    display: none;
+}
+.check-click .checkbox-check{
+    display: inline-block;
+}
+.table-infoIcon,.table-editIcon,.table-delIcon,.table-resetIcon,.table-uploadIcon,.table-loadIcon{
+    color: #9294B2;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+.table-load{
+    display: inline-block;
+    width:72px;
+    height:32px;
+    line-height: 32px;
+    text-align: center;
+    background:rgba(103,194,58,0.2);
+    border-radius:5px;
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:bold;
+    color:rgba(103,194,58,1);
+}
+.table-unload{
+    display: inline-block;
+    width:72px;
+    height:32px;
+    line-height: 32px;
+    text-align: center;
+    background:rgba(245,108,108,0.2);
+    border-radius:5px;
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(245,108,108,1);
+}
+
+.table-page{
+    /*margin-top: 22px;*/
+    position: absolute;
+    bottom: 40px;
+    /*padding-left: 480px;*/
+    left: 35%;
+}
+.record-page{
+    left: 20%;
+    bottom: 25px;
+}
+.table-page::after{
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+}
+.page-txt{
+    float: left;
+    margin-right: 10px;
+    line-height: 32px;
+}
+.page-txt span{
+    color: rgba(28,155,201,1);
+    font-weight: bold;
+}
+.page-item{
+    cursor: pointer;
+    float: left;
+    height:32px;
+    line-height: 32px;
+    padding: 0px 10px;
+    text-align: center;
+    border:1px solid rgba(229,229,229,1);
+    font-size:13px;
+    font-family:Source Sans Pro;
+    font-weight:400;
+    margin-right: 5px;
+}
+.page-item:hover{
+    background:rgba(28,155,201,1);
+    color: #fff;
+}
+.page-item-notClick{
+    background: none;
+    color: #ccc;
+    cursor: not-allowed!important;
+}
+.page-item-notClick:hover{
+    background: none;
+    color: #ccc;
+    cursor: not-allowed!important;
+}
+.page-inputBox{
+    float: left;
+}
+#pageTo,#info-pageTo{
+    margin-left: 10px;
+}
+.page-input{
+    width: 60px;
+    height:32px;
+    line-height: 32px;
+    padding: 0px 10px;
+    text-align: center;
+    border:1px solid rgba(229,229,229,1);
+    font-size:13px;
+    font-family:Source Sans Pro;
+    font-weight:400;
+}
+
+/*缺省页*/
+.info-table-no{
+    width: 100%;
+    text-align: center;
+    margin-top: 280px;
+}
+.info-no-text{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #919191;
+}
+
+/*弹窗*/
+.overlay{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    background:rgba(0,0,0,0.16);
+}
+.showBox{
+    position: absolute;
+    z-index: 4;
+    width:905px;
+    height:680px;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 3px 6px rgba(0,0,0,0.16);
+    border-radius:10px;
+}
+.showBoxLarge{
+    height: 720px;
+}
+.previewOverlay{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background:rgba(10,10,11,1);
+}
+.previewShowbox{
+    position: absolute;
+    z-index: 6;
+    left: 0px;
+    top: 0px;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.pop-title{
+    width: 100%;
+    text-align: center;
+    height:48px;
+    line-height: 48px;
+    background:rgba(28,155,201,1);
+    border-radius:10px 10px 0px 0px;
+    position: relative;
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+}
+.close-btn{
+    position: absolute;
+    right: 25px;
+    cursor: pointer;
+}
+.form-item-list{
+    margin-top: 24px;
+}
+.form-item-list::after{
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+}
+.form-item{
+    float: left;
+    margin-left: 40px;
+}
+.form-item::after{
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+}
+.form-label{
+    min-width: 90px;
+    float: left;
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(146,148,178,1);
+    line-height: 40px;
+}
+.form-label-middle{
+    min-width: 68px;
+}
+.form-input{
+    float: left;
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #9294B2;
+}
+.form-input-common{
+    outline: none;
+    border: none;
+    min-height:40px;
+    background:rgba(235,238,243,1);
+    border-radius: 5px;
+    padding-left: 24px;
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(11,14,54,1);
+}
+.form-inputinfo{
+    background:rgba(255,255,255,1);
+}
+.form-input-common::-webkit-input-placeholder{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #9294B2;
+}
+.form-input-common::-ms-input-placeholder{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #9294B2;
+}
+.form-input-common::-moz-placeholder{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #9294B2;
+}
+.form-input-large{
+    width: 712px;
+}
+.form-input-time{
+    width: 258px;
+}
+.form-input-small{
+    width: 96px;
+}
+.form-input-normal{
+    width: 136px;
+}
+.form-input-middle{
+    width: 424px;
+}
+.email-input-large{
+    width: 540px;
+}
+.form-input-textarea{
+    height: 200px;
+    resize:none;
+    padding: 10px 0px 10px 24px;
+}
+.form-item-tip{
+    width: 100%;
+    text-align: center;
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(146,148,178,1);
+    margin-top: 24px;
+    cursor: pointer;
+}
+.form-other{
+    /*margin-top: 25px;*/
+    position: absolute;
+    bottom: 70px;
+}
+.upload-btn{
+    border: none;
+    outline: none;
+    width:80px;
+    height:32px;
+    background:rgba(28,155,201,1);
+    box-shadow:0px 3px 20px rgba(28,155,201,0.16);
+    border-radius:5px;
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    margin-top: 5px;
+}
+.signatureBox{
+    display: inline-block;
+    width:70px;
+    height:42px;
+    line-height:42px;
+    background:rgba(255,254,254,1);
+    border:1px solid rgba(146,148,178,1);
+    border-radius:5px;
+    margin-left: 8px;
+}
+.signatureBox img{
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+.form-tip-case{
+    /*float: left;*/
+    position: absolute;
+    bottom: -20px;
+    left: 125px;
+    /*margin-top: 8px;*/
+}
+.form-upload-tip{
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(146,148,178,1);
+}
+.pop-btn,.pop-btnEmail{
+    width: 100%;
+    text-align: right;
+    position: absolute;
+    bottom: 24px;
+}
+.popBtn,.popBtnEmail{
+    outline: none;
+    width:120px;
+    height:32px;
+    border-radius:5px;
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    margin-right: 12px;
+}
+.default-btn,.default-btnEmail{
+    background:rgba(28,155,201,0);
+    border:1px solid rgba(204,204,204,1);
+    color:rgba(145,145,145,1);
+}
+.color-btn,.color-btnEmail{
+    border: none;
+    background:rgba(28,155,201,1);
+    box-shadow:0px 3px 20px rgba(28,155,201,0.16);
+    color:rgba(255,255,255,1);
+    margin-right: 40px;
+}
+.email-list-clear::after{
+    content: '';
+    height: 0px;
+    display: block;
+    clear: both;
+}
+.email-list-add{
+    float: left;
+    margin-right: 15px;
+    margin-top: 15px;
+}
+.email-list-add:last-child{
+    margin-bottom: 15px;
+}
+.email-list-bold{
+    color: #0B0E36;
+}
+.email-list-normal{
+    color: #9294B2;
+}
+
+/*三天预报单制作tab切换*/
+.form-tab-title{
+    width:330px;
+    height:40px;
+    background:rgba(235,238,243,0);
+    border:1px solid rgba(235,238,243,1);
+    border-radius:20px;
+    margin-top: 40px;
+    margin-left: 288px;
+}
+.form-tab-title::after{
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+}
+.form-title-item{
+    cursor: pointer;
+    float: left;
+    width:80px;
+    height:32px;
+    line-height: 32px;
+    text-align: center;
+    border-radius:20px;
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(146,148,178,1);
+    margin-top: 4px;
+}
+#forecastThreeInfo .form-title-item{
+    cursor: default;
+}
+.form-title-click.form-title-item{
+    color:rgba(255,255,255,1);
+    background:rgba(28,155,201,1);
+}
+.form-tab-body{
+    margin-left: 40px;
+    margin-top: 15px;
+}
+.form-table{
+    border-collapse: collapse;
+    border: none;
+    width:825px;
+    height:148px;
+    background:rgba(235,238,243,0);
+    border-radius:5px;
+    text-align: center;
+}
+.form-table thead tr{
+    background:rgba(235,238,243,1);
+}
+.form-table thead tr th,.form-table tbody tr td{
+    border:1px solid rgba(28,155,201,1);
+}
+.form-table thead tr th{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(11,14,54,1);
+}
+.form-table tbody tr td{
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(11,14,54,1);
+}
+.tide-table tbody tr td{
+    width: 40px;
+}
+.tide-table thead tr{
+    height: 67px;
+}
+.wave-table thead tr{
+    height: 32px;
+}
+.wave-table tbody tr td:nth-child(1){
+    width: 90px;
+}
+.wind-table thead tr{
+    height: 67px;
+}
+.wind-table tbody tr td:nth-child(1){
+    width: 90px;
+}
+.temperature-table thead tr{
+    height: 67px;
+}
+.temperature-table tbody tr td:nth-child(1){
+    width: 90px;
+}
+.form-table-input{
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(11,14,54,1);
+    text-align: center;
+}
+.astronomicTide{
+    margin-top: 15px;
+    width:160px;
+    height:32px;
+    line-height: 32px;
+    text-align: center;
+    cursor: pointer;
+    background:rgba(28,155,201,0);
+    border:1px solid rgba(28,155,201,1);
+    border-radius:16px;
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(28,155,201,1);
+}
+
+/*普通邮件*/
+.email-title-tab{
+    margin-top: 24px;
+    margin-left: 40px;
+}
+.email-title-tab::after{
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+}
+.email-title-item{
+    cursor: pointer;
+    float: left;
+    margin-right: 40px;
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(146,148,178,1);
+}
+.email-title-click{
+    font-weight:bold;
+    color:rgba(28,155,201,1);
+    border-bottom: 2px solid rgba(28,155,201,1);
+}
+.form-text{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(11,14,54,1);
+    line-height: 3;
+}
+.form-input::after{
+    content: '';
+    height: 0;
+    display: block;
+    clear: both;
+}
+#regularMailRecipientsAdd{
+    height: 60px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+#regularMailAttachmentAdd{
+    width: 564px;
+    height: 60px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.form-word{
+    cursor: pointer;
+    float: left;
+    margin-right: 16px;
+    margin-bottom: 10px;
+    /*width:200px;*/
+    height:32px;
+    line-height: 32px;
+    background:rgba(240,242,247,1);
+    border-radius:16px;
+    /*position: relative;*/
+    padding: 0px 20px;
+}
+.form-word span{
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(36,37,45,1);
+    margin-left: 15px;
+}
+.form-word-close{
+    cursor: pointer;
+    /*position: absolute;
+    right: 0px;*/
+    color: #9294B2;
+    margin-left: 10px;
+}
+.email-form-line{
+    width:649px;
+    height:0px;
+    border:1px dashed rgba(235,238,243,1);
+    margin-left: 40px;
+    margin-top: 24px;
+}
+.email-address-box{
+    position: absolute;
+    right: 40px;
+    top: 115px;
+    width: 140px;
+}
+.email-address-title{
+    position: relative;
+}
+.email-address-word{
+    position: absolute;
+    left: 0px;
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:bold;
+    color:rgba(49,49,49,1);
+}
+.email-address-text{
+    position: absolute;
+    right: 0px;
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:#9294B2;
+}
+.email-address-num{
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:bold;
+    color:#1C9BC9;
+}
+.email-address-list{
+    margin-top: 40px;
+    width: 100%;
+    height: 380px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.email-address-item{
+    margin-bottom: 22px;
+    cursor: pointer;
+}
+.email-address-uncheck{
+    color: #9294B2;
+    vertical-align: middle;
+    font-size: 24px!important;
+}
+.email-address-check{
+    display: none;
+    color: #1C9BC9;
+    vertical-align: middle;
+    font-size: 24px!important;
+}
+.email-address-name{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(11,14,54,1);
+    margin-left: 10px;
+}
+.email-address-checkClick .email-address-check{
+    display: inline-block;
+}
+.email-address-checkClick .email-address-uncheck{
+    display: none;
+}
+.email-address-show{
+    position: absolute;
+    z-index: 5;
+    box-shadow:0px 3px 6px rgba(0,0,0,0.16);
+    border-radius:10px;
+    height:40px;
+    line-height: 40px;
+    padding: 0px 21px;
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(49,49,49,1);
+    background-color: #fff;
+}
+
+/*发送记录*/
+.email-record-list{
+    margin-top: 24px;
+    margin-left: 40px;
+}
+.email-record-tab{
+    width: 825px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius:5px;
+    text-align: left;
+}
+.email-record-tab thead tr{
+    height: 56px;
+}
+.email-record-tab tbody tr{
+    height: 72px;
+}
+.email-record-tab thead tr{
+    background:rgba(235,238,243,1);
+}
+.email-record-tab thead tr th,.email-record-tab tbody tr td{
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    padding: 0px 30px;
+    white-space: nowrap;
+}
+.email-record-tab tr th{
+    font-size:12px;
+    color: #9294B2;
+}
+.email-record-tab tr td{
+    font-size:14px;
+    color: #0B0E36;
+    cursor: pointer;
+}
+.email-record-tab tr th:nth-child(2),.email-record-tab tr td:nth-child(2){
+    width: 230px;
+}
+.email-record-tab tr th:nth-child(3),.email-record-tab tr td:nth-child(3){
+    width: 200px;
+}
+.email-tab-list::after{
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+}
+.email-tab-list{
+    width: 250px;
+    height: 72px;
+}
+.email-tab-item{
+    float: left;
+    margin-right: 16px;
+    margin-top: 20px;
+}
+.email-tab-num{
+    font-size: 10px;
+    color: #9294B2;
+}
+.email-record-tab tr td a{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(11,14,54,1);
+    text-decoration: none;
+}
+.email-record-tab tr td a:hover{
+    color: #1C9BC9;
+    text-decoration: underline;
+}
+
+.receive-show{
+    display: none;
+    position: absolute;
+    z-index: 5;
+    width:194px;
+    /*height:269px;*/
+    padding: 0px 0px 20px 0px;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 3px 6px rgba(0,0,0,0.16);
+    border-radius:10px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.receive-show-item{
+    margin-left: 29px;
+    margin-top: 22px;
+}
+.receive-show-name{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(11,14,54,1);
+}
+.receive-show-num{
+    font-size:10px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(146,148,178,1);
+}
+
+/*发送记录详情*/
+.pop-back{
+    margin: 20px 0px 0px 35px;
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(146,148,178,1);
+}
+.recordBackIcon{
+    cursor: pointer;
+    font-size:24px!important;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+.pop-record-info::after{
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+}
+.pop-record-info{
+    margin-top: 20px;
+    margin-left: 40px;
+}
+.pop-record-word{
+    float: left;
+    min-width: 90px;
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(146,148,178,1);
+}
+.pop-record-text{
+    float: left;
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(11,14,54,1);
+}
+.pop-record-height{
+    width: 700px;
+    height: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.pop-record-text::after{
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+}
+.pop-record-affix{
+    cursor: pointer;
+    float: left;
+    height:32px;
+    line-height: 32px;
+    background:rgba(240,242,247,1);
+    border-radius:16px;
+    padding: 0px 20px;
+    margin-right: 16px;
+}
+.pop-recive-item{
+    float: left;
+    margin-right: 16px;
+}
+.pop-record-name{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(11,14,54,1);
+}
+.pop-record-num{
+    font-size:10px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(146,148,178,1);
+}
+.pop-record-line{
+    width:825px;
+    height:1px;
+    border-bottom:1px dashed rgba(208,214,223,1);
+    margin-left: 40px;
+}
+
+/*通讯录*/
+.address-book-search{
+    margin-left: 40px;
+    margin-top: 24px;
+    margin-bottom: 16px;
+}
+.address-book-search::after{
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+}
+.address-search-box{
+    float: left;
+}
+.address-search-box{
+    width:400px;
+    height:40px;
+    border:1px solid rgba(229,229,229,1);
+    border-radius:5px;
+}
+.address-search-icon{
+    cursor: pointer;
+    margin-left: 24px;
+    margin-right: 16px;
+    font-size:28px!important;
+    color: #3F4D5B;
+    vertical-align: middle;
+}
+.address-search-input{
+    width: 320px;
+    height: 38px;
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #0B0E36;
+    border: none;
+    outline: none;
+}
+.address-search-input::-webkit-input-placeholder{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #9294B2;
+}
+.address-search-input::-ms-input-placeholder{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #9294B2;
+}
+.address-search-input::-moz-placeholder{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #9294B2;
+}
+.address-tab-operator{
+    float: right;
+    margin-right: 40px;
+}
+.address-operator-item{
+    cursor: pointer;
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(146,148,178,1);
+}
+.address-operator-item i{
+    font-size: 18px!important;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.address-book-tab{
+    margin-left: 40px;
+}
+.address-book-table{
+    width: 825px;
+    height: 480px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius:5px;
+    text-align: left;
+}
+.address-book-table thead,.address-book-table tbody tr{
+	display: table;
+	width: 100%;
+	table-layout: fixed; 
+} 
+.address-book-table thead tr,.address-book-table tbody tr{
+    height: 56px;
+}
+.address-book-table thead tr{
+    background:rgba(235,238,243,1);
+}
+.address-book-table thead tr th,.address-book-table tbody tr td{
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    padding: 0px 30px;
+    white-space: nowrap;
+}
+.address-book-table thead tr th:nth-child(1),.address-book-table tbody tr td:nth-child(1){
+    width: 1px;
+}
+.address-book-table thead tr th:nth-child(2),.address-book-table tbody tr td:nth-child(2){
+    width: 1px;
+}
+.address-book-table thead tr th:nth-child(3),.address-book-table tbody tr td:nth-child(3){
+    width: 50px;
+}
+.address-book-table thead tr th:nth-child(4),.address-book-table tbody tr td:nth-child(4){
+    width: 80px;
+}
+.address-book-table thead tr th:nth-child(5),.address-book-table tbody tr td:nth-child(5){
+    width: 140px;
+}
+.address-book-table thead tr th:nth-child(6),.address-book-table tbody tr td:nth-child(6){
+    width: 80px;
+}
+.address-book-table tr th{
+    font-size:12px;
+    color: #9294B2;
+}
+.address-book-table tr td{
+    font-size:14px;
+    color: #0B0E36;
+}
+.address-book-table tbody{
+    display:inline-block;
+	width:100%;
+	height:424px;
+	overflow-y:scroll;
+}
+.address-book-table tbody tr:hover{
+    background:rgba(28,155,201,0.11);
+}
+.address-uncheckIcon{
+    font-size: 18px!important;
+    color: #9294B2;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.address-checkIcon{
+    display: none;
+    font-size: 18px!important;
+    color: #9294B2;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.address-editIcon{
+    margin-right: 10px;
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(146,148,178,1);
+    cursor: pointer;
+}
+.address-delIcon{
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(146,148,178,1);
+    cursor: pointer;
+}
+.commonIcon{
+    font-size: 18px!important;
+    color: #9294B2;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+.address-tabClick .address-uncheckIcon{
+    display: none;
+}
+.address-tabClick .address-checkIcon{
+    display: block;
+}
+/*新增通讯录*/
+.addressAddBackIcon,.addressEditBackIcon{
+    font-size: 28px!important;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.pop-address-content{
+    width: 100%;
+    text-align: center;
+}
+.pop-address-title{
+    margin-top: 16px;
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:bold;
+    color:rgba(49,49,49,1);
+}
+.pop-address-list::after{
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+}
+.pop-address-item{
+    margin-top: 24px;
+}
+.pop-address-item::after{
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+}
+.pop-address-word{
+    margin-left: 150px;
+    margin-right: 65px;
+    float: left;
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(146,148,178,1);
+    line-height: 40px;
+}
+.pop-address-input{
+    float: left;
+}
+.address-input{
+    width:456px;
+    height:40px;
+    line-height: 40px;
+    background:rgba(235,238,243,1);
+    border-radius:5px;
+    padding-left: 24px;
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:#0B0E36;
+    border: none;
+    outline: none;
+}
+.address-input::-webkit-input-placeholder{
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #9294B2;
+}
+.address-input::-ms-input-placeholder{
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #9294B2;
+}
+.address-input::-moz-placeholder{
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #9294B2;
+}
+.pop-address-btn{
+    width: 100%;
+    text-align: right;
+}
+.pop-address-common{
+    width:120px;
+    height:32px;
+    line-height: 32px;
+    text-align: center;
+    border-radius:5px;
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    border: none;
+    cursor: pointer;
+}
+.color-btnAddress{
+    background:rgba(28,155,201,1);
+    box-shadow:0px 3px 20px rgba(28,155,201,0.16);
+    color:rgba(255,255,255,1);
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+}
+
+/*提示信息框*/
+.delAll-pop{
+    position: absolute;
+    width:400px;
+    height:240px;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 3px 6px rgba(0,0,0,0.16);
+    border-radius:10px;
+    z-index: 5;
+}
+.del-title{
+    width:400px;
+    height:48px;
+    line-height: 48px;
+    text-align: center;
+    position: relative;
+    background:rgba(28,155,201,1);
+    border-radius:10px 10px 0px 0px;
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #fff;
+}
+.delAll-close{
+    cursor: pointer;
+    position: absolute;
+    right: 24px;
+}
+.del-content{
+    font-size:16px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:#0B0E36;
+    margin: 65px 0px 65px 80px;
+}
+.del-btn{
+    width:400px;
+    text-align: right;
+}
+.del-btnIcon{
+    width:64px;
+    height:32px;
+    line-height: 32px;
+    text-align: center;
+    border-radius:5px;
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    margin-right: 10px;
+}
+.delclose-btn{
+    background:rgba(28,155,201,0);
+    border:1px solid rgba(204,204,204,1);
+    color: #919191;
+}
+.delsure-btn{
+    border: none;
+    background:rgba(28,155,201,1);
+    box-shadow:0px 3px 20px rgba(28,155,201,0.16);
+    color: #fff;
+}
+
+.totalPop{
+    width:400px;
+    height:48px;
+    line-height: 48px;
+    border-radius:10px;
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    position: absolute;
+    z-index:100;
+    text-align: center;
+}
+.totalPop img{
+    vertical-align: middle;
+    margin: 0px 16px 0px 0px;
+}
+#success{
+    background:rgba(103,194,58,0.12);
+    border:1px solid rgba(103,194,58,1);
+    color: #67C23A;
+}
+#fail{
+    background:rgba(245,108,108,0.12);
+    border:1px solid rgba(245,108,108,1);
+    color: #F56C6C;
+}
+#alert{
+    background:rgba(230,162,60,0.12);
+    border:1px solid rgba(230,162,60,1);
+    color: #E6A23C;
+}
+
+
+.overlayOpacity{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background:rgba(0,0,0,0);
+}
+.loadingBox{
+    position: absolute;
+    z-index: 6;
+    left: 0px;
+    top:0px;
+    width:100%;
+    text-align: center;
+}
+.loadingBox img{
+    vertical-align: middle;
+}
+
+/*预览*/
+.previewShowboxMain{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.previewClose{
+    cursor: pointer;
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    width:40px;
+    height:40px;
+    line-height: 40px;
+    text-align: center;
+    background:rgba(59,60,69,1);
+    border-radius:20px;
+}
+.previewClose span{
+    font-family: Microsoft YaHei;
+    font-size: 14px;
+    color: #fff;
+}
+.previewBtn{
+    position: absolute;
+    bottom: 24px;
+    left: 36%;
+}
+.previewCommonBtn{
+    cursor: pointer;
+    border: none;
+    width:96px;
+    height:40px;
+    line-height: 40px;
+    text-align: center;
+    background:rgba(59,60,69,1);
+    border-radius:20px;
+    margin-right: 16px;
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(255,255,255,0.4);
+}
+.previewCommonBtn:nth-child(2){
+    margin-right: 0px;
+}
+.previewContent{
+    position: absolute;
+    left: 25%;
+    width: 465px;
+    height: 717px;
+    background-color: #fff;
+    padding:0px 40px;
+    color: #000;
+}
+.previewContentThree{
+    left: 14%;
+    width: 822px;
+    height: 733px;
+    padding:0px 24px;
+}
+.previewTitle{
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(49,49,49,1);
+    margin-top: 40px;
+}
+.previewTitleMargin{
+    margin-top: 24px;
+}
+.previewWord{
+    font-size:32px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(255,0,0,1);
+    margin: 24px 0px;
+    text-align: center;
+}
+.previewWordLarge{
+    margin: 10px 0px;
+}
+.previewSubtxt{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(49,49,49,1);
+    margin-bottom: 16px;
+}
+.previewTimeAndSigner{
+    position: relative;
+    margin-bottom: 17px;
+}
+.previewTimeAndSigner span{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(49,49,49,1);
+}
+.previewTimeAndSigner img{
+    width:70px;
+    height:42px;
+    vertical-align: bottom;
+}
+.previewSigner{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+.previewLine{
+    width: 465px;
+    height: 4px;
+    background-color: rgba(255,0,0,1);
+}
+.previewMessage{
+    width: 465px;
+    height: 330px;
+    margin-top: 24px;
+}
+.previewMessageCenter{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size:16px;
+    font-family:Microsoft YaHei;
+    font-weight:bold;
+    color:rgba(49,49,49,1);
+}
+.previewMessageNormal{
+    margin-top: 25px;
+    text-indent:2em;
+    font-size:16px;
+    font-family:Microsoft YaHei;
+    font-weight:bold;
+    color:rgba(49,49,49,1);
+}
+.previewInfo{
+    width: 465px;
+    border-top: 1px solid rgba(49,49,49,1);
+    border-bottom: 1px solid rgba(49,49,49,1);
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(49,49,49,1);
+    padding: 10px 0px;
+    position: absolute;
+    bottom: 45px;
+}
+.previewInvole{
+    position: absolute;
+    bottom: 16px;
+    width: 465px;
+    text-align: right;
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:bold;
+    color:rgba(49,49,49,1);
+}
+.previewLarge{
+    width: 822px;
+}
+.previewMessageLarge{
+    width: 822px;
+    height: 388px;
+    margin: 17px 0px;
+}
+.previewTable{
+    border-collapse: collapse;
+    border: none;
+    width: 822px;
+    background:rgba(235,238,243,0);
+    border-radius:5px;
+    text-align: center;
+}
+.previewTable thead tr th,.previewTable tbody tr td{
+    border:1px solid rgba(145,145,145,1);
+}
+.previewTable thead tr th{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:bold;
+    color:rgba(11,14,54,1);
+}
+.previewTable tbody tr td{
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color:rgba(11,14,54,1);
+}
+.previewThLength{
+    height: 65px;
+}
+.previewTideLength{
+    width: 38px;
+    height: 40px;
+}
+.previewTdLength{
+    height: 40px;
+}
+
+
+.address-book-tabNo img{
+    margin-top: 100px;
+    margin-left: 285px;
+}
+.address-book-tabNo .info-no-text{
+    margin-left: 340px;
+}
+.email-record-listNo img{
+    margin-top: 100px;
+    margin-left: 285px;
+}
+.email-record-listNo .info-no-text{
+    margin-left: 340px;
+}
+
+.pop-tips{
+    display: none;
+    /*position: absolute;
+    left: 40px;
+    bottom: 40px;
+    color: red;
+    font-size: 14px;
+    font-weight: 400;*/
+}
+.upload-btn-case{
+    position: relative;
+    overflow: hidden;
+    width:80px;
+    height:32px;
+    line-height: 32px;
+    text-align: center;
+    background:rgba(28,155,201,1);
+    box-shadow:0px 3px 20px rgba(28,155,201,0.16);
+    border-radius:5px;
+    font-size:12px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #fff;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+#uploadOneAdd,#uploadOneEdit,#uploadThreeAdd,#uploadThreeEdit{
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+}
+
+.addressBook-tips{
+    display: none;
+    font-family: Microsoft YaHei;
+    font-size: 14px;
+    color: red;
+    margin-left: 150px;
+    margin-top: 30px;
+}
+.regularMail-tips{
+    display: none;
+    font-family: Microsoft YaHei;
+    font-size: 14px;
+    color: red;
+    position: absolute;
+    left: 40px;
+    top: 306px!important;
+}
+/*必填内容及其提示语样式*/
+.star-icon{
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    color: #EA4646;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+.alert{
+    display: none;
+    width:400px;
+    height:48px;
+    line-height: 48px;
+    border-radius:10px;
+    font-size:14px;
+    font-family:Microsoft YaHei;
+    font-weight:400;
+    background:#fff;
+    border:1px solid rgba(230,162,60,1);
+    color: #E6A23C;
+    position: absolute;
+    z-index:100;
+    left:252px;
+    top:336px;
+    text-align: center;
+}
+.alert img{
+    vertical-align: middle;
+    margin: 0px 16px 0px 0px;
+}

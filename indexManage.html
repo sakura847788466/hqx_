@@ -1,0 +1,2244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>揭阳市风暴潮数据管理后台</title>
+    <link rel="shortcut icon" href="image/favicon.ico"/>
+    <link type="text/css" rel="stylesheet" href="layui/css/layui.css"/>
+    <link type="text/css" rel="stylesheet" href="css/styleManagement.css"/>
+    <link type="text/css" rel="stylesheet" href="font/iconfont.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/md5.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="layui/layui.js"></script>
+    <script type="text/javascript" src="js/indexManagement.js"></script>
+    <script type="text/javascript" src="js/disasterInfo.js"></script>
+    <script type="text/javascript" src="js/disasterInfoAdd.js"></script>
+    <script type="text/javascript" src="js/disasterInfoEdit.js"></script>
+    <script type="text/javascript" src="js/user.js"></script>
+</head>
+<body>
+<div class="container-fluid" id="container-fluid">
+    <div class="container">
+        <div class="left">
+            <div class="logo"></div>
+            <div class="line"></div>
+            <div class="nav-list">
+                <div class="nav-item" id="hazard-nav">
+                    <i class="iconfont nav-icon">&#xe6d8;</i>
+                    <span class="nav-txt">承灾体</span>
+                </div>
+                <div class="nav-item" id="info-nav">
+                    <i class="iconfont nav-icon">&#xe60a;</i>
+                    <span class="nav-txt">灾情信息</span>
+                </div>
+                <div class="nav-item" id="forecast-nav">
+                    <i class="iconfont nav-icon">&#xe624;</i>
+                    <span class="nav-txt">近岸预报</span>
+                </div>
+                <div class="nav-item" id="account-nav">
+                    <i class="iconfont nav-icon">&#xe62d;</i>
+                    <span class="nav-txt">人员管理</span>
+                </div>
+            </div>
+            <div class="info">
+                <div class="info-select">
+                    <div class="info-img">
+                        <img src="image/user-logo.png"/>
+                    </div>
+                    <div class="info-msg">
+                        <div class="info-txt" id="userName">刘教授</div>
+                        <div class="info-word" id="userRole">超级管理员</div>
+                    </div>
+                    <div class="info-drop">
+                        <i class="iconfont info-dropIcon info-dropIconUp">&#xeb06;</i>
+                        <i class="iconfont info-dropIcon info-dropIconDown">&#xeb04;</i>
+                    </div>
+                </div>
+                <div class="info-dropDown" style="display: none;">
+                    <div class="info-dropDown-item">修改密码</div>
+                    <div class="info-dropDown-item" id="login-out">退出登录</div>
+                </div>
+            </div>
+            <div class="nav-change">
+                <i class="iconfont nav-changeIcon">&#xeb0d;</i>
+                <span class="nav-changeTxt">切换至风暴潮灾害风险查询系统</span>
+            </div>
+            <div class="nav-control">
+                <i class="iconfont nav-open">&#xeb0f;</i>
+                <i class="iconfont nav-close" style="display: none;">&#xeb0b;</i>
+            </div>
+        </div>
+        <div class="right scrollbarStyle">
+            <!--承灾体-->
+            <div class="right-main" id="hazard-nav-box">
+                <div class="menu-list">
+                    <div class="menu-title">
+                        <div class="menu-subtxt">
+                            <img src="image/hazard-affected.png"/>
+                        </div>
+                    </div>
+                    <div class="menu-content scrollbarStyle">
+                        <div class="menu-item">堤防工程</div>
+                        <div class="menu-item">水闸</div>
+                        <div class="menu-item">泵站</div>
+                        <div class="menu-item">渔港</div>
+                        <div class="menu-item">避风锚地</div>
+                        <div class="menu-item">港口码头</div>
+                        <div class="menu-item">机场</div>
+                        <div class="menu-item">主要公路</div>
+                        <div class="menu-item">铁路</div>
+                        <div class="menu-item">发电设施</div>
+                        <div class="menu-item">变电设施</div>
+                        <div class="menu-item">钢铁基地</div>
+                        <div class="menu-item">石油化工基地工程</div>
+                        <div class="menu-item">油气运输管道</div>
+                        <div class="menu-item">危险化学品设施</div>
+                        <div class="menu-item">物资储备基地</div>
+                        <div class="menu-item">工业园区</div>
+                        <div class="menu-item">旅游娱乐区</div>
+                        <div class="menu-item">自然保护区</div>
+                        <div class="menu-item">修造船厂</div>
+                        <div class="menu-item">医院</div>
+                        <div class="menu-item">学校</div>
+                        <div class="menu-item">社会经济状况</div>
+                        <div class="menu-item">人口聚集区</div>
+                        <div class="menu-item">避灾点</div>
+                        <div class="menu-item">航标信息</div>
+                    </div>
+                </div>
+                <iframe class="menu-table" id="menuTable" frameborder="0" scrolling="no" src="managePage/seawall.html"></iframe>
+            </div>
+            <!--灾情信息-->
+            <div class="right-main" id="info-nav-box" style="display: none;">
+                <!--灾情信息列表-->
+                <div class="info-list" id="infoDisaster-list">
+                    <div class="menu-title info-title">
+                        <div class="menu-subtxt">
+                            <img src="image/info-nav.png"/>
+                        </div>
+                    </div>
+                    <div class="info-menu">
+                        <div class="table-operate">
+                            <div class="table-search">
+                                <i class="iconfont search-icon" id="infoSearchIcon">&#xeafe;</i>
+                                <input class="search-input" placeholder="请输入标题关键字" id="infoSearchName" autocomplete="off"/>
+                            </div>
+                            <div class="table-menu">
+                                <div class="table-menuItem" id="info-add">
+                                    <i class="iconfont menu-icon">&#xe67a;</i>
+                                    <span class="table-menuTxt">新建灾情报送</span>
+                                </div>
+                                <div class="table-menuItem" id="info-delAll">
+                                    <i class="iconfont menu-icon">&#xeafb;</i>
+                                    <span class="table-menuTxt">批量删除</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-condition">
+                            <div class="info-item">
+                                <div class="info-item-select" id="typhoon-select">
+                                    <span class="info-item-word">选择台风</span>
+                                    <i class="iconfont info-selectIcon">&#xeb06;</i>
+                                </div>
+                                <div class="info-item-drop scrollbarStyle" id="typhoon-year">
+                                    <!--<div class="typhoon-year-item">
+                                        <i class="iconfont typhoon-radio-uncheck">&#xeada;</i>
+                                        <i class="iconfont typhoon-radio-check">&#xeadb;</i>
+                                        <span class="typhoon-year-text">2019</span>
+                                        <i class="iconfont typhoon-select-icon">&#xeb03;</i>
+                                    </div>-->
+                                </div>
+                                <div class="info-item-dropItem scrollbarStyle" id="typhoon-list">
+                                    <!--<div class="typhoon-list-item">
+                                        <i class="iconfont typhoon-radio-uncheck">&#xeada;</i>
+                                        <i class="iconfont typhoon-radio-check">&#xeadb;</i>
+                                        <span class="typhoon-list-text">山竹</span>
+                                    </div>-->
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-item-select" id="area-select">
+                                    <span class="info-item-word">选择地区</span>
+                                    <i class="iconfont info-selectIcon">&#xeb06;</i>
+                                </div>
+                                <div class="info-item-drop scrollbarStyle" id="area-city">
+                                    <!--<div class="area-city-item">
+                                        <i class="iconfont area-radio-uncheck">&#xeada;</i>
+                                        <i class="iconfont area-radio-check">&#xeadb;</i>
+                                        <span class="area-city-text">榕城区</span>
+                                        <i class="iconfont area-select-icon">&#xeb03;</i>
+                                    </div>-->
+                                </div>
+                                <div class="info-item-dropItem scrollbarStyle" id="area-towns">
+                                    <!--<div class="area-towns-item">
+                                        <i class="iconfont area-radio-uncheck">&#xeada;</i>
+                                        <i class="iconfont area-radio-check">&#xeadb;</i>
+                                        <span class="area-towns-text">惠城镇</span>
+                                    </div>-->
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-item-select" id="submit-nature">
+                                    <span class="info-item-word">选择报送性质</span>
+                                    <i class="iconfont info-selectIcon">&#xeb06;</i>
+                                </div>
+                                <div class="info-item-drop scrollbarStyle" id="nature-list">
+                                    <div class="nature-list-item">
+                                        <i class="iconfont nature-radio-uncheck">&#xeada;</i>
+                                        <i class="iconfont nature-radio-check">&#xeadb;</i>
+                                        <span class="nature-list-text">初报</span>
+                                    </div>
+                                    <div class="nature-list-item">
+                                        <i class="iconfont nature-radio-uncheck">&#xeada;</i>
+                                        <i class="iconfont nature-radio-check">&#xeadb;</i>
+                                        <span class="nature-list-text">续报</span>
+                                    </div>
+                                    <div class="nature-list-item">
+                                        <i class="iconfont nature-radio-uncheck">&#xeada;</i>
+                                        <i class="iconfont nature-radio-check">&#xeadb;</i>
+                                        <span class="nature-list-text">核报</span>
+                                    </div>
+                                    <div class="nature-list-item">
+                                        <i class="iconfont nature-radio-uncheck">&#xeada;</i>
+                                        <i class="iconfont nature-radio-check">&#xeadb;</i>
+                                        <span class="nature-list-text">一季度报</span>
+                                    </div>
+                                    <div class="nature-list-item">
+                                        <i class="iconfont nature-radio-uncheck">&#xeada;</i>
+                                        <i class="iconfont nature-radio-check">&#xeadb;</i>
+                                        <span class="nature-list-text">上半年报</span>
+                                    </div>
+                                    <div class="nature-list-item">
+                                        <i class="iconfont nature-radio-uncheck">&#xeada;</i>
+                                        <i class="iconfont nature-radio-check">&#xeadb;</i>
+                                        <span class="nature-list-text">前三季度报</span>
+                                    </div>
+                                    <div class="nature-list-item">
+                                        <i class="iconfont nature-radio-uncheck">&#xeada;</i>
+                                        <i class="iconfont nature-radio-check">&#xeadb;</i>
+                                        <span class="nature-list-text">年报</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-item-select">
+                                    <input type="text" placeholder="选择填表时间段" readonly="readonly" class="time-input" id="time-range"/>
+                                    <i class="iconfont info-selectIcon">&#xeb06;</i>
+                                </div>
+                            </div>
+                            <div class="info-item" id="clear-select">
+                                <i class="iconfont">&#xe82f;</i>
+                                <span class="info-item-word">清空选项</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-table-no" style="display: none;">
+                        <img src="image/no-info.png"/>
+                        <div class="info-no-text">暂无信息，请先创建</div>
+                    </div>
+                    <div class="info-table-yes">
+                        <div class="info-content scrollbarStyle">
+                            <table class="info-table" id="disaster-table">
+                                <!--<thead>
+                                    <tr>
+                                        <th>
+                                            <i class="iconfont checkbox-uncheck">&#xeadc;</i>
+                                            <i class="iconfont checkbox-check">&#xead8;</i>
+                                        </th>
+                                        <th>标题</th>
+                                        <th>台风</th>
+                                        <th>县级行政区</th>
+                                        <th>乡级行政区</th>
+                                        <th>报送性质</th>
+                                        <th>填表日期</th>
+                                        <th>填表单位</th>
+                                        <th>填表人</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <i class="iconfont checkbox-uncheck">&#xeadc;</i>
+                                            <i class="iconfont checkbox-check">&#xead8;</i>
+                                        </td>
+                                        <td>9315风暴潮灾害</td>
+                                        <td>9315枇杷</td>
+                                        <td>惠来县</td>
+                                        <td>靖海镇</td>
+                                        <td>初报</td>
+                                        <td>2019-07-10</td>
+                                        <td>揭阳市自然资源局</td>
+                                        <td>李晓红</td>
+                                        <td>
+                                            <i class="iconfont table-infoIcon">&#xeb46;</i>
+                                        </td>
+                                        <td>
+                                            <i class="iconfont table-editIcon">&#xeabe;</i>
+                                        </td>
+                                        <td>
+                                            <i class="iconfont table-delIcon">&#xeafb;</i>
+                                        </td>
+                                    </tr>
+                                </tbody>-->
+                            </table>
+                        </div>
+                        <div class="table-page">
+                            <div class="page-txt">共<span id="info-totalPage">1</span>页</div>
+                            <div class="page-txt">共<span id="info-totalRecord">1</span>项</div>
+                            <div class="page-txt">当前第<span id="info-currentPage"></span>页</div>
+                            <div class="page-item" id="info-firstPage">首页</div>
+                            <div class="page-item" id="info-prevPage">上一页</div>
+                            <div class="page-item" id="info-nextPage">下一页</div>
+                            <div class="page-item" id="info-endPage">尾页</div>
+                            <div class="page-inputBox">
+                                <span id="info-pageTo">跳转</span>
+                                <input type="text" class="page-input" id="infoPageValue"/>
+                                <span>页</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--新建灾情报送-->
+                <div class="info-list" id="infoDisaster-add" style="display: none;">
+                    <div class="menu-title info-title">
+                        <div class="menu-info-back">
+                            <i class="iconfont info-backIcon">&#xeb05;</i>
+                            <span>返回灾情信息列表</span>
+                        </div>
+                        <div class="menu-subtxt">
+                            <img src="image/add-info.png"/>
+                        </div>
+                    </div>
+                    <div class="info-body scrollbarStyle">
+                        <div class="info-basic">
+                            <div class="info-basic-title">
+                                <i class="iconfont basicInfo-icon">&#xe60a;</i>
+                                <span>基础信息</span>
+                            </div>
+                            <div class="info-basic-kind">
+                                <div class="info-basic-itemKind">
+                                    <div class="info-basic-character">
+                                        <span class="star-icon">*</span>
+                                        <span>标题</span>
+                                    </div>
+                                    <div class="info-basic-from">
+                                        <input type="text" class="addInfo-input" placeholder="请输入标题" id="title"/>
+                                    </div>
+                                </div>
+                                <div class="info-basic-itemKind">
+                                    <div class="info-basic-character">
+                                        <span class="star-icon">*</span>
+                                        <span>填表人</span>
+                                    </div>
+                                    <div class="info-basic-from">
+                                        <input type="text" class="addInfo-input" placeholder="请输入填表人" id="fillBy"/>
+                                    </div>
+                                </div>
+                                <div class="info-basic-itemKind">
+                                    <div class="info-basic-character">
+                                        <span class="star-icon">*</span>
+                                        <span>填表单位</span>
+                                    </div>
+                                    <div class="info-basic-from">
+                                        <input type="text" class="addInfo-input" placeholder="请输入填表单位" id="fillUnit"/>
+                                    </div>
+                                </div>
+                                <div class="info-basic-itemKind">
+                                    <div class="info-basic-character">
+                                        <span class="star-icon">*</span>
+                                        <span>填表时间</span>
+                                    </div>
+                                    <div class="info-basic-from">
+                                        <input type="text" class="addInfo-input" placeholder="请输入填表时间" readonly="readonly" id="fillCreateTime"/>
+                                    </div>
+                                </div>
+                                <div class="info-basic-itemKind">
+                                    <div class="info-basic-character">
+                                        <span class="star-icon">*</span>
+                                        <span>联系电话</span>
+                                    </div>
+                                    <div class="info-basic-from">
+                                        <input type="text" class="addInfo-input" placeholder="请输入联系电话" id="phone"/>
+                                    </div>
+                                </div>
+                                <div class="info-basic-itemKind">
+                                    <div class="info-basic-character">
+                                        <span class="star-icon">*</span>
+                                        <span>所属台风</span>
+                                    </div>
+                                    <div class="info-basic-from">
+                                        <div class="info-basic-select" id="typhoon-add">
+                                            <span class="info-basic-selectTxt">请选择</span>
+                                            <i class="iconfont info-basic-selectIcon">&#xeb06;</i>
+                                        </div>
+                                        <div class="info-basic-drop scrollbarStyle" id="typhoon-yearAdd">
+                                            <!--<div class="typhoon-yearAdd-list">
+                                                <i class="iconfont yearAdd-radio-uncheck">&#xeada;</i>
+                                                <i class="iconfont yearAdd-radio-check">&#xeadb;</i>
+                                                <span class="year-add-text">2019</span>
+                                                <i class="iconfont year-add-icon">&#xeb03;</i>
+                                            </div>-->
+                                        </div>
+                                        <div class="info-basic-dropItem scrollbarStyle" id="typhoon-listAdd">
+                                            <!--<div class="typhoon-listAdd-list">
+                                                <i class="iconfont listAdd-radio-uncheck">&#xeada;</i>
+                                                <i class="iconfont listAdd-radio-check">&#xeadb;</i>
+                                                <span class="list-add-text">山竹</span>
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="info-basic-itemKind">
+                                    <div class="info-basic-character">
+                                        <span class="star-icon">*</span>
+                                        <span>县/乡行政区</span>
+                                    </div>
+                                    <div class="info-basic-from">
+                                        <div class="info-basic-select" id="area-add">
+                                            <span class="info-basic-selectTxt">请选择</span>
+                                            <i class="iconfont info-basic-selectIcon">&#xeb06;</i>
+                                        </div>
+                                        <div class="info-basic-drop scrollbarStyle" id="area-cityAdd">
+                                            <!--<div class="area-cityAdd-list">
+                                                <i class="iconfont cityAdd-radio-uncheck">&#xeada;</i>
+                                                <i class="iconfont cityAdd-radio-check">&#xeadb;</i>
+                                                <span class="city-add-text">惠来县</span>
+                                                <i class="iconfont city-add-icon">&#xeb03;</i>
+                                            </div>-->
+                                        </div>
+                                        <div class="info-basic-dropItem scrollbarStyle" id="area-townsAdd">
+                                            <!--<div class="area-townsAdd-list">
+                                                <i class="iconfont townsAdd-radio-uncheck">&#xeada;</i>
+                                                <i class="iconfont townsAdd-radio-check">&#xeadb;</i>
+                                                <span class="towns-add-text">惠来镇</span>
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="info-basic-itemKind">
+                                    <div class="info-basic-character">
+                                        <span class="star-icon">*</span>
+                                        <span>报送性质</span>
+                                    </div>
+                                    <div class="info-basic-from">
+                                        <div class="info-basic-select" id="nature-add">
+                                            <span class="info-basic-selectTxt">请选择</span>
+                                            <i class="iconfont info-basic-selectIcon">&#xeb06;</i>
+                                        </div>
+                                        <div class="info-basic-drop scrollbarStyle" id="nature-addBox">
+                                            <div class="nature-add-item">
+                                                <i class="iconfont natureAdd-radio-uncheck">&#xeada;</i>
+                                                <i class="iconfont natureAdd-radio-check">&#xeadb;</i>
+                                                <span class="nature-add-text">初报</span>
+                                            </div>
+                                            <div class="nature-add-item">
+                                                <i class="iconfont natureAdd-radio-uncheck">&#xeada;</i>
+                                                <i class="iconfont natureAdd-radio-check">&#xeadb;</i>
+                                                <span class="nature-add-text">续报</span>
+                                            </div>
+                                            <div class="nature-add-item">
+                                                <i class="iconfont natureAdd-radio-uncheck">&#xeada;</i>
+                                                <i class="iconfont natureAdd-radio-check">&#xeadb;</i>
+                                                <span class="nature-add-text">核报</span>
+                                            </div>
+                                            <div class="nature-add-item">
+                                                <i class="iconfont natureAdd-radio-uncheck">&#xeada;</i>
+                                                <i class="iconfont natureAdd-radio-check">&#xeadb;</i>
+                                                <span class="nature-add-text">一季度报</span>
+                                            </div>
+                                            <div class="nature-add-item">
+                                                <i class="iconfont natureAdd-radio-uncheck">&#xeada;</i>
+                                                <i class="iconfont natureAdd-radio-check">&#xeadb;</i>
+                                                <span class="nature-add-text">上半年报</span>
+                                            </div>
+                                            <div class="nature-add-item">
+                                                <i class="iconfont natureAdd-radio-uncheck">&#xeada;</i>
+                                                <i class="iconfont natureAdd-radio-check">&#xeadb;</i>
+                                                <span class="nature-add-text">前三季度报</span>
+                                            </div>
+                                            <div class="nature-add-item">
+                                                <i class="iconfont natureAdd-radio-uncheck">&#xeada;</i>
+                                                <i class="iconfont natureAdd-radio-check">&#xeadb;</i>
+                                                <span class="nature-add-text">年报</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="info-basic-itemKind">
+                                    <div class="info-basic-character">
+                                        <span>备注</span>
+                                    </div>
+                                    <div class="info-basic-from info-basic-fromLarge">
+                                        <textarea class="addInfo-input addInfo-textarea scrollbarStyle" placeholder="请输入备注" id="remark"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-basic-title">
+                                <i class="iconfont basicInfo-icon">&#xeac4;</i>
+                                <span>上传图片</span>
+                            </div>
+                            <div class="info-upload">
+                                <div class="info-uploadBtn">
+                                    <span>点击上传</span>
+                                    <form id="uploadForm" enctype="multipart/form-data">
+                                        <input type="file" name="file" id="upload" multiple/>
+                                    </form>
+                                </div>
+                                <div class="info-upload-txt">请上传jpg、png图片，单个文件大小不能超过2M，文件名不能大于20个字符，最多只能上传6张图片</div>
+                                <div class="imgList-disaster" style="display: none;"></div>
+                            </div>
+                        </div>
+                        <div class="info-equipment">
+                            <div class="info-equipment-list">
+                                <div class="info-equipment-txt">
+                                    <div class="info-equipment-head">
+                                        <i class="iconfont info-equipment-iconTxt">&#xe7e6;</i>
+                                        <span>受灾人口</span>
+                                    </div>
+                                    <div class="info-equipment-icon">
+                                        <i class="iconfont info-equipment-uncheck">&#xeb03;</i>
+                                        <i class="iconfont info-equipment-check">&#xeb06;</i>
+                                    </div>
+                                </div>
+                                <div class="info-equipment-content" style="display: none;">
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">受灾人口（人）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入受灾人口" id="disasterPopulation"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">死亡人口（人）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入死亡人口" id="deadPopulation"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">失踪人口（人）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入失踪人口" id="missPopulation"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item info-equipment-itemLast">
+                                        <div class="info-equipment-word">紧急转移安置人口（人）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入紧急转移安置人口" id="transferPopulation"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-equipment-list">
+                                <div class="info-equipment-txt">
+                                    <div class="info-equipment-head">
+                                        <i class="iconfont info-equipment-iconTxt">&#xeaf0;</i>
+                                        <span>房屋</span>
+                                    </div>
+                                    <div class="info-equipment-icon">
+                                        <i class="iconfont info-equipment-uncheck">&#xeb03;</i>
+                                        <i class="iconfont info-equipment-check">&#xeb06;</i>
+                                    </div>
+                                </div>
+                                <div class="info-equipment-content" style="display: none;">
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">倒塌房屋（间）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入倒塌房屋" id="collapseHouse"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">倒塌房屋直接经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入倒塌房屋直接经济损失" id="collapseHouseDirectEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">损坏房屋（间）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损坏房屋" id="damagedHouse"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item info-equipment-itemLast">
+                                        <div class="info-equipment-word">损坏房屋直接经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损坏房屋直接经济损失" id="damagedHouseDirectEcoLoss"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-equipment-list">
+                                <div class="info-equipment-txt">
+                                    <div class="info-equipment-head">
+                                        <i class="iconfont info-equipment-iconTxt equipment-iconLarge">&#xeb52;</i>
+                                        <span>海洋渔业</span>
+                                    </div>
+                                    <div class="info-equipment-icon">
+                                        <i class="iconfont info-equipment-uncheck">&#xeb03;</i>
+                                        <i class="iconfont info-equipment-check">&#xeb06;</i>
+                                    </div>
+                                </div>
+                                <div class="info-equipment-content" style="display: none;">
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">水产养殖受灾面积（公顷）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入水产养殖受灾面积" id="aquacultureAffectedArea"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">水产养殖受灾直接经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入水产养殖受灾直接经济损失" id="aquacultureDirectEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">水产养殖成灾面积（公顷）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入水产养殖成灾面积" id="aquacultureDisasterArea"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item info-equipment-itemLast">
+                                        <div class="info-equipment-word">水产养殖成灾直接经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入水产养殖成灾直接经济损失" id="aquacultureDisasterDirectEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">水产养殖绝收面积（公顷）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入水产养殖绝收面积" id="aquacultureNoGainArea"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">水产养殖绝收直接经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入水产养殖绝收直接经济损失" id="aquacultureNoGainDirectEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">损失水产养殖数量（吨）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损失水产养殖数量" id="aquacultureLossNum"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item info-equipment-itemLast">
+                                        <div class="info-equipment-word">损失水产养殖经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损失水产养殖经济损失" id="aquacultureEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">养殖设备、设施损失（个）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入养殖设备、设施损失" id="aquacultureDamageDeviceNum"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">养殖设备、设施经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入养殖设备、设施经济损失" id="aquacultureDamageDeviceEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">毁坏渔船数量（艘）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入毁坏渔船数量" id="aquacultureDestroyedFishBoatNum"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item info-equipment-itemLast">
+                                        <div class="info-equipment-word">毁坏渔船经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入毁坏渔船经济损失" id="aquacultureDestroyedFishBoatEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">毁坏渔船数量（艘）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入毁坏渔船数量" id="aquacultureDamageFishBoatNum"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">损坏渔船经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损坏渔船经济损失" id="aquacultureDamageFishBoatEcoLoss"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-equipment-list">
+                                <div class="info-equipment-txt">
+                                    <div class="info-equipment-head">
+                                        <i class="iconfont info-equipment-iconTxt equipment-iconSmall">&#xe6da;</i>
+                                        <span>交通运输</span>
+                                    </div>
+                                    <div class="info-equipment-icon">
+                                        <i class="iconfont info-equipment-uncheck">&#xeb03;</i>
+                                        <i class="iconfont info-equipment-check">&#xeb06;</i>
+                                    </div>
+                                </div>
+                                <div class="info-equipment-content" style="display: none;">
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">毁坏船只数量（艘）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入毁坏船只数量" id="trafficDestroyedShipNum"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">毁坏船只经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入毁坏船只经济损失" id="trafficDestroyedShipEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">损坏船只数量（艘）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损坏船只数量" id="trafficDamageShipNum"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item info-equipment-itemLast">
+                                        <div class="info-equipment-word">损坏船只经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损坏船只经济损失" id="trafficDamageShipEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">船只货物损失（吨）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入船只货物损失" id="trafficShipCargoLossNum"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">船只货物经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入船只货物经济损失" id="trafficShipCargoEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">航道淤积长度（千米）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入航道淤积长度" id="trafficChannelDepositLength"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item info-equipment-itemLast">
+                                        <div class="info-equipment-word">航道淤积经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入航道淤积经济损失" id="trafficChannelDepositEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">损毁航标（座）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损毁航标" id="trafficDestroyedNavMarkNum"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">损毁航标经济损失（万元））</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损毁航标经济损失" id="trafficDestroyedNavMarkEcoLoss"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-equipment-list">
+                                <div class="info-equipment-txt">
+                                    <div class="info-equipment-head">
+                                        <i class="iconfont info-equipment-iconTxt equipment-iconLarge">&#xeb26;</i>
+                                        <span>海岸基础设施</span>
+                                    </div>
+                                    <div class="info-equipment-icon">
+                                        <i class="iconfont info-equipment-uncheck">&#xeb03;</i>
+                                        <i class="iconfont info-equipment-check">&#xeb06;</i>
+                                    </div>
+                                </div>
+                                <div class="info-equipment-content" style="display: none;">
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">受损港口/渔港数量（座）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入受损港口/渔港数量" id="coastalDamagedPortNum"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">毁受损港口/渔港经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入毁受损港口/渔港经济损失" id="coastalDamagedPortEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">损坏码头（千米）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损坏码头" id="coastalDamagedWharfLength"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item info-equipment-itemLast">
+                                        <div class="info-equipment-word">损坏码头经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损坏码头经济损失" id="coastalDamagedWharfEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">冲走、损毁货物（吨）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入冲走、损毁货物" id="coastalDamagedCargoNum"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">冲走、损毁货物经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入冲走、损毁货物经济损失" id="coastalDamagedCargoEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">损毁防波堤（千米）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损毁防波堤" id="coastalDamagedBulwarkLength"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item info-equipment-itemLast">
+                                        <div class="info-equipment-word">损毁防波堤经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损毁防波堤经济损失" id="coastalDamagedBulwarkEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">损毁海堤、护岸（千米）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损毁海堤、护岸" id="coastalDamagedSeawallLength"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">损毁海堤、护岸经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损毁海堤、护岸经济损失" id="coastalDamagedSeawallEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">损毁道路（千米）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损毁道路" id="coastalDamagedRoadLength"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item info-equipment-itemLast">
+                                        <div class="info-equipment-word">损毁道路经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损毁道路经济损失" id="coastalDamagedRoadEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">损毁通讯设施（个）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损毁通讯设施" id="coastalDamagedComDeviceNum"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">损毁通讯设施经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损毁通讯设施经济损失" id="coastalDamagedComDeviceEcoLoss"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-equipment-list">
+                                <div class="info-equipment-txt">
+                                    <div class="info-equipment-head">
+                                        <i class="iconfont info-equipment-iconTxt">&#xe6d9;</i>
+                                        <span>海上工程设施</span>
+                                    </div>
+                                    <div class="info-equipment-icon">
+                                        <i class="iconfont info-equipment-uncheck">&#xeb03;</i>
+                                        <i class="iconfont info-equipment-check">&#xeb06;</i>
+                                    </div>
+                                </div>
+                                <div class="info-equipment-content" style="display: none;">
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">损毁石油平台数量（座）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损毁石油平台数量" id="offshoreDamagedOilPlatformNum"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">损毁石油平台经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损毁石油平台经济损失" id="offshoreDamagedOilPlatformEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">损毁油气输送设备长度（千米）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损毁油气输送设备长度" id="offshoreDamagedOilGasLength"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item info-equipment-itemLast">
+                                        <div class="info-equipment-word">损毁油气输送设备经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损毁油气输送设备经济损失" id="offshoreDamagedOilGasEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">损毁海上桥梁（座）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损毁海上桥梁" id="offshoreDamagedBridgeNum"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">损毁海上桥梁经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入损毁海上桥梁经济损失" id="offshoreDamagedBridgeEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">海水浴场护网（米）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入海水浴场护网" id="offshoreBothNetLength"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item info-equipment-itemLast">
+                                        <div class="info-equipment-word">海水浴场护网经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入海水浴场护网经济损失" id="offshoreBothNetEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">淹没农田面积（公顷）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入淹没农田面积" id="offshoreSubmergeFarmlandNum"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">淹没农田经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入淹没农田经济损失" id="offshoreSubmergeFarmlandEcoLoss"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item">
+                                        <div class="info-equipment-word">淹没盐田（公顷）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入淹没盐田" id="offshoreSubmergeSaltFieldNum"/>
+                                        </div>
+                                    </div>
+                                    <div class="info-equipment-item info-equipment-itemLast">
+                                        <div class="info-equipment-word">淹没盐田经济损失（万元）</div>
+                                        <div class="info-equipment-form">
+                                            <input type="text" class="info-equipment-input" placeholder="请输入淹没盐田经济损失" id="offshoreSubmergeSaltFieldEcoLoss"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="equipment-tips equipment-addAlert">
+                                <img src="image/alert-icon.png"/>
+                                <span></span>
+                            </div>
+                            <div class="info-btn">
+                                <div class="info-btn-add" id="disasterAdd">保存</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--人员管理-->
+            <div class="right-main" id="account-nav-box" style="display: none;">
+                <div class="info-list">
+                    <div class="menu-title info-title">
+                        <div class="menu-subtxt">
+                            <img src="image/account-nav.png"/>
+                        </div>
+                    </div>
+                    <div class="info-menu">
+                        <div class="table-operate">
+                            <div class="table-search">
+                                <i class="iconfont search-icon" id="userSearchIcon">&#xeafe;</i>
+                                <input class="search-input" placeholder="请输入用户名或者账号" id="user-search" autocomplete="off"/>
+                            </div>
+                            <div class="table-menu">
+                                <div class="table-menuItem" id="account-add">
+                                    <i class="iconfont menu-icon">&#xe67a;</i>
+                                    <span class="table-menuTxt">新建人员</span>
+                                </div>
+                                <div class="table-menuItem" id="account-delAll">
+                                    <i class="iconfont menu-icon">&#xeafb;</i>
+                                    <span class="table-menuTxt">批量删除</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-table-no" style="display: none;">
+                        <img src="image/no-info.png"/>
+                        <div class="info-no-text">暂无信息，请先创建</div>
+                    </div>
+                    <div class="user-table-yes">
+                        <div class="info-content account-content scrollbarStyle">
+                            <table class="info-table" id="user-table">
+                                <!--<thead>
+                                <tr>
+                                    <th>
+                                        <i class="iconfont checkbox-uncheck">&#xeadc;</i>
+                                        <i class="iconfont checkbox-check">&#xead8;</i>
+                                    </th>
+                                    <th>用户名</th>
+                                    <th>账号</th>
+                                    <th>手机号码</th>
+                                    <th>用户角色</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <i class="iconfont checkbox-uncheck">&#xeadc;</i>
+                                        <i class="iconfont checkbox-check">&#xead8;</i>
+                                    </td>
+                                    <td>叶梓云</td>
+                                    <td>YEZIYUN</td>
+                                    <td>13512324251</td>
+                                    <td>普通用户</td>
+                                    <td>
+                                        <i class="iconfont table-resetIcon">&#xeac6;</i>
+                                    </td>
+                                    <td>
+                                        <i class="iconfont table-editIcon">&#xeabe;</i>
+                                    </td>
+                                    <td>
+                                        <i class="iconfont table-delIcon">&#xeafb;</i>
+                                    </td>
+                                </tr>
+                                </tbody>-->
+                            </table>
+                        </div>
+                        <div class="table-page">
+                            <div class="page-txt">共<span id="totalPage"></span>页</div>
+                            <div class="page-txt">共<span id="totalRecord"></span>项</div>
+                            <div class="page-txt">当前第<span id="currentPage"></span>页</div>
+                            <div class="page-item" id="firstPage">首页</div>
+                            <div class="page-item" id="prevPage">上一页</div>
+                            <div class="page-item" id="nextPage">下一页</div>
+                            <div class="page-item" id="endPage">尾页</div>
+                            <div class="page-inputBox">
+                                <span id="pageTo">跳转</span>
+                                <input type="text" class="page-input" id="userPage-input"/>
+                                <span>页</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--海洋预报-->
+            <div class="right-main" id="forecast-nav-box" style="display: none;">
+                <iframe class="forecast-box" id="forecastBox" frameborder="0" scrolling="no" src="managePage/marineForecast.html"></iframe>
+            </div>
+        </div>
+    </div>
+    <!--遮罩-->
+    <div class="overlay overlay-left" style="display: none;"></div>
+    <div class="overlay overlay-top" style="display: none;"></div>
+    <div class="overlay overlay-bottom" style="display: none;"></div>
+    <div class="overlay overlay-vertical" style="display: none;"></div>
+    <div class="overlayOpacity overlay-left" style="display: none;"></div>
+    <div class="overlayOpacity overlay-top" style="display: none;"></div>
+    <div class="overlayOpacity overlay-bottom" style="display: none;"></div>
+    <div class="overlayOpacity overlay-vertical" style="display: none;"></div>
+    <div class="overlayForcast overlayForcast-left" style="display: none;"></div>
+    <div class="overlayForcast overlayForcast-top" style="display: none;"></div>
+    <div class="overlayForcast overlayForcast-bottom" style="display: none;"></div>
+    <div class="overlayForcast overlayForcast-vertical" style="display: none;"></div>
+    <div class="overlayPreview overlayPreview-left" style="display: none;"></div>
+    <div class="overlayPreview overlayPreview-top" style="display: none;"></div>
+    <div class="overlayPreview overlayPreview-bottom" style="display: none;"></div>
+    <div class="overlayPreview overlayPreview-vertical" style="display: none;"></div>
+    <!--弹窗-->
+    <!--灾情信息修改-->
+    <div class="disaster-pop" id="disaster-edit" style="display: none;">
+        <div class="shade"></div>
+        <div class="disaster-showBox">
+            <div class="disaster-title">
+                <span>修改</span>
+                <i class="iconfont disaster-closeIcon">&#xeaf2;</i>
+            </div>
+            <div class="disaster-body scrollbarStyle">
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text"><span class="star-icon">*</span>标题</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input disaster-input-large" id="titleEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text"><span class="star-icon">*</span>填表人</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="fillByEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text"><span class="star-icon">*</span>填表单位</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="fillUnitEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text"><span class="star-icon">*</span>填表日期</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="fillCreateTimeEdit" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text"><span class="star-icon">*</span>联系电话</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="phoneEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text"><span class="star-icon">*</span>选择台风</div>
+                        <div class="disaster-input-box">
+                            <div class="disaster-select" id="typhoon-edit">
+                                <span class="disaster-selectTxt">请选择</span>
+                                <i class="iconfont disaster-selectIcon">&#xeb06;</i>
+                            </div>
+                            <div class="disaster-drop scrollbarStyle" id="typhoon-yearEdit">
+                                <!--<div class="typhoon-yearEdit-list">
+                                    <i class="iconfont disaster-radio-uncheck">&#xeada;</i>
+                                    <i class="iconfont disaster-radio-check">&#xeadb;</i>
+                                    <span class="disaster-edit-text">2019</span>
+                                    <i class="iconfont disaster-edit-icon">&#xeb03;</i>
+                                </div>-->
+                            </div>
+                            <div class="disaster-dropItem scrollbarStyle" id="typhoon-listEdit">
+                                <!--<div class="typhoon-listEdit-list">
+                                    <i class="iconfont disaster-radio-uncheck">&#xeada;</i>
+                                    <i class="iconfont disaster-radio-check">&#xeadb;</i>
+                                    <span class="disaster-edit-text">山竹</span>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text"><span class="star-icon">*</span>选择区域</div>
+                        <div class="disaster-input-box">
+                            <div class="disaster-select" id="area-edit">
+                                <span class="disaster-selectTxt">请选择</span>
+                                <i class="iconfont disaster-selectIcon">&#xeb06;</i>
+                            </div>
+                            <div class="disaster-drop scrollbarStyle" id="area-cityEdit">
+                                <!--<div class="typhoon-yearEdit-list">
+                                    <i class="iconfont disaster-radio-uncheck">&#xeada;</i>
+                                    <i class="iconfont disaster-radio-check">&#xeadb;</i>
+                                    <span class="disaster-edit-text">2019</span>
+                                    <i class="iconfont disaster-edit-icon">&#xeb03;</i>
+                                </div>-->
+                            </div>
+                            <div class="disaster-dropItem scrollbarStyle" id="area-townEdit">
+                                <!--<div class="typhoon-listEdit-list">
+                                    <i class="iconfont disaster-radio-uncheck">&#xeada;</i>
+                                    <i class="iconfont disaster-radio-check">&#xeadb;</i>
+                                    <span class="disaster-edit-text">山竹</span>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text"><span class="star-icon">*</span>选择报送性质</div>
+                        <div class="disaster-input-box">
+                            <div class="disaster-select" id="type-edit">
+                                <span class="disaster-selectTxt">请选择</span>
+                                <i class="iconfont disaster-selectIcon">&#xeb06;</i>
+                            </div>
+                            <div class="disaster-drop scrollbarStyle" id="type-dropEdit">
+                                <div class="type-drop-list">
+                                    <i class="iconfont disaster-radio-uncheck">&#xeada;</i>
+                                    <i class="iconfont disaster-radio-check">&#xeadb;</i>
+                                    <span class="disaster-edit-text">初报</span>
+                                </div>
+                                <div class="type-drop-list">
+                                    <i class="iconfont disaster-radio-uncheck">&#xeada;</i>
+                                    <i class="iconfont disaster-radio-check">&#xeadb;</i>
+                                    <span class="disaster-edit-text">续报</span>
+                                </div>
+                                <div class="type-drop-list">
+                                    <i class="iconfont disaster-radio-uncheck">&#xeada;</i>
+                                    <i class="iconfont disaster-radio-check">&#xeadb;</i>
+                                    <span class="disaster-edit-text">核报</span>
+                                </div>
+                                <div class="type-drop-list">
+                                    <i class="iconfont disaster-radio-uncheck">&#xeada;</i>
+                                    <i class="iconfont disaster-radio-check">&#xeadb;</i>
+                                    <span class="disaster-edit-text">一季度报</span>
+                                </div>
+                                <div class="type-drop-list">
+                                    <i class="iconfont disaster-radio-uncheck">&#xeada;</i>
+                                    <i class="iconfont disaster-radio-check">&#xeadb;</i>
+                                    <span class="disaster-edit-text">上半年报</span>
+                                </div>
+                                <div class="type-drop-list">
+                                    <i class="iconfont disaster-radio-uncheck">&#xeada;</i>
+                                    <i class="iconfont disaster-radio-check">&#xeadb;</i>
+                                    <span class="disaster-edit-text">前三季度报</span>
+                                </div>
+                                <div class="type-drop-list">
+                                    <i class="iconfont disaster-radio-uncheck">&#xeada;</i>
+                                    <i class="iconfont disaster-radio-check">&#xeadb;</i>
+                                    <span class="disaster-edit-text">年报</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">受灾人口</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="disasterPopulationEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">死亡人口</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="deadPopulationEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">失踪人口</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="missPopulationEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">紧急转移安置人口</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="transferPopulationEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">倒塌房屋</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="collapseHouseEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">倒塌房屋直接经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="collapseHouseDirectEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">损坏房屋</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="damagedHouseEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">损坏房屋直接经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="damagedHouseDirectEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">水产养殖受灾面积</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="aquacultureAffectedAreaEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">水产养殖受灾直接经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="aquacultureDirectEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">水产养殖成灾面积</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="aquacultureDisasterAreaEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">水产养殖成灾直接经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="aquacultureDisasterDirectEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">水产养殖绝收面积</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="aquacultureNoGainAreaEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">水产养殖绝收直接经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="aquacultureNoGainDirectEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">损失水产养殖数量</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="aquacultureLossNumEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">损失水产养殖经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="aquacultureEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">养殖设备、设施损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="aquacultureDamageDeviceNumEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">养殖设备、设施经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="aquacultureDamageDeviceEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">毁坏渔船数量</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="aquacultureDestroyedFishBoatNumEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">毁坏渔船经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="aquacultureDestroyedFishBoatEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">损坏渔船数量</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="aquacultureDamageFishBoatNumEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">损坏渔船经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="aquacultureDamageFishBoatEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">毁坏船只数量</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="trafficDestroyedShipNumEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">毁坏船只经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="trafficDestroyedShipEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">损坏船只数量</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="trafficDamageShipNumEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">损坏船只经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="trafficDamageShipEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">船只货物损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="trafficShipCargoLossNumEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">船只货物经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="trafficShipCargoEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">航道淤积长度</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="trafficChannelDepositLengthEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">航道淤积经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="trafficChannelDepositEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">损毁航标</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="trafficDestroyedNavMarkNumEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">损毁航标经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="trafficDestroyedNavMarkEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">受损港口/渔港数量</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="coastalDamagedPortNumEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">毁受损港口/渔港经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="coastalDamagedPortEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">损坏码头</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="coastalDamagedWharfLengthEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">损坏码头经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="coastalDamagedWharfEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">冲走、损毁货物</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="coastalDamagedCargoNumEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">冲走、损毁货物经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="coastalDamagedCargoEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">损毁防波堤</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="coastalDamagedBulwarkLengthEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">损毁防波堤经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="coastalDamagedBulwarkEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">损毁海堤、护岸</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="coastalDamagedSeawallLengthEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">损毁海堤、护岸经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="coastalDamagedSeawallEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">损毁道路</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="coastalDamagedRoadLengthEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">损毁道路经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="coastalDamagedRoadEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">损毁通讯设施</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="coastalDamagedComDeviceNumEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">损毁通讯设施经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="coastalDamagedComDeviceEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">损毁石油平台数量</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="offshoreDamagedOilPlatformNumEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">损毁石油平台经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="offshoreDamagedOilPlatformEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">损毁油气输送设备长度</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="offshoreDamagedOilGasLengthEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">损毁油气输送设备经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="offshoreDamagedOilGasEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">损毁海上桥梁</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="offshoreDamagedBridgeNumEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">损毁海上桥梁经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="offshoreDamagedBridgeEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">海水浴场护网</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="offshoreBothNetLengthEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">海水浴场护网经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="offshoreBothNetEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">淹没农田面积</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="offshoreSubmergeFarmlandNumEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">淹没农田经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="offshoreSubmergeFarmlandEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">淹没盐田</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="offshoreSubmergeSaltFieldNumEdit"/>
+                        </div>
+                    </div>
+                    <div class="disaster-input-item disaster-input-last">
+                        <div class="disaster-input-text">淹没盐田经济损失</div>
+                        <div class="disaster-input-box">
+                            <input type="text" class="disaster-input" id="offshoreSubmergeSaltFieldEcoLossEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">备注</div>
+                        <div class="disaster-input-box">
+                            <textarea type="text" class="disaster-input disaster-input-textarea"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="equipment-tips equipment-editAlert">
+                    <img src="image/alert-icon.png"/>
+                    <span></span>
+                </div>
+                <div class="disaster-input-from">
+                    <div class="disaster-input-item">
+                        <div class="disaster-input-text">图片上传</div>
+                        <div class="disaster-input-box">
+                            <div class="info-uploadBtn">
+                                <span>点击上传</span>
+                                <form id="uploadFormEdit" enctype="multipart/form-data">
+                                    <input type="file" name="file" id="uploadEdit" multiple/>
+                                </form>
+                            </div>
+                            <div class="info-upload-txt">请上传jpg、png图片，单个文件大小不能超过2M，文件名不能大于20个字符，最多只能上传6张图片</div>
+                            <div class="imgList-disaster" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="disaster-btn">
+                <button class="disaster-btnIcon close-btn" id="disasterEditClose">关闭</button>
+                <button class="disaster-btnIcon sure-btn" id="disasterEditSure">确定</button>
+            </div>
+        </div>
+    </div>
+    <!--灾情信息详情-->
+    <div class="info-pop" id="disaster-info" style="display: none;">
+        <div class="info-pop-title">
+            <span>灾情详情</span>
+            <i class="iconfont hazard-closeIcon">&#xeaf2;</i>
+        </div>
+        <div class="info-pop-body scrollbarStyle">
+            <div class="info-body-title">
+                <div class="info-body-txt" id="titleInfo">9315风暴潮灾害</div>
+                <div class="info-body-subtxt" id="reportTypeInfo">初报</div>
+            </div>
+            <div class="info-body-basic">
+                <div class="info-basic-list">
+                    <div class="info-basic-item">
+                        <div class="info-base-txt">联系电话</div>
+                        <div class="info-basic-word" id="phoneInfo">12345678962</div>
+                    </div>
+                    <div class="info-basic-item">
+                        <div class="info-base-txt">县/乡行政区</div>
+                        <div class="info-basic-word" id="addressInfo">惠来县 / 靖海镇</div>
+                    </div>
+                </div>
+                <div class="info-basic-list">
+                    <div class="info-basic-item">
+                        <div class="info-base-txt">所属台风</div>
+                        <div class="info-basic-word" id="typhoonNameInfo">9315某某</div>
+                    </div>
+                    <div class="info-basic-item">
+                        <div class="info-base-txt">填表单位</div>
+                        <div class="info-basic-word" id="fillUnitInfo">9315某某</div>
+                    </div>
+                </div>
+                <div class="info-basic-list">
+                    <div class="info-basic-item">
+                        <div class="info-base-txt">填表人</div>
+                        <div class="info-basic-word" id="fillByInfo">9315某某</div>
+                    </div>
+                    <div class="info-basic-item">
+                        <div class="info-base-txt">填表日期</div>
+                        <div class="info-basic-word" id="fillCreateTimeInfo">9315某某</div>
+                    </div>
+                </div>
+                <div class="info-basic-list">
+                    <div class="info-basic-item">
+                        <div class="info-base-txt">备注</div>
+                        <div class="info-basic-word" id="remarkInfo">9315某某</div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-body-list">
+                <div class="info-list-head">
+                    <i class="iconfont info-iconTxt">&#xe7e6;</i>
+                    <span>受灾人口</span>
+                </div>
+                <div class="info-body-item">
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="disasterPopulationInfo">50</div>
+                        <div class="info-itemList-txt">受灾人口(人)</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="deadPopulationInfo">50</div>
+                        <div class="info-itemList-txt">死亡人口(人)</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="missPopulationInfo">50</div>
+                        <div class="info-itemList-txt">失踪人口(人)</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="transferPopulationInfo">50</div>
+                        <div class="info-itemList-txt">紧急转移安置人口(人)</div>
+                    </div>
+                </div>
+                <div class="info-list-head">
+                    <i class="iconfont info-iconTxt">&#xeaf0;</i>
+                    <span>房屋</span>
+                </div>
+                <div class="info-body-item">
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="collapseHouseInfo">50</div>
+                        <div class="info-itemList-txt">倒塌房屋（间）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="collapseHouseDirectEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">倒塌房屋直接经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="damagedHouseInfo">50</div>
+                        <div class="info-itemList-txt">损坏房屋（间）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="damagedHouseDirectEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">损坏房屋直接经济损失（万元）</div>
+                    </div>
+                </div>
+                <div class="info-list-head">
+                    <i class="iconfont info-iconTxt">&#xeb52;</i>
+                    <span>海洋渔业</span>
+                </div>
+                <div class="info-body-item">
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="aquacultureAffectedAreaInfo">50</div>
+                        <div class="info-itemList-txt">水产养殖受灾面积（公顷）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="aquacultureDirectEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">水产养殖受灾直接经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="aquacultureDisasterAreaInfo">50</div>
+                        <div class="info-itemList-txt">水产养殖成灾面积（公顷）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="aquacultureDisasterDirectEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">水产养殖成灾直接经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="aquacultureNoGainAreaInfo">50</div>
+                        <div class="info-itemList-txt">水产养殖绝收面积（公顷）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="aquacultureNoGainDirectEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">水产养殖绝收直接经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="aquacultureLossNumInfo">50</div>
+                        <div class="info-itemList-txt">损失水产养殖数量（吨）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="aquacultureEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">损失水产养殖经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="aquacultureDamageDeviceNumInfo">50</div>
+                        <div class="info-itemList-txt">养殖设备、设施损失（个）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="aquacultureDamageDeviceEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">养殖设备、设施经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="aquacultureDestroyedFishBoatNumInfo">50</div>
+                        <div class="info-itemList-txt">毁坏渔船数量（艘）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="aquacultureDestroyedFishBoatEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">毁坏渔船经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="aquacultureDamageFishBoatNumInfo">50</div>
+                        <div class="info-itemList-txt">损坏渔船数量（艘）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="aquacultureDamageFishBoatEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">损坏渔船经济损失（万元）</div>
+                    </div>
+                </div>
+                <div class="info-list-head">
+                    <i class="iconfont info-iconTxt">&#xe6da;</i>
+                    <span>交通运输</span>
+                </div>
+                <div class="info-body-item">
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="trafficDestroyedShipNumInfo">50</div>
+                        <div class="info-itemList-txt">毁坏船只数量（艘）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="trafficDestroyedShipEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">毁坏船只经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="trafficDamageShipNumInfo">50</div>
+                        <div class="info-itemList-txt">损坏船只数量（艘）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="trafficDamageShipEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">损坏船只经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="trafficShipCargoLossNumInfo">50</div>
+                        <div class="info-itemList-txt">船只货物损失（吨）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="trafficShipCargoEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">船只货物经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="trafficChannelDepositLengthInfo">50</div>
+                        <div class="info-itemList-txt">航道淤积长度（千米）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="trafficChannelDepositEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">航道淤积经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="trafficDestroyedNavMarkNumInfo">50</div>
+                        <div class="info-itemList-txt">损毁航标（座）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="trafficDestroyedNavMarkEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">损毁航标经济损失（万元）</div>
+                    </div>
+                </div>
+                <div class="info-list-head">
+                    <i class="iconfont info-iconTxt">&#xeb26;</i>
+                    <span>海岸基础设施</span>
+                </div>
+                <div class="info-body-item">
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="coastalDamagedPortNumInfo">50</div>
+                        <div class="info-itemList-txt">受损港口/渔港数量（座）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="coastalDamagedPortEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">毁受损港口/渔港经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="coastalDamagedWharfLengthInfo">50</div>
+                        <div class="info-itemList-txt">损坏码头（千米）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="coastalDamagedWharfEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">损坏码头经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="coastalDamagedCargoNumInfo">50</div>
+                        <div class="info-itemList-txt">冲走、损毁货物（吨）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="coastalDamagedCargoEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">冲走、损毁货物经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="coastalDamagedBulwarkLengthInfo">50</div>
+                        <div class="info-itemList-txt">损毁防波堤（千米）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="coastalDamagedBulwarkEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">损毁防波堤经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="coastalDamagedSeawallLengthInfo">50</div>
+                        <div class="info-itemList-txt">损毁海堤、护岸（千米）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="coastalDamagedSeawallEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">损毁海堤、护岸经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="coastalDamagedRoadLengthInfo">50</div>
+                        <div class="info-itemList-txt">损毁道路（千米）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="coastalDamagedRoadEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">损毁道路经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="coastalDamagedComDeviceNumInfo">50</div>
+                        <div class="info-itemList-txt">损毁通讯设施（个）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="coastalDamagedComDeviceEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">损毁通讯设施经济损失（万元）</div>
+                    </div>
+                </div>
+                <div class="info-list-head">
+                    <i class="iconfont info-iconTxt">&#xe6d9;</i>
+                    <span>海上工程设施</span>
+                </div>
+                <div class="info-body-item">
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="offshoreDamagedOilPlatformNumInfo">50</div>
+                        <div class="info-itemList-txt">损毁石油平台数量（座）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="offshoreDamagedOilPlatformEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">损毁石油平台经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="offshoreDamagedOilGasLengthInfo">50</div>
+                        <div class="info-itemList-txt">损毁油气输送设备长度（千米）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="offshoreDamagedOilGasEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">损毁油气输送设备经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="offshoreDamagedBridgeNumInfo">50</div>
+                        <div class="info-itemList-txt">损毁海上桥梁（座）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="offshoreDamagedBridgeEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">损毁海上桥梁经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="offshoreBothNetLengthInfo">50</div>
+                        <div class="info-itemList-txt">海水浴场护网（米）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="offshoreBothNetEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">海水浴场护网经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="offshoreSubmergeFarmlandNumInfo">50</div>
+                        <div class="info-itemList-txt">淹没农田面积（公顷）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="offshoreSubmergeFarmlandEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">淹没农田经济损失（万元）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="offshoreSubmergeSaltFieldNumInfo">50</div>
+                        <div class="info-itemList-txt">淹没盐田（公顷）</div>
+                    </div>
+                    <div class="info-body-itemList">
+                        <div class="info-itemList-num" id="offshoreSubmergeSaltFieldEcoLossInfo">50</div>
+                        <div class="info-itemList-txt">淹没盐田经济损失（万元）</div>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-img-box">
+                <!--<div class="detail-img-show">
+                    <img src="../image/detail-show.png"/>
+                </div>
+                <div class="detail-img-list">
+                    <div class="detail-img-item">
+                        <img src="../image/detail-listOne.png"/>
+                    </div>
+                    <div class="detail-img-item">
+                        <img src="../image/detail-listSecond.png"/>
+                    </div>
+                    <div class="detail-img-item">
+                        <img src="../image/detail-listOne.png"/>
+                    </div>
+                    <div class="detail-img-item">
+                        <img src="../image/detail-listSecond.png"/>
+                    </div>
+                    <div class="detail-img-item">
+                        <img src="../image/detail-listOne.png"/>
+                    </div>
+                    <div class="detail-img-item">
+                        <img src="../image/detail-listSecond.png"/>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+        <div class="info-pop-btn">
+            <button class="info-closeBtn close-btn">关闭</button>
+        </div>
+    </div>
+    <!--灾情信息批量删除-->
+    <div class="delAll-pop" id="disaster-delAll" style="display: none;">
+        <div class="del-title">
+            <span>批量删除</span>
+            <i class="iconfont delAll-close">&#xeaf2;</i>
+        </div>
+        <div class="del-content">确定对所选的内容进行删除吗？</div>
+        <div class="del-btn">
+            <button class="del-btnIcon close-btn" id="disaster-delAll-close">关闭</button>
+            <button class="del-btnIcon sure-btn" id="disaster-delAll-sure">确定</button>
+        </div>
+    </div>
+    <!--灾情信息删除-->
+    <div class="delAll-pop" id="disaster-del" style="display: none;">
+        <div class="del-title">
+            <span>删除</span>
+            <i class="iconfont delAll-close">&#xeaf2;</i>
+        </div>
+        <div class="del-content">确定删除此内容吗？</div>
+        <div class="del-btn">
+            <button class="del-btnIcon close-btn" id="disaster-del-close">关闭</button>
+            <button class="del-btnIcon sure-btn" id="disaster-del-sure">确定</button>
+        </div>
+    </div>
+    <!--新建人员-->
+    <div class="account-pop" id="add-account" style="display: none;">
+        <div class="shade"></div>
+        <div class="account-showBox">
+            <div class="account-title">
+                <span>新建人员</span>
+                <i class="iconfont account-closeIcon addAccount-closeIcon">&#xeaf2;</i>
+            </div>
+            <div class="account-body">
+                <div class="account-list">
+                    <div class="account-txt">
+                        <span class="star-icon">*</span>用户名
+                    </div>
+                    <div class="account-from">
+                        <input type="text" class="account-input" placeholder="请输入用户名" id="usernameAdd"/>
+                    </div>
+                </div>
+                <div class="account-list">
+                    <div class="account-txt">
+                        <span class="star-icon">*</span>账号
+                    </div>
+                    <div class="account-from">
+                        <input type="text" class="account-input" placeholder="请输入账号" id="accountAdd"/>
+                    </div>
+                </div>
+                <div class="account-list">
+                    <div class="account-txt">初始密码</div>
+                    <div class="account-from account-from-clear">
+                        123456
+                    </div>
+                </div>
+                <div class="account-list">
+                    <div class="account-txt">
+                        <span class="star-icon">*</span>手机号码
+                    </div>
+                    <div class="account-from">
+                        <input type="text" class="account-input" placeholder="请输入手机号码" id="phoneAdd"/>
+                    </div>
+                </div>
+                <div class="account-list">
+                    <div class="account-txt">
+                        <span class="star-icon">*</span>用户角色
+                    </div>
+                    <div class="account-from">
+                        <div class="account-select" id="addAccount-select">
+                            <span class="account-select-txt">请选择</span>
+                            <i class="iconfont account-icon">&#xeb06;</i>
+                        </div>
+                        <div class="account-drop" id="addAccount-drop" style="display: none;">
+                            <div class="account-drop-item">普通管理员</div>
+                            <div class="account-drop-item">预报员</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-tips alert">
+                    <img src="image/alert-icon.png"/>
+                    <span></span>
+                </div>
+            </div>
+            <div class="account-btn">
+                <button class="account-addIcon close-btn" id="addPerson-close">关闭</button>
+                <button class="account-addIcon sure-btn" id="addPerson-sure">保存</button>
+            </div>
+        </div>
+    </div>
+    <!--修改人员-->
+    <div class="account-pop" id="edit-account" style="display: none;">
+        <div class="shade"></div>
+        <div class="account-showBox">
+            <div class="account-title">
+                <span>修改</span>
+                <i class="iconfont account-closeIcon editAccount-closeIcon">&#xeaf2;</i>
+            </div>
+            <div class="account-body">
+                <div class="account-list">
+                    <div class="account-txt">
+                        <span class="star-icon">*</span>用户名
+                    </div>
+                    <div class="account-from">
+                        <input type="text" class="account-input" placeholder="请输入用户名" id="username-edit"/>
+                    </div>
+                </div>
+                <div class="account-list">
+                    <div class="account-txt">
+                        <span class="star-icon">*</span>账号
+                    </div>
+                    <div class="account-from">
+                        <input type="text" class="account-input" placeholder="请输入账号" id="account-edit"/>
+                    </div>
+                </div>
+                <div class="account-list">
+                    <div class="account-txt">
+                        <span class="star-icon">*</span>手机号码
+                    </div>
+                    <div class="account-from">
+                        <input type="text" class="account-input" placeholder="请输入手机号码" id="phone-edit"/>
+                    </div>
+                </div>
+                <div class="account-list">
+                    <div class="account-txt">
+                        <span class="star-icon">*</span>用户角色
+                    </div>
+                    <div class="account-from">
+                        <div class="account-select" id="editAccount-select">
+                            <span class="account-select-txt">请选择</span>
+                            <i class="iconfont account-icon">&#xeb06;</i>
+                        </div>
+                        <div class="account-drop" id="editAccount-drop" style="display: none;">
+                            <div class="account-drop-items">普通管理员</div>
+                            <div class="account-drop-items">预报员</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="editAccount-tips alert">
+                    <img src="image/alert-icon.png"/>
+                    <span></span>
+                </div>
+            </div>
+            <div class="account-btn">
+                <button class="account-addIcon close-btn" id="accountEdit-close">关闭</button>
+                <button class="account-addIcon sure-btn" id="accountEdit-sure">保存</button>
+            </div>
+        </div>
+    </div>
+    <!--修改密码-->
+    <div class="account-pop" id="update-account" style="display: none;">
+        <div class="shade"></div>
+        <div class="account-showBox">
+            <div class="account-title">
+                <span>修改密码</span>
+                <i class="iconfont account-closeIcon editPass-closeIcon">&#xeaf2;</i>
+            </div>
+            <div class="account-body">
+                <div class="account-list">
+                    <div class="account-txt">
+                        <span class="star-icon">*</span>旧密码
+                    </div>
+                    <div class="account-from">
+                        <input type="text" class="account-input" placeholder="请输入旧密码" id="passOld"/>
+                    </div>
+                </div>
+                <div class="account-list">
+                    <div class="account-txt">
+                        <span class="star-icon">*</span>新密码
+                    </div>
+                    <div class="account-from">
+                        <input type="text" class="account-input" placeholder="请输入新密码" id="newPass"/>
+                    </div>
+                </div>
+                <div class="account-list">
+                    <div class="account-txt">
+                        <span class="star-icon">*</span>确认密码
+                    </div>
+                    <div class="account-from">
+                        <input type="text" class="account-input" placeholder="请输入确认密码" id="newPassSure"/>
+                    </div>
+                </div>
+                <div class="editPass-tips alert">
+                    <img src="image/alert-icon.png"/>
+                    <span></span>
+                </div>
+            </div>
+            <div class="account-btn update-btn">
+                <button class="account-addIcon close-btn" id="editPass-close">关闭</button>
+                <button class="account-addIcon sure-btn" id="editPass-sure">保存</button>
+            </div>
+        </div>
+    </div>
+    <!--人员批量删除-->
+    <div class="delAll-pop" id="delAll-box" style="display: none;">
+        <div class="del-title">
+            <span>批量删除</span>
+            <i class="iconfont delAll-close">&#xeaf2;</i>
+        </div>
+        <div class="del-content">确定对所选的内容进行删除吗？</div>
+        <div class="del-btn">
+            <button class="del-btnIcon close-btn" id="delAll-close">关闭</button>
+            <button class="del-btnIcon sure-btn" id="delAll-sure">确定</button>
+        </div>
+    </div>
+    <!--人员删除-->
+    <div class="delAll-pop" id="del-box" style="display: none;">
+        <div class="del-title">
+            <span>删除</span>
+            <i class="iconfont delAll-close">&#xeaf2;</i>
+        </div>
+        <div class="del-content">确定删除此内容吗？</div>
+        <div class="del-btn">
+            <button class="del-btnIcon close-btn" id="del-close">关闭</button>
+            <button class="del-btnIcon sure-btn" id="del-sure">确定</button>
+        </div>
+    </div>
+    <!--重置密码-->
+    <div class="delAll-pop" id="rePass-box" style="display: none;">
+        <div class="del-title">
+            <span>重置密码</span>
+            <i class="iconfont delAll-close">&#xeaf2;</i>
+        </div>
+        <div class="del-content">确定重置为初始密码(123456)吗？</div>
+        <div class="del-btn">
+            <button class="del-btnIcon close-btn" id="rePass-close">关闭</button>
+            <button class="del-btnIcon sure-btn" id="rePass-sure">确定</button>
+        </div>
+    </div>
+    <!--添加成功-->
+    <div class="add-tip" id="addSuccess" style="display: none;">
+        <div class="add-tip-txt">添加成功~~~</div>
+    </div>
+    <!--修改成功-->
+    <div class="add-tip" id="editSuccess" style="display: none;">
+        <div class="add-tip-txt">修改成功~~~</div>
+    </div>
+    <!--删除成功-->
+    <div class="add-tip" id="delSuccess" style="display: none;">
+        <div class="add-tip-txt">删除成功~~~</div>
+    </div>
+    <!--操作成功-->
+    <div class="totalPop" id="success" style="display: none;">
+        <img src="image/success-icon.png"/>
+        <span>操作成功</span>
+    </div>
+    <!--操作失败-->
+    <div class="totalPop" id="fail" style="display: none;">
+        <img src="image/fail-icon.png"/>
+        <span>操作失败</span>
+    </div>
+    <!--加载中提示-->
+    <div class="loading-pop" id="loading" style="display:none;">
+        <div class="shadeOpacity"></div>
+        <div class="loadingBox">
+            <img src="image/loading.gif"/>
+        </div>
+    </div>
+</div>
+</body>
+</html>

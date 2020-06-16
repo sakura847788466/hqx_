@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>避风锚地</title>
+    <link type="text/css" rel="stylesheet" href="../css/page.css"/>
+    <link type="text/css" rel="stylesheet" href="../font/iconfont.css"/>
+    <link type="text/css" rel="stylesheet" href="../layui/css/layui.css"/>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../layui/layui.js"></script>
+    <script type="text/javascript" src="../js/haven.js"></script>
+</head>
+<body>
+<div class="table-title" id="haven-title">避风锚地</div>
+<div class="table-operate">
+    <div class="table-search">
+        <i class="iconfont search-icon">&#xeafe;</i>
+        <input class="search-input" placeholder="请输入名称关键字" id="searchName" autocomplete="off"/>
+    </div>
+    <div class="table-menu">
+        <div class="table-menuItem" id="haven-select">
+            <i class="iconfont menu-icon">&#xeac3;</i>
+            <span class="table-menuTxt">筛选</span>
+        </div>
+        <div class="table-menuItem" id="haven-add">
+            <i class="iconfont menu-icon">&#xe67a;</i>
+            <span class="table-menuTxt">新建</span>
+        </div>
+        <div class="table-menuItem" id="haven-delAll">
+            <i class="iconfont menu-icon">&#xeafb;</i>
+            <span class="table-menuTxt">批量删除</span>
+        </div>
+        <div class="table-menuItem" id="haven-export">
+            <i class="iconfont menu-icon">&#xeabf;</i>
+            <span class="table-menuTxt">导出</span>
+        </div>
+    </div>
+</div>
+<div class="table-no" style="display: none;">
+    <img src="../image/no-info.png"/>
+    <div class="table-no-text">暂无信息，请先创建</div>
+</div>
+<div class="table-yes">
+    <div class="table-content scrollbarStyle">
+        <table class="table" id="haven-table">
+            <!--<thead>
+            <tr>
+                <th>
+                    <i class="iconfont checkbox-uncheck">&#xeadc;</i>
+                    <i class="iconfont checkbox-check">&#xead8;</i>
+                </th>
+                <th>序号</th>
+                <th>避风锚地名称</th>
+                <th>可锚泊船只的最大吨位</th>
+                <th>容纳量</th>
+                <th>水深</th>
+                <th>水域面积</th>
+                <th>用途</th>
+                <th>地理位置</th>
+                <th>顶点坐标</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <i class="iconfont checkbox-uncheck">&#xeadc;</i>
+                    <i class="iconfont checkbox-check">&#xead8;</i>
+                </td>
+                <td>01</td>
+                <td>JD1</td>
+                <td>5000GT</td>
+                <td>2000—5000GT船舶6-8艘</td>
+                <td>5-8米</td>
+                <td>1平方公里</td>
+                <td>防台</td>
+                <td>榕江揭东段</td>
+                <td>116.14941667,23.02136111</td>
+                <td>
+                    <i class="iconfont table-infoIcon">&#xeb46;</i>
+                </td>
+                <td>
+                    <i class="iconfont table-editIcon">&#xeabe;</i>
+                </td>
+                <td>
+                    <i class="iconfont table-delIcon">&#xeafb;</i>
+                </td>
+            </tr>
+            </tbody>-->
+        </table>
+    </div>
+    <div class="table-page">
+        <div class="page-txt">共<span id="totalPage"></span>页</div>
+        <div class="page-txt">共<span id="totalRecord"></span>项</div>
+        <div class="page-txt">当前第<span id="currentPage"></span>页</div>
+        <div class="page-item" id="firstPage">首页</div>
+        <div class="page-item" id="prevPage">上一页</div>
+        <div class="page-item" id="nextPage">下一页</div>
+        <div class="page-item" id="endPage">尾页</div>
+        <div class="page-inputBox">
+            <span id="pageTo">跳转</span>
+            <input type="text" class="page-input" id="pageValue"/>
+            <span>页</span>
+        </div>
+    </div>
+</div>
+<!--筛选-->
+<div class="filtrate-pop scrollbarStyle" style="display: none;">
+    <!--<div class="filtrate-item">
+        <i class="iconfont filtrate-uncheck">&#xeadc;</i>
+        <i class="iconfont filtrate-check">&#xead8;</i>
+        <span class="filtrate-txt">海堤名称</span>
+    </div>
+    <div class="filtrate-item">
+        <i class="iconfont filtrate-uncheck">&#xeadc;</i>
+        <i class="iconfont filtrate-check">&#xead8;</i>
+        <span class="filtrate-txt">海堤名称</span>
+    </div>-->
+</div>
+<!--新建-->
+<div class="add-pop" id="add-pop" style="display: none;">
+    <div class="overlay"></div>
+    <div class="showBox">
+        <div class="add-title">
+            <span>新建</span>
+            <i class="iconfont add-close">&#xeaf2;</i>
+        </div>
+        <div class="add-content scrollbarStyle">
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt"><span class="star-icon">*</span>避风锚地名称</div>
+                    <div class="add-input-from">
+                        <input class="add-input add-input-large" placeholder="请输入避风锚地名称" id="name"/>
+                    </div>
+                </div>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">可锚泊船只的最大吨位（万吨）</div>
+                    <div class="add-input-from">
+                        <input class="add-input" placeholder="请输入可锚泊船只的最大吨位" id="tonnage"/>
+                    </div>
+                </div>
+                <div class="add-input-item add-input-itemLast">
+                    <div class="add-input-txt">容纳量（艘）</div>
+                    <div class="add-input-from">
+                        <input class="add-input" placeholder="请输入容纳量" id="capacity"/>
+                    </div>
+                </div>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">水深（米）</div>
+                    <div class="add-input-from">
+                        <input class="add-input" placeholder="请输入水深" id="waterDepth"/>
+                    </div>
+                </div>
+                <div class="add-input-item add-input-itemLast">
+                    <div class="add-input-txt">水域面积（平方米）</div>
+                    <div class="add-input-from">
+                        <input class="add-input" placeholder="请输入水域面积" id="waterArea"/>
+                    </div>
+                </div>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">用途</div>
+                    <div class="add-input-from">
+                        <input class="add-input add-input-large" placeholder="请输入用途" id="purpose"/>
+                    </div>
+                </div>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">顶点坐标</div>
+                    <div class="add-input-from">
+                        <input class="add-input add-input-large" placeholder="请输入顶点坐标" id="vertexCoordinate"/>
+                    </div>
+                </div>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">行政区划代码</div>
+                    <div class="add-input-from">
+                        <input class="add-input" placeholder="请输入行政区划代码" id="areaCode"/>
+                    </div>
+                </div>
+                <div class="add-input-item add-input-itemLast">
+                    <div class="add-input-txt">行政区划</div>
+                    <div class="add-input-from">
+                        <input class="add-input" placeholder="请输入行政区划" id="areaName"/>
+                    </div>
+                </div>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">资料来源</div>
+                    <div class="add-input-from">
+                        <input class="add-input" placeholder="请输入资料来源" id="origin"/>
+                    </div>
+                </div>
+                <div class="add-input-item add-input-itemLast">
+                    <div class="add-input-txt">填表单位</div>
+                    <div class="add-input-from">
+                        <input class="add-input" placeholder="请输入填表单位" id="fillUnit"/>
+                    </div>
+                </div>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">填表人</div>
+                    <div class="add-input-from">
+                        <input class="add-input" placeholder="请输入填表人" id="fillBy"/>
+                    </div>
+                </div>
+                <div class="add-input-item add-input-itemLast">
+                    <div class="add-input-txt">填表日期</div>
+                    <div class="add-input-from">
+                        <input class="add-input" placeholder="请输入填表日期" id="fillCreateTime" readonly="readonly"/>
+                    </div>
+                </div>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">审核人</div>
+                    <div class="add-input-from">
+                        <input class="add-input" placeholder="请输入审核人" id="checkBy"/>
+                    </div>
+                </div>
+                <div class="add-input-item add-input-itemLast">
+                    <div class="add-input-txt">审核时间</div>
+                    <div class="add-input-from">
+                        <input class="add-input" placeholder="请输入审核时间" id="checkTime" readonly="readonly"/>
+                    </div>
+                </div>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">地理位置</div>
+                    <div class="add-input-from">
+                        <input class="add-input add-input-large" placeholder="请输入地理位置" id="address"/>
+                    </div>
+                </div>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">备注</div>
+                    <div class="add-input-from">
+                        <textarea class="add-input add-input-textarea" placeholder="请输入备注" id="remark"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="haven-tips alert">
+                <img src="../image/alert-icon.png"/>
+                <span></span>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">上传图片</div>
+                    <div class="add-input-from">
+                        <div class="upload-btn">
+                            <span>点击上传</span>
+                            <form id="uploadForm" enctype="multipart/form-data">
+                                <input type="file" name="file" id="upload" multiple/>
+                            </form>
+                        </div>
+                        <div class="button-txt">请上传jpg、png图片，单个文件大小不能超过2M，文件名不能大于20个字符，最多只能上传6张图片</div>
+                        <div class="imgList-haven" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="add-btn">
+            <button class="add-btnIcon close-btn" id="addClose">关闭</button>
+            <button class="add-btnIcon sure-btn" id="addSure">保存</button>
+        </div>
+    </div>
+</div>
+<!--修改-->
+<div class="add-pop" id="edit-pop" style="display: none;">
+    <div class="overlay"></div>
+    <div class="showBox">
+        <div class="add-title">
+            <span>修改</span>
+            <i class="iconfont add-close">&#xeaf2;</i>
+        </div>
+        <div class="add-content scrollbarStyle">
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">避风锚地名称</div>
+                    <div class="add-input-from">
+                        <input class="add-input add-input-large" id="nameEdit"/>
+                    </div>
+                </div>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">可锚泊船只的最大吨位（万吨）</div>
+                    <div class="add-input-from">
+                        <input class="add-input" id="tonnageEdit"/>
+                    </div>
+                </div>
+                <div class="add-input-item add-input-itemLast">
+                    <div class="add-input-txt">容纳量（艘）</div>
+                    <div class="add-input-from">
+                        <input class="add-input" id="capacityEdit"/>
+                    </div>
+                </div>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">水深（米）</div>
+                    <div class="add-input-from">
+                        <input class="add-input" id="waterDepthEdit"/>
+                    </div>
+                </div>
+                <div class="add-input-item add-input-itemLast">
+                    <div class="add-input-txt">水域面积（平方米）</div>
+                    <div class="add-input-from">
+                        <input class="add-input" id="waterAreaEdit"/>
+                    </div>
+                </div>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">用途</div>
+                    <div class="add-input-from">
+                        <input class="add-input add-input-large" id="purposeEdit"/>
+                    </div>
+                </div>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">顶点坐标</div>
+                    <div class="add-input-from">
+                        <input class="add-input add-input-large" id="vertexCoordinateEdit"/>
+                    </div>
+                </div>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">行政区划代码</div>
+                    <div class="add-input-from">
+                        <input class="add-input" id="areaCodeEdit"/>
+                    </div>
+                </div>
+                <div class="add-input-item add-input-itemLast">
+                    <div class="add-input-txt">行政区划</div>
+                    <div class="add-input-from">
+                        <input class="add-input" id="areaNameEdit"/>
+                    </div>
+                </div>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">资料来源</div>
+                    <div class="add-input-from">
+                        <input class="add-input" id="originEdit"/>
+                    </div>
+                </div>
+                <div class="add-input-item add-input-itemLast">
+                    <div class="add-input-txt">填表单位</div>
+                    <div class="add-input-from">
+                        <input class="add-input" id="fillUnitEdit"/>
+                    </div>
+                </div>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">填表人</div>
+                    <div class="add-input-from">
+                        <input class="add-input" id="fillByEdit"/>
+                    </div>
+                </div>
+                <div class="add-input-item add-input-itemLast">
+                    <div class="add-input-txt">填表日期</div>
+                    <div class="add-input-from">
+                        <input class="add-input" id="fillCreateTimeEdit" readonly="readonly"/>
+                    </div>
+                </div>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">审核人</div>
+                    <div class="add-input-from">
+                        <input class="add-input" id="checkByEdit"/>
+                    </div>
+                </div>
+                <div class="add-input-item add-input-itemLast">
+                    <div class="add-input-txt">审核时间</div>
+                    <div class="add-input-from">
+                        <input class="add-input" id="checkTimeEdit" readonly="readonly"/>
+                    </div>
+                </div>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">地理位置</div>
+                    <div class="add-input-from">
+                        <input class="add-input add-input-large" id="addressEdit"/>
+                    </div>
+                </div>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">备注</div>
+                    <div class="add-input-from">
+                        <textarea class="add-input add-input-textarea" id="remarkEdit"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="haven-tips alert">
+                <img src="../image/alert-icon.png"/>
+                <span></span>
+            </div>
+            <div class="add-input-list">
+                <div class="add-input-item">
+                    <div class="add-input-txt">上传图片</div>
+                    <div class="add-input-from">
+                        <div class="upload-btn">
+                            <span>点击上传</span>
+                            <form id="uploadFormEdit" enctype="multipart/form-data">
+                                <input type="file" name="file" id="uploadEdit" multiple/>
+                            </form>
+                        </div>
+                        <div class="button-txt">请上传jpg、png图片，单个文件大小不能超过2M，文件名不能大于20个字符，最多只能上传6张图片</div>
+                        <div class="imgList-haven" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="add-btn">
+            <button class="add-btnIcon close-btn" id="editClose">关闭</button>
+            <button class="add-btnIcon sure-btn" id="editSure">保存</button>
+        </div>
+    </div>
+</div>
+<!--删除-->
+<div class="delAll-pop" id="del-pop" style="display: none;">
+    <div class="del-title">
+        <span>删除</span>
+        <i class="iconfont delAll-close">&#xeaf2;</i>
+    </div>
+    <div class="del-content">确定删除此内容吗？</div>
+    <div class="del-btn">
+        <button class="del-btnIcon close-btn" id="delClose">关闭</button>
+        <button class="del-btnIcon sure-btn" id="delSure">确定</button>
+    </div>
+</div>
+<!--批量删除-->
+<div class="delAll-pop" id="delAll-pop" style="display: none;">
+    <div class="del-title">
+        <span>批量删除</span>
+        <i class="iconfont delAll-close">&#xeaf2;</i>
+    </div>
+    <div class="del-content">确定对所选的内容进行删除吗？</div>
+    <div class="del-btn">
+        <button class="del-btnIcon close-btn" id="delAllClose">关闭</button>
+        <button class="del-btnIcon sure-btn" id="delAllSure">确定</button>
+    </div>
+</div>
+<!--详情-->
+<div class="detail-pop" id="info-pop" style="display: none;">
+    <div class="detail-title">
+        <span>查看详情</span>
+        <i class="iconfont detail-close">&#xeaf2;</i>
+    </div>
+    <div class="detail-body scrollbarStyle">
+        <div class="detail-body-title">
+            <div class="detail-body-name" id="nameInfo">JD1</div>
+        </div>
+        <div class="detail-body-address">
+            <i class="iconfont detail-addressIcon">&#xeb33;</i>
+            <span id="addressInfo">榕江揭东段</span>
+        </div>
+        <div class="detail-body-list">
+            <div class="detail-body-itemList">
+                <div class="detail-body-item">
+                    <span class="detail-txt">可锚泊船只的最大吨位（万吨）</span>
+                    <span class="detail-num" id="tonnageInfo">5000GT</span>
+                </div>
+                <div class="detail-body-item">
+                    <span class="detail-txt">容纳量（艘）</span>
+                    <span class="detail-num" id="capacityInfo">2000—5000GT船舶6-8艘</span>
+                </div>
+            </div>
+            <div class="detail-body-itemList">
+                <div class="detail-body-item">
+                    <span class="detail-txt">水深（米）</span>
+                    <span class="detail-num" id="waterDepthInfo">5-8米</span>
+                </div>
+                <div class="detail-body-item">
+                    <span class="detail-txt">水域面积（平方米）</span>
+                    <span class="detail-num" id="waterAreaInfo">1平方公里</span>
+                </div>
+            </div>
+            <div class="detail-body-itemList">
+                <div class="detail-body-item">
+                    <span class="detail-txt">用途</span>
+                    <span class="detail-num" id="purposeInfo">防台</span>
+                </div>
+                <div class="detail-body-item">
+                    <span class="detail-txt">顶点坐标</span>
+                    <span class="detail-num" id="vertexCoordinateInfo">116.25</span>
+                </div>
+            </div>
+            <div class="detail-body-itemList">
+                <div class="detail-body-item">
+                    <span class="detail-txt">行政区划代码</span>
+                    <span class="detail-num" id="areaCodeInfo">无</span>
+                </div>
+                <div class="detail-body-item">
+                    <span class="detail-txt">行政区划</span>
+                    <span class="detail-num" id="areaNameInfo">无</span>
+                </div>
+            </div>
+            <div class="detail-body-itemList">
+                <div class="detail-body-item">
+                    <span class="detail-txt">资料来源</span>
+                    <span class="detail-num" id="originInfo">无</span>
+                </div>
+                <div class="detail-body-item">
+                    <span class="detail-txt">填表单位</span>
+                    <span class="detail-num" id="fillUnitInfo">无</span>
+                </div>
+            </div>
+            <div class="detail-body-itemList">
+                <div class="detail-body-item">
+                    <span class="detail-txt">填表人</span>
+                    <span class="detail-num" id="fillByInfo">无</span>
+                </div>
+                <div class="detail-body-item">
+                    <span class="detail-txt">填表日期</span>
+                    <span class="detail-num" id="fillCreateTimeInfo">无</span>
+                </div>
+            </div>
+            <div class="detail-body-itemList">
+                <div class="detail-body-item">
+                    <span class="detail-txt">审核人</span>
+                    <span class="detail-num" id="checkByInfo">无</span>
+                </div>
+                <div class="detail-body-item">
+                    <span class="detail-txt">审核时间</span>
+                    <span class="detail-num" id="checkTimeInfo">无</span>
+                </div>
+            </div>
+            <div class="detail-body-itemList">
+                <div class="detail-body-item">
+                    <span class="detail-txt">备注</span>
+                    <span class="detail-num" id="remarkInfo">无</span>
+                </div>
+            </div>
+        </div>
+        <div class="detail-img-box">
+            <!--<div class="detail-img-show">
+                <img src="../image/detail-show.png"/>
+            </div>
+            <div class="detail-img-list">
+                <div class="detail-img-item">
+                    <img src="../image/detail-listOne.png"/>
+                </div>
+                <div class="detail-img-item">
+                    <img src="../image/detail-listSecond.png"/>
+                </div>
+                <div class="detail-img-item">
+                    <img src="../image/detail-listOne.png"/>
+                </div>
+                <div class="detail-img-item">
+                    <img src="../image/detail-listSecond.png"/>
+                </div>
+                <div class="detail-img-item">
+                    <img src="../image/detail-listOne.png"/>
+                </div>
+                <div class="detail-img-item">
+                    <img src="../image/detail-listSecond.png"/>
+                </div>
+            </div>-->
+        </div>
+    </div>
+    <div class="detail-btn">
+        <button class="detail-btnIcon close-btn">关闭</button>
+    </div>
+</div>
+<!--导出-->
+<div class="delAll-pop" id="export-pop" style="display: none;">
+    <div class="del-title">
+        <span>导出</span>
+        <i class="iconfont delAll-close">&#xeaf2;</i>
+    </div>
+    <div class="del-content">确定对检索的内容进行导出吗？</div>
+    <div class="del-btn">
+        <button class="del-btnIcon close-btn" id="exportClose">关闭</button>
+        <button class="del-btnIcon sure-btn" id="exportSure">确定</button>
+    </div>
+</div>
+<!--导出未成功-->
+<div class="add-tip" id="exportFail" style="display: none;">
+    <div class="add-tip-txt">没有数据可以导出~~~</div>
+</div>
+<!--添加成功-->
+<div class="add-tip" id="addSuccess" style="display: none;">
+    <div class="add-tip-txt">添加成功~~~</div>
+</div>
+<!--修改成功-->
+<div class="add-tip" id="editSuccess" style="display: none;">
+    <div class="add-tip-txt">修改成功~~~</div>
+</div>
+<!--删除成功-->
+<div class="add-tip" id="delSuccess" style="display: none;">
+    <div class="add-tip-txt">删除成功~~~</div>
+</div>
+<!--操作成功-->
+<div class="totalPop" id="success" style="display: none;">
+    <img src="../image/success-icon.png"/>
+    <span>操作成功</span>
+</div>
+<!--操作失败-->
+<div class="totalPop" id="fail" style="display: none;">
+    <img src="../image/fail-icon.png"/>
+    <span>操作失败</span>
+</div>
+<!--加载中提示-->
+<div class="loading-pop" id="loading" style="display:none;">
+    <div class="overlayOpacity"></div>
+    <div class="loadingBox">
+        <img src="../image/loading.gif"/>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,2422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>海洋预报</title>
+    <link type="text/css" rel="stylesheet" href="../css/marineForecast.css"/>
+    <link type="text/css" rel="stylesheet" href="../font/iconfont.css"/>
+    <link type="text/css" rel="stylesheet" href="../layui/css/layui.css"/>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../layui/layui.js"></script>
+    <script type="text/javascript" src="../js/marineForecast.js"></script><!--公用模块-->
+    <script type="text/javascript" src="../js/marineForecastList.js"></script><!--预报制作列表模块-->
+    <script type="text/javascript" src="../js/forecastDel.js"></script><!--预报制作删除模块-->
+    <script type="text/javascript" src="../js/forecastUpload.js"></script><!--预报制作上传模块-->
+    <script type="text/javascript" src="../js/forecastAdd.js"></script><!--预报制作增加模块-->
+    <script type="text/javascript" src="../js/forecastEdit.js"></script><!--预报制作修改模块-->
+    <script type="text/javascript" src="../js/forecastPreview.js"></script><!--预报制作预览模块-->
+    <script type="text/javascript" src="../js/addressBookList.js"></script><!--通讯录模块-->
+    <script type="text/javascript" src="../js/regularMail.js"></script><!--普通邮件模块-->
+    <script type="text/javascript" src="../js/sendRecord.js"></script><!--发送记录模块-->
+</head>
+<body>
+    <div class="info-list">
+        <div class="menu-title">
+            <div class="menu-subtxt">
+                <img src="../image/marine-forecast.png"/>
+            </div>
+        </div>
+        <div class="info-menu">
+            <div class="table-operate">
+                <div class="table-search">
+                    <i class="iconfont search-icon" id="searchIcon">&#xeafe;</i>
+                    <input class="search-input" placeholder="请输入标题关键字" id="searchName" autocomplete="off"/>
+                </div>
+                <div class="table-menu">
+                    <div class="table-menuItem" id="forecastDailyTab">
+                        <i class="iconfont menu-icon">&#xe67a;</i>
+                        <span class="table-menuTxt">每日预报单制作</span>
+                    </div>
+                    <div class="table-menuItem" id="forecastThreeTab">
+                        <i class="iconfont menu-icon">&#xe67a;</i>
+                        <span class="table-menuTxt">三天预报单制作</span>
+                    </div>
+                    <div class="table-menuItem" id="exportTab">
+                        <i class="iconfont menu-icon">&#xeabf;</i>
+                        <span class="table-menuTxt">批量导出</span>
+                    </div>
+                    <div class="table-menuItem" id="emailTab">
+                        <i class="iconfont menu-icon">&#xeb44;</i>
+                        <span class="table-menuTxt">发送邮件</span>
+                    </div>
+                </div>
+            </div>
+            <div class="info-condition">
+                <div class="info-item">
+                    <div class="info-item-select" id="forecastType-select">
+                        <span class="info-item-word">选择预报类型</span>
+                        <i class="iconfont info-selectIcon">&#xeb06;</i>
+                    </div>
+                    <div class="info-item-drop scrollbarStyle" id="forecastType-drop">
+                        <div class="forecastType-list-item">
+                            <i class="iconfont forecastType-radio-uncheck">&#xeada;</i>
+                            <i class="iconfont forecastType-radio-check">&#xeadb;</i>
+                            <span class="forecastType-list-text">每日常规预报</span>
+                        </div>
+                        <div class="forecastType-list-item">
+                            <i class="iconfont forecastType-radio-uncheck">&#xeada;</i>
+                            <i class="iconfont forecastType-radio-check">&#xeadb;</i>
+                            <span class="forecastType-list-text">未来三日预报</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-item-select" id="uploadStatus-select">
+                        <span class="info-item-word">选择上传状态</span>
+                        <i class="iconfont info-selectIcon">&#xeb06;</i>
+                    </div>
+                    <div class="info-item-drop scrollbarStyle" id="uploadStatus-drop">
+                        <div class="uploadStatus-list-item">
+                            <i class="iconfont uploadStatus-radio-uncheck">&#xeada;</i>
+                            <i class="iconfont uploadStatus-radio-check">&#xeadb;</i>
+                            <span class="uploadStatus-list-text">已上传</span>
+                        </div>
+                        <div class="uploadStatus-list-item">
+                            <i class="iconfont uploadStatus-radio-uncheck">&#xeada;</i>
+                            <i class="iconfont uploadStatus-radio-check">&#xeadb;</i>
+                            <span class="uploadStatus-list-text">未上传</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-item-select">
+                        <input type="text" placeholder="选择发布时间" readonly="readonly" class="time-input" id="reportTime-select"/>
+                        <i class="iconfont info-selectIcon">&#xeb06;</i>
+                    </div>
+                </div>
+                <div class="info-item" id="forecastClear">
+                    <i class="iconfont">&#xe82f;</i>
+                    <span class="info-item-word">清空选项</span>
+                </div>
+            </div>
+        </div>
+        <div class="info-table-no" style="display: none;">
+            <img src="../image/no-info.png"/>
+            <div class="info-no-text">暂无信息，请先创建</div>
+        </div>
+        <div class="info-table-yes">
+            <div class="info-content scrollbarStyle">
+                <table class="info-table">
+                    <!--<thead>
+                        <tr>
+                            <th>
+                                <i class="iconfont checkbox-uncheck">&#xeadc;</i>
+                                <i class="iconfont checkbox-check">&#xead8;</i>
+                            </th>
+                            <th>编号</th>
+                            <th>标题</th>
+                            <th>发布时间</th>
+                            <th>发布人</th>
+                            <th>上传状态</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <i class="iconfont checkbox-uncheck">&#xeadc;</i>
+                                <i class="iconfont checkbox-check">&#xead8;</i>
+                            </td>
+                            <td>HJ202051</td>
+                            <td>未来三日海洋环境预报信息</td>
+                            <td>2020-02-24  10:00</td>
+                            <td>张某某</td>
+                            <td>
+                                <span class="table-load">已上传</span>
+                            </td>
+                            <td>
+                                <span class="table-uploadIcon"><i class="iconfont">&#xeb15;</i><span class="table-txt">上传</span></span>
+                                <span class="table-infoIcon"><i class="iconfont">&#xeb46;</i><span class="table-txt">详情</span></span>
+                                <span class="table-editIcon"><i class="iconfont">&#xeabe;</i><span class="table-txt">编辑</span></span>
+                                <span class="table-delIcon"><i class="iconfont">&#xeafb;</i><span class="table-txt">删除</span></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="iconfont checkbox-uncheck">&#xeadc;</i>
+                                <i class="iconfont checkbox-check">&#xead8;</i>
+                            </td>
+                            <td>HJ202051</td>
+                            <td>未来三日海洋环境预报信息</td>
+                            <td>2020-02-24  10:00</td>
+                            <td>张某某</td>
+                            <td>
+                                <span class="table-unload">未上传</span>
+                            </td>
+                            <td>
+                                <span class="table-uploadIcon"><i class="iconfont">&#xeb15;</i><span class="table-txt">上传</span></span>
+                                <span class="table-infoIcon"><i class="iconfont">&#xeb46;</i><span class="table-txt">详情</span></span>
+                                <span class="table-editIcon"><i class="iconfont">&#xeabe;</i><span class="table-txt">编辑</span></span>
+                                <span class="table-delIcon"><i class="iconfont">&#xeafb;</i><span class="table-txt">删除</span></span>
+                            </td>
+                        </tr>
+                    </tbody>-->
+                </table>
+            </div>
+            <div class="table-page">
+                <div class="page-txt">共<span id="info-totalPage">1</span>页</div>
+                <div class="page-txt">共<span id="info-totalRecord">1</span>项</div>
+                <div class="page-txt">当前第<span id="info-currentPage"></span>页</div>
+                <div class="page-item" id="info-firstPage">首页</div>
+                <div class="page-item" id="info-prevPage">上一页</div>
+                <div class="page-item" id="info-nextPage">下一页</div>
+                <div class="page-item" id="info-endPage">尾页</div>
+                <div class="page-inputBox">
+                    <span id="info-pageTo">跳转</span>
+                    <input type="text" class="page-input" id="infoPageValue"/>
+                    <span>页</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--每日预报单制作-->
+    <div class="forcastPop" id="forecastDaily" style="display: none;">
+        <div class="overlay"></div>
+        <div class="showBox">
+            <div class="pop-title">
+                <span>每日预报单制作</span>
+                <i class="iconfont close-btn">&#xeaf2;</i>
+            </div>
+            <div class="pop-body">
+                <div class="form-item-list">
+                    <div class="form-item">
+                        <div class="form-label"><span class="star-icon">*</span>标题</div>
+                        <div class="form-input">
+                            <input type="text" placeholder="请输入" class="form-input-common form-input-large" id="titleOneAdd"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item-list">
+                    <div class="form-item">
+                        <div class="form-label"><span class="star-icon">*</span>发布时间</div>
+                        <div class="form-input">
+                            <input type="text" placeholder="请输入" class="form-input-common form-input-time" id="releaseTimeOneAdd" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-label form-label-middle">发布人</div>
+                        <div class="form-input">
+                            <input type="text" placeholder="请输入" class="form-input-common form-input-small form-inputinfo" id="authorOneAdd" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-label form-label-middle"><span class="star-icon">*</span>编号</div>
+                        <div class="form-input">
+                            <input type="text" placeholder="请输入" class="form-input-common form-input-small" id="numberOneAdd"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item-list">
+                    <div class="form-item">
+                        <div class="form-label"><span class="star-icon">*</span>海况信息</div>
+                        <div class="form-input">
+                            <textarea type="text" placeholder="请输入海况信息，字符数不能超过130个" class="form-input-common form-input-large form-input-textarea scrollbarStyle" id="messageOneAdd"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item-tip">
+                    <!--<span>其他信息</span>
+                    <i class="iconfont">&#xeb04;</i>-->
+                </div>
+                <div class="form-other">
+                    <div class="form-item-list">
+                        <div class="form-item">
+                            <div class="form-label"><span class="star-icon">*</span>联系人</div>
+                            <div class="form-input">
+                                <input type="text" placeholder="请输入" class="form-input-common form-input-normal" id="relationOneAdd"/>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-label"><span class="star-icon">*</span>电话</div>
+                            <div class="form-input">
+                                <input type="text" placeholder="请输入" class="form-input-common form-input-normal" id="mobileOneAdd"/>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-label"><span class="star-icon">*</span>传真</div>
+                            <div class="form-input">
+                                <input type="text" placeholder="请输入" class="form-input-common form-input-normal" id="foxOneAdd"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item-list">
+                        <div class="form-item">
+                            <div class="form-label"><span class="star-icon">*</span>签发人</div>
+                            <div class="form-input">
+                                <div class="upload-btn-case">
+                                    <span>点击上传</span>
+                                    <form id="uploadOneForm">
+                                        <input type="file" name="file" id="uploadOneAdd"/>
+                                    </form>
+                                </div>
+                                <div class="form-tip-case">
+                                    <span class="form-upload-tip">请上传jpg、png图片，文件大小不能大于256KB</span>
+                                </div>
+                            </div>
+                            <div class="form-input">
+                                <span class="signatureBox" id="signatureBoxOneAdd">
+                                    <img src=""/>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-label"><span class="star-icon">*</span>通信地址</div>
+                            <div class="form-input">
+                                <input type="text" placeholder="请输入" class="form-input-common form-input-middle" id="addressOneAdd"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pop-tips alert">
+                <img src="../image/alert-icon.png"/>
+                <span>标题不能为空</span>
+            </div>
+            <div class="pop-btn">
+                <button class="popBtn default-btn" id="forecastPreviewOneAdd">预览</button>
+                <button class="popBtn color-btn" id="forecastSureOneAdd">保存</button>
+            </div>
+        </div>
+    </div>
+    <!--三天预报单制作-->
+    <div class="forcastPop" id="forecastThree" style="display: none;">
+        <div class="overlay"></div>
+        <div class="showBox showBoxLarge">
+            <div class="pop-title">
+                <span>三天预报单制作</span>
+                <i class="iconfont close-btn">&#xeaf2;</i>
+            </div>
+            <div class="pop-body">
+                <div class="form-item-list">
+                    <div class="form-item">
+                        <div class="form-label"><span class="star-icon">*</span>标题</div>
+                        <div class="form-input">
+                            <input type="text" placeholder="请输入" class="form-input-common form-input-large" id="titleThreeAdd"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item-list">
+                    <div class="form-item">
+                        <div class="form-label"><span class="star-icon">*</span>发布时间</div>
+                        <div class="form-input">
+                            <input type="text" placeholder="请输入" class="form-input-common form-input-time" id="releaseTimeThreeAdd" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-label form-label-middle">发布人</div>
+                        <div class="form-input">
+                            <input type="text" placeholder="请输入" class="form-input-common form-input-small form-inputinfo" id="authorThreeAdd" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-label form-label-middle"><span class="star-icon">*</span>编号</div>
+                        <div class="form-input">
+                            <input type="text" placeholder="请输入" class="form-input-common form-input-small" id="numberThreeAdd"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item-tabList">
+                    <div class="form-tab-title">
+                        <div class="form-title-item form-title-click">潮汐</div>
+                        <div class="form-title-item">海浪</div>
+                        <div class="form-title-item">海面风</div>
+                        <div class="form-title-item">水温</div>
+                    </div>
+                    <div class="form-tab-body">
+                        <div class="form-body-item">
+                            <table class="form-table tide-table tide-tableAdd">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">时间</th>
+                                        <th colspan="6" class="threeTableNowAdd">02月24日</th>
+                                        <th colspan="6" class="threeTableTomorrowAdd">02月25日</th>
+                                        <th colspan="6" class="threeTableAfterTomorrowAdd">02月26日</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="2">天文潮</td>
+                                        <td>潮时</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeOneAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeTwoAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeThreeAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeFourAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeFiveAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeSixAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeSevenAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeEightAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeNightAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeTenAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeElevenAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeTwelveAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimethirteenAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeFourteenAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeFifteenAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeSixteenAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeSeventeenAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeEighteenAdd"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>潮高</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightOneAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightTwoAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightThreeAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightFourAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightFiveAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightSixAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightSevenAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightEightAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightNightAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightTenAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightElevenAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightTwelveAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightthirteenAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightFourteenAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightFifteenAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightSixteenAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightSeventeenAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightEighteenAdd"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="astronomicTide" id="astronomicTideAdd">从天文潮数据库获取</div>
+                        </div>
+                        <div class="form-body-item" style="display: none;">
+                            <table class="form-table wave-table wave-tableAdd">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2">时间</th>
+                                        <th colspan="2" class="threeTableNowAdd">02月24日</th>
+                                        <th colspan="2" class="threeTableTomorrowAdd">02月25日</th>
+                                        <th colspan="2" class="threeTableAfterTomorrowAdd">02月26日</th>
+                                    </tr>
+                                    <tr>
+                                        <th>白天</th>
+                                        <th>夜间</th>
+                                        <th>白天</th>
+                                        <th>夜间</th>
+                                        <th>白天</th>
+                                        <th>夜间</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>浪高(m)</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveHeightDayOneAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveHeightNightOneAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveHeightDayTwoAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveHeightNightTwoAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveHeightDayThreeAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveHeightNightThreeAdd"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>浪级</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveLevelDayOneAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveLevelNightOneAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveLevelDayTwoAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveLevelNightTwoAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveLevelDayThreeAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveLevelNightThreeAdd"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-body-item" style="display: none;">
+                            <table class="form-table wind-table wind-tableAdd">
+                                <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th class="threeTableNowAdd">02月24日</th>
+                                        <th class="threeTableTomorrowAdd">02月25日</th>
+                                        <th class="threeTableAfterTomorrowAdd">02月26日</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>风向</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="windDirOneAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="windDirTwoAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="windDirThreeAdd"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>风力</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="windLevelOneAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="windLevelTwoAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="windLevelThreeAdd"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-body-item" style="display: none;">
+                            <table class="form-table temperature-table temperature-tableAdd">
+                                <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th class="threeTableNowAdd">02月24日</th>
+                                        <th class="threeTableTomorrowAdd">02月25日</th>
+                                        <th class="threeTableAfterTomorrowAdd">02月26日</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>水温(℃)</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waterTempOneAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waterTempTwoAdd"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waterTempThreeAdd"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item-tip">
+                    <!--<span>其他信息</span>
+                    <i class="iconfont">&#xeb04;</i>-->
+                </div>
+                <div class="form-other">
+                    <div class="form-item-list">
+                        <div class="form-item">
+                            <div class="form-label"><span class="star-icon">*</span>联系人</div>
+                            <div class="form-input">
+                                <input type="text" placeholder="请输入" class="form-input-common form-input-normal" id="relationThreeAdd"/>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-label"><span class="star-icon">*</span>电话</div>
+                            <div class="form-input">
+                                <input type="text" placeholder="请输入" class="form-input-common form-input-normal" id="mobileThreeAdd"/>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-label"><span class="star-icon">*</span>传真</div>
+                            <div class="form-input">
+                                <input type="text" placeholder="请输入" class="form-input-common form-input-normal" id="foxThreeAdd"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item-list">
+                        <div class="form-item">
+                            <div class="form-label"><span class="star-icon">*</span>签发人</div>
+                            <div class="form-input">
+                                <div class="upload-btn-case">
+                                    <span>点击上传</span>
+                                    <form id="uploadThreeForm">
+                                        <input type="file" name="file" id="uploadThreeAdd"/>
+                                    </form>
+                                </div>
+                                <div class="form-tip-case">
+                                    <span class="form-upload-tip">请上传jpg、png图片，文件大小不能大于256KB</span>
+                                </div>
+                            </div>
+                            <div class="form-input">
+                                <span class="signatureBox" id="signatureBoxThreeAdd">
+                                    <img src=""/>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-label"><span class="star-icon">*</span>通信地址</div>
+                            <div class="form-input">
+                                <input type="text" placeholder="请输入" class="form-input-common form-input-middle" id="addressThreeAdd"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pop-tips alert">
+                <img src="../image/alert-icon.png"/>
+                <span>标题不能为空</span>
+            </div>
+            <div class="pop-btn">
+                <button class="popBtn default-btn" id="forecastPreviewThreeAdd">预览</button>
+                <button class="popBtn color-btn" id="forecastSureThreeAdd">保存</button>
+            </div>
+        </div>
+    </div>
+    <!--每日预报单制作详情-->
+    <div class="forcastPop" id="forecastDailyInfo" style="display: none;">
+        <!--<div class="overlay"></div>-->
+        <div class="showBox">
+            <div class="pop-title">
+                <span>每日预报单详情</span>
+                <i class="iconfont close-btn">&#xeaf2;</i>
+            </div>
+            <div class="pop-body">
+                <div class="form-item-list">
+                    <div class="form-item">
+                        <div class="form-label">标题</div>
+                        <div class="form-input">
+                            <input type="text" class="form-input-common form-input-large form-inputinfo" id="titleOneInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item-list">
+                    <div class="form-item">
+                        <div class="form-label">发布时间</div>
+                        <div class="form-input">
+                            <input type="text" class="form-input-common form-input-time form-inputinfo" id="releaseTimeOneInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-label form-label-middle">发布人</div>
+                        <div class="form-input">
+                            <input type="text" class="form-input-common form-input-small form-inputinfo" id="authorOneInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-label form-label-middle">编号</div>
+                        <div class="form-input">
+                            <input type="text" class="form-input-common form-input-small form-inputinfo" id="numberOneInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item-list">
+                    <div class="form-item">
+                        <div class="form-label">海况信息</div>
+                        <div class="form-input">
+                            <textarea type="text" class="form-input-common form-input-large form-inputinfo form-input-textarea scrollbarStyle" id="messageOneInfo" readonly="readonly"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item-tip">
+                    <!--<span>其他信息</span>
+                    <i class="iconfont">&#xeb04;</i>-->
+                </div>
+                <div class="form-other">
+                    <div class="form-item-list">
+                        <div class="form-item">
+                            <div class="form-label">联系人</div>
+                            <div class="form-input">
+                                <input type="text" class="form-input-common form-input-normal form-inputinfo" id="relationOneInfo" readonly="readonly"/>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-label">电话</div>
+                            <div class="form-input">
+                                <input type="text" class="form-input-common form-input-normal form-inputinfo" id="mobileOneInfo" readonly="readonly"/>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-label">传真</div>
+                            <div class="form-input">
+                                <input type="text" class="form-input-common form-input-normal form-inputinfo" id="foxOneInfo" readonly="readonly"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item-list">
+                        <div class="form-item">
+                            <div class="form-label">签发人</div>
+                            <!--<div class="form-input">
+                                <div class="upload-btn-case">
+                                    <button class="upload-btn">点击上传</button>
+                                </div>
+                                <div class="form-tip-case">
+                                    <span class="form-upload-tip">只支持png/jpg</span>
+                                </div>
+                            </div>-->
+                            <div class="form-input">
+                                <span class="signatureBox" id="signatureBoxOneInfo">
+                                    <img src=""/>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-item" style="margin-left: 120px;">
+                            <div class="form-label">通信地址</div>
+                            <div class="form-input">
+                                <input type="text" class="form-input-common form-input-middle form-inputinfo" id="addressOneInfo" readonly="readonly"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pop-btn">
+                <button class="popBtn default-btn" id="forecastPreviewOneInfoPreviewBtn" style="margin-right: 12px;">预览</button>
+                <button class="popBtn default-btn" id="forecastPreviewOneInfo" style="margin-right: 40px;">关闭</button>
+            </div>
+        </div>
+    </div>
+    <!--三天预报单制作详情-->
+    <div class="forcastPop" id="forecastThreeInfo" style="display: none;">
+        <div class="showBox showBoxLarge">
+            <div class="pop-title">
+                <span>三天预报单详情</span>
+                <i class="iconfont close-btn">&#xeaf2;</i>
+            </div>
+            <div class="pop-body">
+                <div class="form-item-list">
+                    <div class="form-item">
+                        <div class="form-label">标题</div>
+                        <div class="form-input">
+                            <input type="text" class="form-input-common form-input-large form-inputinfo" id="titleThreeInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item-list">
+                    <div class="form-item">
+                        <div class="form-label">发布时间</div>
+                        <div class="form-input">
+                            <input type="text" class="form-input-common form-input-time form-inputinfo" id="releaseTimeThreeInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-label form-label-middle">发布人</div>
+                        <div class="form-input">
+                            <input type="text" class="form-input-common form-input-small form-inputinfo" id="authorThreeInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-label form-label-middle">编号</div>
+                        <div class="form-input">
+                            <input type="text" class="form-input-common form-input-small form-inputinfo" id="numberThreeInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item-tabList">
+                    <div class="form-tab-title">
+                        <div class="form-title-item form-title-click">潮汐</div>
+                        <div class="form-title-item">海浪</div>
+                        <div class="form-title-item">海面风</div>
+                        <div class="form-title-item">水温</div>
+                    </div>
+                    <div class="form-tab-body">
+                        <div class="form-body-item">
+                            <table class="form-table tide-table tide-tableInfo">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">时间</th>
+                                        <th colspan="6" class="threeTableNowInfo">02月24日</th>
+                                        <th colspan="6" class="threeTableTomorrowInfo">02月25日</th>
+                                        <th colspan="6" class="threeTableAfterTomorrowInfo">02月26日</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="display: none;">
+                                        <td style="display: none;">id</td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdOneInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdTwoInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdThreeInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdFourInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdFiveInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdSixInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdSevenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdEightInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdNightInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdTenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdElevenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdTwelveInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdthirteenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdFourteenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdFifteenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdSixteenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdSeventeenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdEighteenInfo" readonly="readonly"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">天文潮</td>
+                                        <td>潮时</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeOneInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeTwoInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeThreeInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeFourInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeFiveInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeSixInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeSevenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeEightInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeNightInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeTenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeElevenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeTwelveInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimethirteenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeFourteenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeFifteenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeSixteenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeSeventeenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeEighteenInfo" readonly="readonly"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>潮高</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightOneInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightTwoInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightThreeInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightFourInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightFiveInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightSixInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightSevenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightEightInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightNightInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightTenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightElevenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightTwelveInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightthirteenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightFourteenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightFifteenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightSixteenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightSeventeenInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightEighteenInfo" readonly="readonly"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!--<div class="astronomicTide">从天文潮数据库获取</div>-->
+                        </div>
+                        <div class="form-body-item" style="display: none;">
+                            <table class="form-table wave-table wave-tableInfo">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2">时间</th>
+                                        <th colspan="2" class="threeTableNowInfo">02月24日</th>
+                                        <th colspan="2" class="threeTableTomorrowInfo">02月25日</th>
+                                        <th colspan="2" class="threeTableAfterTomorrowInfo">02月26日</th>
+                                    </tr>
+                                    <tr>
+                                        <th>白天</th>
+                                        <th>夜间</th>
+                                        <th>白天</th>
+                                        <th>夜间</th>
+                                        <th>白天</th>
+                                        <th>夜间</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="display: none;"> 
+                                        <td style="display: none;">id</td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="waveIdDayOneInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="waveIdNightOneInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="waveIdDayTwoInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="waveIdNightTwoInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="waveIdDayThreeInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="waveIdNightThreeInfo" readonly="readonly"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>浪高(m)</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveHeightDayOneInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveHeightNightOneInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveHeightDayTwoInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveHeightNightTwoInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveHeightDayThreeInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveHeightNightThreeInfo" readonly="readonly"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>浪级</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveLevelDayOneInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveLevelNightOneInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveLevelDayTwoInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveLevelNightTwoInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveLevelDayThreeInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveLevelNightThreeInfo" readonly="readonly"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-body-item" style="display: none;">
+                            <table class="form-table wind-table wind-tableInfo">
+                                <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th class="threeTableNowInfo">02月24日</th>
+                                        <th class="threeTableTomorrowInfo">02月25日</th>
+                                        <th class="threeTableAfterTomorrowInfo">02月26日</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="display: none;">
+                                        <td style="display: none;">id</td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="windIdOneInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="windIdTwoInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="windIdThreeInfo" readonly="readonly"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>风向</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="windDirOneInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="windDirTwoInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="windDirThreeInfo" readonly="readonly"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>风力</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="windLevelOneInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="windLevelTwoInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="windLevelThreeInfo" readonly="readonly"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-body-item" style="display: none;">
+                            <table class="form-table temperature-table temperature-tableInfo">
+                                <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th class="threeTableNowInfo">02月24日</th>
+                                        <th class="threeTableTomorrowInfo">02月25日</th>
+                                        <th class="threeTableAfterTomorrowInfo">02月26日</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="display: none;">
+                                        <td style="display:none;">id</td>
+                                        <td style="display:none;">
+                                            <input type="text" class="form-table-input" id="waterIdOneInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display:none;">
+                                            <input type="text" class="form-table-input" id="waterIdTwoInfo" readonly="readonly"/>
+                                        </td>
+                                        <td style="display:none;">
+                                            <input type="text" class="form-table-input" id="waterIdThreeInfo" readonly="readonly"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>水温(℃)</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waterTempOneInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waterTempTwoInfo" readonly="readonly"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waterTempThreeInfo" readonly="readonly"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item-tip">
+                    <!--<span>其他信息</span>
+                    <i class="iconfont">&#xeb04;</i>-->
+                </div>
+                <div class="form-other">
+                    <div class="form-item-list">
+                        <div class="form-item">
+                            <div class="form-label">联系人</div>
+                            <div class="form-input">
+                                <input type="text" class="form-input-common form-input-normal form-inputinfo" id="relationThreeInfo" readonly="readonly"/>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-label">电话</div>
+                            <div class="form-input">
+                                <input type="text" class="form-input-common form-input-normal form-inputinfo" id="mobileThreeInfo" readonly="readonly"/>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-label">传真</div>
+                            <div class="form-input">
+                                <input type="text" class="form-input-common form-input-normal form-inputinfo" id="foxThreeInfo" readonly="readonly"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item-list">
+                        <div class="form-item">
+                            <div class="form-label">签发人</div>
+                            <!--<div class="form-input">
+                                <div class="upload-btn-case">
+                                    <button class="upload-btn">点击上传</button>
+                                </div>
+                                <div class="form-tip-case">
+                                    <span class="form-upload-tip">只支持png/jpg</span>
+                                </div>
+                            </div>-->
+                            <div class="form-input">
+                                <span class="signatureBox" id="signatureBoxThreeInfo">
+                                    <img src=""/>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-item" style="margin-left: 120px;">
+                            <div class="form-label">通信地址</div>
+                            <div class="form-input">
+                                <input type="text" class="form-input-common form-input-middle form-inputinfo" id="addressThreeInfo" readonly="readonly"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pop-btn">
+                <button class="popBtn default-btn" id="forecastPreviewThreeInfoPreviewBtn" style="margin-right: 12px;">预览</button>
+                <button class="popBtn default-btn" id="forecastPreviewThreeInfo" style="margin-right: 40px;">关闭</button>
+            </div>
+        </div>
+    </div>
+    <!--每日预报单制作修改-->
+    <div class="forcastPop" id="forecastDailyEdit" style="display: none;">
+        <div class="overlay"></div>
+        <div class="showBox">
+            <div class="pop-title">
+                <span>每日预报单修改</span>
+                <i class="iconfont close-btn">&#xeaf2;</i>
+            </div>
+            <div class="pop-body">
+                <div class="form-item-list">
+                    <div class="form-item">
+                        <div class="form-label"><span class="star-icon">*</span>标题</div>
+                        <div class="form-input">
+                            <input type="text" placeholder="请输入" class="form-input-common form-input-large" id="titleOneEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item-list">
+                    <div class="form-item">
+                        <div class="form-label"><span class="star-icon">*</span>发布时间</div>
+                        <div class="form-input">
+                            <input type="text" placeholder="请输入" class="form-input-common form-input-time" id="releaseTimeOneEdit" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-label form-label-middle">发布人</div>
+                        <div class="form-input">
+                            <input type="text" placeholder="请输入" class="form-input-common form-input-small form-inputinfo" id="authorOneEdit" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-label form-label-middle"><span class="star-icon">*</span>编号</div>
+                        <div class="form-input">
+                            <input type="text" placeholder="请输入" class="form-input-common form-input-small" id="numberOneEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item-list">
+                    <div class="form-item">
+                        <div class="form-label"><span class="star-icon">*</span>海况信息</div>
+                        <div class="form-input">
+                            <textarea type="text" placeholder="请输入海况信息，字符数不能超过130个" class="form-input-common form-input-large form-input-textarea scrollbarStyle" id="messageOneEdit"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item-tip">
+                    <!--<span>其他信息</span>
+                    <i class="iconfont">&#xeb04;</i>-->
+                </div>
+                <div class="form-other">
+                    <div class="form-item-list">
+                        <div class="form-item">
+                            <div class="form-label"><span class="star-icon">*</span>联系人</div>
+                            <div class="form-input">
+                                <input type="text" placeholder="请输入" class="form-input-common form-input-normal" id="relationOneEdit"/>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-label"><span class="star-icon">*</span>电话</div>
+                            <div class="form-input">
+                                <input type="text" placeholder="请输入" class="form-input-common form-input-normal" id="mobileOneEdit"/>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-label"><span class="star-icon">*</span>传真</div>
+                            <div class="form-input">
+                                <input type="text" placeholder="请输入" class="form-input-common form-input-normal" id="foxOneEdit"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item-list">
+                        <div class="form-item">
+                            <div class="form-label"><span class="star-icon">*</span>签发人</div>
+                            <div class="form-input">
+                                <div class="upload-btn-case">
+                                    <span>点击上传</span>
+                                    <form id="uploadOneFormEdit">
+                                        <input type="file" name="file" id="uploadOneEdit"/>
+                                    </form>
+                                </div>
+                                <div class="form-tip-case">
+                                    <span class="form-upload-tip">请上传jpg、png图片，文件大小不能大于256KB</span>
+                                </div>
+                            </div>
+                            <div class="form-input">
+                                <span class="signatureBox" id="signatureBoxOneEdit">
+                                    <img src=""/>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-label"><span class="star-icon">*</span>通信地址</div>
+                            <div class="form-input">
+                                <input type="text" placeholder="请输入" class="form-input-common form-input-middle" id="addressOneEdit"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pop-tips alert">
+                <img src="../image/alert-icon.png"/>
+                <span>标题不能为空</span>
+            </div>
+            <div class="pop-btn">
+                <button class="popBtn default-btn" id="forecastPreviewOneEdit">预览</button>
+                <button class="popBtn color-btn" id="forecastSureOneEdit">保存</button>
+            </div>
+        </div>
+    </div>
+    <!--三天预报单制作修改-->
+    <div class="forcastPop" id="forecastThreeEdit" style="display: none;">
+        <div class="overlay"></div>
+        <div class="showBox showBoxLarge">
+            <div class="pop-title">
+                <span>三天预报单修改</span>
+                <i class="iconfont close-btn">&#xeaf2;</i>
+            </div>
+            <div class="pop-body">
+                <div class="form-item-list">
+                    <div class="form-item">
+                        <div class="form-label"><span class="star-icon">*</span>标题</div>
+                        <div class="form-input">
+                            <input type="text" placeholder="请输入" class="form-input-common form-input-large" id="titleThreeEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item-list">
+                    <div class="form-item">
+                        <div class="form-label"><span class="star-icon">*</span>发布时间</div>
+                        <div class="form-input">
+                            <input type="text" placeholder="请输入" class="form-input-common form-input-time" id="releaseTimeThreeEdit" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-label form-label-middle">发布人</div>
+                        <div class="form-input">
+                            <input type="text" placeholder="请输入" class="form-input-common form-input-small form-inputinfo" id="authorThreeEdit" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-label form-label-middle"><span class="star-icon">*</span>编号</div>
+                        <div class="form-input">
+                            <input type="text" placeholder="请输入" class="form-input-common form-input-small" id="numberThreeEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item-tabList">
+                    <div class="form-tab-title">
+                        <div class="form-title-item form-title-click">潮汐</div>
+                        <div class="form-title-item">海浪</div>
+                        <div class="form-title-item">海面风</div>
+                        <div class="form-title-item">水温</div>
+                    </div>
+                    <div class="form-tab-body">
+                        <div class="form-body-item">
+                            <table class="form-table tide-table tide-tableEdit">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">时间</th>
+                                        <th colspan="6" class="threeTableNowEdit">02月24日</th>
+                                        <th colspan="6" class="threeTableTomorrowEdit">02月25日</th>
+                                        <th colspan="6" class="threeTableAfterTomorrowEdit">02月26日</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="display: none;">
+                                        <td style="display: none;">id</td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdOneEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdTwoEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdThreeEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdFourEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdFiveEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdSixEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdSevenEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdEightEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdNightEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdTenEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdElevenEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdTwelveEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdthirteenEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdFourteenEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdFifteenEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdSixteenEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdSeventeenEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="tideIdEighteenEdit"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">天文潮</td>
+                                        <td>潮时</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeOneEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeTwoEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeThreeEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeFourEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeFiveEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeSixEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeSevenEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeEightEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeNightEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeTenEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeElevenEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeTwelveEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimethirteenEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeFourteenEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeFifteenEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeSixteenEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeSeventeenEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideTimeEighteenEdit"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>潮高</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightOneEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightTwoEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightThreeEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightFourEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightFiveEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightSixEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightSevenEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightEightEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightNightEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightTenEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightElevenEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightTwelveEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightthirteenEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightFourteenEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightFifteenEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightSixteenEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightSeventeenEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="tideHeightEighteenEdit"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="astronomicTide" id="astronomicTideEdit">从天文潮数据库获取</div>
+                        </div>
+                        <div class="form-body-item" style="display: none;">
+                            <table class="form-table wave-table wave-tableEdit">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2">时间</th>
+                                        <th colspan="2" class="threeTableNowEdit">02月24日</th>
+                                        <th colspan="2" class="threeTableTomorrowEdit">02月25日</th>
+                                        <th colspan="2" class="threeTableAfterTomorrowEdit">02月26日</th>
+                                    </tr>
+                                    <tr>
+                                        <th>白天</th>
+                                        <th>夜间</th>
+                                        <th>白天</th>
+                                        <th>夜间</th>
+                                        <th>白天</th>
+                                        <th>夜间</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="display: none;"> 
+                                        <td style="display: none;">id</td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="waveIdDayOneEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="waveIdNightOneEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="waveIdDayTwoEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="waveIdNightTwoEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="waveIdDayThreeEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="waveIdNightThreeEdit"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>浪高(m)</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveHeightDayOneEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveHeightNightOneEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveHeightDayTwoEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveHeightNightTwoEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveHeightDayThreeEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveHeightNightThreeEdit"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>浪级</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveLevelDayOneEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveLevelNightOneEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveLevelDayTwoEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveLevelNightTwoEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveLevelDayThreeEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waveLevelNightThreeEdit"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-body-item" style="display: none;">
+                            <table class="form-table wind-table wind-tableEdit">
+                                <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th class="threeTableNowEdit">02月24日</th>
+                                        <th class="threeTableTomorrowEdit">02月25日</th>
+                                        <th class="threeTableAfterTomorrowEdit">02月26日</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="display: none;">
+                                        <td style="display: none;">id</td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="windIdOneEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="windIdTwoEdit"/>
+                                        </td>
+                                        <td style="display: none;">
+                                            <input type="text" class="form-table-input" id="windIdThreeEdit"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>风向</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="windDirOneEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="windDirTwoEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="windDirThreeEdit"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>风力</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="windLevelOneEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="windLevelTwoEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="windLevelThreeEdit"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-body-item" style="display: none;">
+                            <table class="form-table temperature-table temperature-tableEdit">
+                                <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th class="threeTableNowEdit">02月24日</th>
+                                        <th class="threeTableTomorrowEdit">02月25日</th>
+                                        <th class="threeTableAfterTomorrowEdit">02月26日</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="display: none;">
+                                        <td style="display:none;">id</td>
+                                        <td style="display:none;">
+                                            <input type="text" class="form-table-input" id="waterIdOneEdit"/>
+                                        </td>
+                                        <td style="display:none;">
+                                            <input type="text" class="form-table-input" id="waterIdTwoEdit"/>
+                                        </td>
+                                        <td style="display:none;">
+                                            <input type="text" class="form-table-input" id="waterIdThreeEdit"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>水温(℃)</td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waterTempOneEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waterTempTwoEdit"/>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-table-input" id="waterTempThreeEdit"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item-tip">
+                    <!--<span>其他信息</span>
+                    <i class="iconfont">&#xeb04;</i>-->
+                </div>
+                <div class="form-other">
+                    <div class="form-item-list">
+                        <div class="form-item">
+                            <div class="form-label"><span class="star-icon">*</span>联系人</div>
+                            <div class="form-input">
+                                <input type="text" placeholder="请输入" class="form-input-common form-input-normal" id="relationThreeEdit"/>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-label"><span class="star-icon">*</span>电话</div>
+                            <div class="form-input">
+                                <input type="text" placeholder="请输入" class="form-input-common form-input-normal" id="mobileThreeEdit"/>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-label"><span class="star-icon">*</span>传真</div>
+                            <div class="form-input">
+                                <input type="text" placeholder="请输入" class="form-input-common form-input-normal" id="foxThreeEdit"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item-list">
+                        <div class="form-item">
+                            <div class="form-label"><span class="star-icon">*</span>签发人</div>
+                            <div class="form-input">
+                                <div class="upload-btn-case">
+                                    <span>点击上传</span>
+                                    <form id="uploadThreeFormEdit">
+                                        <input type="file" name="file" id="uploadThreeEdit"/>
+                                    </form>
+                                </div>
+                                <div class="form-tip-case">
+                                    <span class="form-upload-tip">请上传jpg、png图片，文件大小不能大于256KB</span>
+                                </div>
+                            </div>
+                            <div class="form-input">
+                                <span class="signatureBox" id="signatureBoxThreeEdit">
+                                    <img src=""/>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-label"><span class="star-icon">*</span>通信地址</div>
+                            <div class="form-input">
+                                <input type="text" placeholder="请输入" class="form-input-common form-input-middle" id="addressThreeEdit"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pop-tips alert">
+                <img src="../image/alert-icon.png"/>
+                <span>标题不能为空</span>
+            </div>
+            <div class="pop-btn">
+                <button class="popBtn default-btn" id="forecastPreviewThreeEdit">预览</button>
+                <button class="popBtn color-btn" id="forecastSureThreeEdit">保存</button>
+            </div>
+        </div>
+    </div>
+    <!--每日预报单制作预览-->
+    <div class="previewPop" id="previewPopOne" style="display: none;">
+        <div class="previewOverlay"></div>
+        <div class="previewShowbox">
+            <div class="previewShowboxMain">
+                <div class="previewClose">
+                    <span class="iconfont">&#xeaf2;</span>
+                </div>
+                <div class="previewContent">
+                    <!--<img src="../image/previewOne.png"/>-->
+                    <!--<iframe src="https://view.officeapps.live.com/op/view.aspx?src=http://static.gdhqx.cn//work_sheet/2020022011_FPORT_JY_HJ.doc" frameborder="0" scrolling="no" width="544px" height="717px"></iframe>-->
+                    <div class="previewTitle">NO.<span id="previewOneNum">2020-51</span></div>
+                    <div class="previewWord">揭阳市海洋预报</div>
+                    <p class="previewSubtxt">揭阳市自然资源局</p>
+                    <div class="previewTimeAndSigner">
+                        <span><span id="previewOneTime">2020年02月20日11时</span>发布</span>
+                        <span class="previewSigner">签发：<img src="" id="previewOneSigner"/></span>
+                    </div>
+                    <div class="previewLine"></div>
+                    <div class="previewMessage">
+                        <p class="previewMessageCenter">揭阳市海洋预报</p>
+                        <p class="previewMessageCenter">常规预报</p>
+                        <p class="previewMessageNormal" id="previewOneMessage">今日11时至明日11时，惠来海域以东北风为主，风力4-5级；浪高1.2-1.7米，浪高等级为轻浪到中浪；水温16.6-17.1℃。</p>
+                    </div>
+                    <div class="previewInfo">
+                        <p>联&ensp;系&ensp;人：<span id="previewOneContact">陈填盛</span></p>
+                        <p>电&emsp;&emsp;话：<span id="previewOnePhone">0663-8213816</span></p>
+                        <p>传&emsp;&emsp;真：<span id="previewOneFax">0663-8213816</span></p>
+                        <p>通信地址：<span id="previewOneAddress">广东省揭阳市榕城区莲花大道东揭阳市自然资源局</span></p>
+                    </div>
+                    <div class="previewInvole">广东省自然资源厅&emsp;监制</div>
+                </div>
+                <!--<div class="previewBtn">
+                    <button class="previewCommonBtn">直接打开</button>
+                    <button class="previewCommonBtn">下载</button>
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <!--三日预报单制作预览-->
+    <div class="previewPop" id="previewPopThree"  style="display: none;">
+        <div class="previewOverlay"></div>
+        <div class="previewShowbox">
+            <div class="previewShowboxMain">
+                <div class="previewClose">
+                    <span class="iconfont">&#xeaf2;</span>
+                </div>
+                <div class="previewContent previewContentThree">
+                    <!--<img src="../image/previewThree.png"/>-->
+                    <div class="previewTitle previewTitleMargin">NO.<span id="previewThreeNum">2020-51</span></div>
+                    <div class="previewWord previewWordLarge">揭阳市海洋环境预报</div>
+                    <p class="previewSubtxt">揭阳市自然资源局</p>
+                    <div class="previewTimeAndSigner previewLarge">
+                        <span><span id="previewThreeTime">2020年02月20日11时</span>发布</span>
+                        <span class="previewSigner">签发：<img src="" id="previewThreeSigner"/></span>
+                    </div>
+                    <div class="previewLine previewLarge"></div>
+                    <div class="previewMessage previewMessageLarge">
+                        <table class="previewTable">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">要素<br/>时间</th>
+                                    <th colspan="6" id="previewThreeNow" class="previewThLength">02月20日</th>
+                                    <th colspan="6" id="previewThreeTomorrow" class="previewThLength">02月21日</th>
+                                    <th colspan="6" id="previewThreeAfterTomorrow" class="previewThLength">02月22日</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="2">天文潮</td>
+                                    <td>潮时</td>
+                                    <td id="previewThreeTideTimeOne" class="previewTideLength">03:57</td>
+                                    <td id="previewThreeTideTimeTwo" class="previewTideLength">13:08</td>
+                                    <td id="previewThreeTideTimeThree" class="previewTideLength">15:26</td>
+                                    <td id="previewThreeTideTimeFour" class="previewTideLength">19:55</td>
+                                    <td id="previewThreeTideTimeFive" class="previewTideLength">19:55</td>
+                                    <td id="previewThreeTideTimeSix" class="previewTideLength">19:55</td>
+                                    <td id="previewThreeTideTimeSeven" class="previewTideLength">04:52</td>
+                                    <td id="previewThreeTideTimeEight" class="previewTideLength">14:00</td>
+                                    <td id="previewThreeTideTimeNine" class="previewTideLength">16:50</td>
+                                    <td id="previewThreeTideTimeTen" class="previewTideLength">20:45</td>
+                                    <td id="previewThreeTideTimeEleven" class="previewTideLength">20:45</td>
+                                    <td id="previewThreeTideTimeTwelve" class="previewTideLength">20:45</td>
+                                    <td id="previewThreeTideTimeThirteen" class="previewTideLength">05:42</td>
+                                    <td id="previewThreeTideTimeFourteen" class="previewTideLength">14:42</td>
+                                    <td id="previewThreeTideTimeFifteen" class="previewTideLength">17:46</td>
+                                    <td id="previewThreeTideTimeSixteen" class="previewTideLength">21:32</td>
+                                    <td id="previewThreeTideTimeSeventeen" class="previewTideLength">21:32</td>
+                                    <td id="previewThreeTideTimeEighteen" class="previewTideLength">21:32</td>
+                                </tr>
+                                <tr>
+                                    <td>潮高</td>
+                                    <td id="previewThreeTideHeightOne" class="previewTideLength">37</td>
+                                    <td id="previewThreeTideHeightTwo" class="previewTideLength">138</td>
+                                    <td id="previewThreeTideHeightThree" class="previewTideLength">130</td>
+                                    <td id="previewThreeTideHeightFour" class="previewTideLength">144</td>
+                                    <td id="previewThreeTideHeightFive" class="previewTideLength">144</td>
+                                    <td id="previewThreeTideHeightSix" class="previewTideLength">144</td>
+                                    <td id="previewThreeTideHeightSeven" class="previewTideLength">37</td>
+                                    <td id="previewThreeTideHeightEight" class="previewTideLength">143</td>
+                                    <td id="previewThreeTideHeightNine" class="previewTideLength">131</td>
+                                    <td id="previewThreeTideHeightTen" class="previewTideLength">144</td>
+                                    <td id="previewThreeTideHeightEleven" class="previewTideLength">144</td>
+                                    <td id="previewThreeTideHeightTwelve" class="previewTideLength">144</td>
+                                    <td id="previewThreeTideHeightThirteen" class="previewTideLength">39</td>
+                                    <td id="previewThreeTideHeightFourteen" class="previewTideLength">145</td>
+                                    <td id="previewThreeTideHeightFifteen" class="previewTideLength">129</td>
+                                    <td id="previewThreeTideHeightSixteen" class="previewTideLength">142</td>
+                                    <td id="previewThreeTideHeightSeventeen" class="previewTideLength">142</td>
+                                    <td id="previewThreeTideHeightEighteen" class="previewTideLength">142</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" rowspan="2">浪高(m)</td>
+                                    <td colspan="3" class="previewTdLength">白天</td>
+                                    <td colspan="3" class="previewTdLength">夜间</td>
+                                    <td colspan="3" class="previewTdLength">白天</td>
+                                    <td colspan="3" class="previewTdLength">夜间</td>
+                                    <td colspan="3" class="previewTdLength">白天</td>
+                                    <td colspan="3" class="previewTdLength">夜间</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" id="previewThreeWaveHeightDayOne" class="previewTdLength">1.2-1.5</td>
+                                    <td colspan="3" id="previewThreeWaveHeightNightOne" class="previewTdLength">1.3-1.7</td>
+                                    <td colspan="3" id="previewThreeWaveHeightDayTwo" class="previewTdLength">1.3-1.8</td>
+                                    <td colspan="3" id="previewThreeWaveHeightNightTwo" class="previewTdLength">1.2-1.5</td>
+                                    <td colspan="3" id="previewThreeWaveHeightDayThree" class="previewTdLength">1.1-1.4</td>
+                                    <td colspan="3" id="previewThreeWaveHeightNightThree" class="previewTdLength">1.3-1.8</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">浪级</td>
+                                    <td colspan="3" id="previewThreeWaveLevelDayOne" class="previewTdLength">轻浪到中浪</td>
+                                    <td colspan="3" id="previewThreeWaveLevelNightOne" class="previewTdLength">中浪</td>
+                                    <td colspan="3" id="previewThreeWaveLevelDayTwo" class="previewTdLength">中浪</td>
+                                    <td colspan="3" id="previewThreeWaveLevelNightTwo" class="previewTdLength">轻浪到中浪</td>
+                                    <td colspan="3" id="previewThreeWaveLevelDayThree" class="previewTdLength">轻浪到中浪</td>
+                                    <td colspan="3" id="previewThreeWaveLevelNightThree" class="previewTdLength">中浪</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">风向</td>
+                                    <td colspan="6" id="previewThreeWindDirOne" class="previewTdLength">东北</td>
+                                    <td colspan="6" id="previewThreeWindDirTwo" class="previewTdLength">东北</td>
+                                    <td colspan="6" id="previewThreeWindDirThree" class="previewTdLength">东北</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">风力</td>
+                                    <td colspan="6" id="previewThreeWindLevelOne" class="previewTdLength">4-5级</td>
+                                    <td colspan="6" id="previewThreeWindLevelTwo" class="previewTdLength">3-5级</td>
+                                    <td colspan="6" id="previewThreeWindLevelThree" class="previewTdLength">3-4级</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">水温（℃）</td>
+                                    <td colspan="6" id="previewThreeTempOne" class="previewTdLength">16.6-17.1</td>
+                                    <td colspan="6" id="previewThreeTempTwo" class="previewTdLength">16.7-17.2</td>
+                                    <td colspan="6" id="previewThreeTempThree" class="previewTdLength">16.8-17.3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="previewInfo previewLarge">
+                        <p>联&ensp;系&ensp;人：<span id="previewThreeContact">陈填盛</span></p>
+                        <p>电&emsp;&emsp;话：<span id="previewThreePhone">0663-8213816</span></p>
+                        <p>传&emsp;&emsp;真：<span id="previewThreeFax">0663-8213816</span></p>
+                        <p>通信地址：<span id="previewThreeAddress">广东省揭阳市榕城区莲花大道东揭阳市自然资源局</span></p>
+                    </div>
+                    <div class="previewInvole previewLarge">广东省自然资源厅&emsp;监制</div>
+                </div>
+                <!--<div class="previewBtn">
+                    <button class="previewCommonBtn">直接打开</button>
+                    <button class="previewCommonBtn">下载</button>
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <!--发送邮件-->
+    <div class="forcastPop" id="forecastEmail" style="display: none;">
+        <div class="overlay"></div>
+        <div class="showBox">
+            <div class="pop-title">
+                <span>发送邮件</span>
+                <i class="iconfont close-btn">&#xeaf2;</i>
+            </div>
+            <div class="pop-body" id="mainPop">
+                <div class="email-title-tab">
+                    <div class="email-title-item email-title-click" id="regularMail">普通邮件</div>
+                    <div class="email-title-item" id="sendRecordList">发送记录</div>
+                    <div class="email-title-item" id="addressBookList">通讯录</div>
+                </div>
+                <div class="email-body-tab">
+                    <!--普通邮件-->
+                    <div class="email-body-item">
+                        <div class="form-item-list">
+                            <div class="form-item">
+                                <div class="form-label">收件人</div>
+                                <div class="form-input">
+                                    <div type="text" class="form-input-common email-input-large email-list-clear scrollbarStyle" id="regularMailRecipientsAdd">
+                                        <!--<div class="email-list-add">
+                                            <span class="email-list-bold">王五</span>
+                                            <span class="email-list-normal">（232651@qq.com）</span>
+                                        </div>
+                                        <div class="email-list-add">
+                                            <span class="email-list-bold">王五</span>
+                                            <span class="email-list-normal">（232651@qq.com）</span>
+                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-item-list">
+                            <div class="form-item">
+                                <div class="form-label">主题</div>
+                                <div class="form-input">
+                                    <input type="text" placeholder="请输入主题" class="form-input-common email-input-large" id="regularMailTitleAdd"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="email-form-line"></div>
+                        <div class="form-item-list">
+                            <div class="form-item">
+                                <div class="form-label">正文</div>
+                                <div class="form-input">
+                                    <textarea type="text" placeholder="请输入正文内容" class="form-input-common email-input-large form-input-textarea scrollbarStyle" id="regularMailContentAdd"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-item-list">
+                            <div class="form-item">
+                                <div class="form-label">当前附件</div>
+                                <div class="form-input scrollbarStyle" id="regularMailAttachmentAdd">
+                                    <!--<div class="form-word">
+                                        <span>26日每日常规预报单1.doc</span>
+                                        <i class="iconfont form-word-close">&#xeaf2;</i>
+                                    </div>
+                                    <div class="form-word">
+                                        <span>26日每日常规预报单2.doc</span>
+                                        <i class="iconfont form-word-close">&#xeaf2;</i>
+                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="regularMail-tips alert">
+                            <img src="../image/alert-icon.png"/>
+                            <span>主题不能为空</span>
+                        </div>
+                        <div class="pop-btnEmail">
+                            <button class="popBtnEmail default-btnEmail" id="regularMailAddClose">取消</button>
+                            <button class="popBtnEmail color-btnEmail" id="regularMailAddSure">发送</button>
+                        </div>
+                        <div class="email-address-box">
+                            <div class="email-address-title">
+                                <span class="email-address-word">通讯录</span>
+                                <span class="email-address-text">已选<span class="email-address-num">0</span>人</span>
+                            </div>
+                            <div class="email-address-list scrollbarStyle">
+                                <!--<div class="email-address-item">
+                                    <span class="iconfont email-address-uncheck">&#xeadc;</span>
+                                    <span class="iconfont email-address-check">&#xead8;</span>
+                                    <span class="email-address-name">王五</span>
+                                </div>
+                                <div class="email-address-item">
+                                    <span class="iconfont email-address-uncheck">&#xeadc;</span>
+                                    <span class="iconfont email-address-check">&#xead8;</span>
+                                    <span class="email-address-name">王五</span>
+                                </div>
+                                <div class="email-address-item">
+                                    <span class="iconfont email-address-uncheck">&#xeadc;</span>
+                                    <span class="iconfont email-address-check">&#xead8;</span>
+                                    <span class="email-address-name">王五</span>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--发送记录-->
+                    <div class="email-body-item" style="display: none;">
+                        <div class="email-record-list email-record-listNo" style="display: none;">
+                            <img src="../image/no-info.png"/>
+                            <div class="info-no-text">暂无信息，请先创建</div>
+                        </div>
+                        <div class="email-record-list email-record-listYes">
+                            <table class="email-record-tab">
+                                <!--<thead>
+                                    <tr>
+                                        <th>收件人</th>
+                                        <th>主题</th>
+                                        <th>发件人</th>
+                                        <th>时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="email-tab-list">
+                                                <div class="email-tab-item">
+                                                    <div class="email-tab-name">王五</div>
+                                                    <div class="email-tab-num">232651@qq.com</div>
+                                                </div>
+                                                <div class="email-tab-item">
+                                                    <div class="email-tab-name">周四</div>
+                                                    <div class="email-tab-num">652157@qq.com</div>
+                                                </div>
+                                                <div class="email-tab-item">
+                                                    <div class="email-tab-name">周四</div>
+                                                    <div class="email-tab-num">652157@qq.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="javascript:void(0);">2020年2月26日海况预报单</a>
+                                        </td>
+                                        <td>
+                                            <div class="email-tab-name">周四</div>
+                                            <div class="email-tab-num">652157@qq.com</div>
+                                        </td>
+                                        <td>2020/02/26</td>
+                                    </tr>
+                                </tbody>-->
+                            </table>
+                            <div class="table-page record-page">
+                                <div class="page-txt">共<span id="record-totalPage">1</span>页</div>
+                                <div class="page-txt">共<span id="record-totalRecord">1</span>项</div>
+                                <div class="page-txt">当前第<span id="record-currentPage"></span>页</div>
+                                <div class="page-item" id="record-firstPage">首页</div>
+                                <div class="page-item" id="record-prevPage">上一页</div>
+                                <div class="page-item" id="record-nextPage">下一页</div>
+                                <div class="page-item" id="record-endPage">尾页</div>
+                                <div class="page-inputBox">
+                                    <span id="record-pageTo">跳转</span>
+                                    <input type="text" class="page-input" id="recordPageValue"/>
+                                    <span>页</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--通讯录-->
+                    <div class="email-body-item" style="display: none;">
+                        <div class="address-book-search">
+                            <div class="address-search-box">
+                                <i class="iconfont address-search-icon" id="addressBookSearchIcon">&#xeafe;</i>
+                                <input class="address-search-input" placeholder="请输入姓名关键字" id="addressBookSearchName"/>
+                            </div>
+                            <div class="address-tab-operator">
+                                <div class="address-operator-item" id="address-addIcon">
+                                    <i class="iconfont">&#xe67a;</i>
+                                    <spna>新增通讯录</spna>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="address-book-tab address-book-tabNo" style="display: none;">
+                            <img src="../image/no-info.png"/>
+                            <div class="info-no-text">暂无信息，请先创建</div>
+                        </div>
+                        <div class="address-book-tab address-book-tabYes">
+                            <table class="address-book-table">
+                                <!--<thead>
+                                    <tr>
+                                        <th>
+                                            <div class="iconfont address-uncheckIcon">&#xeadc;</div>
+                                            <div class="iconfont address-checkIcon">&#xead8;</div>
+                                        </th>
+                                        <th>姓名</th>
+                                        <th>单位</th>
+                                        <th>邮箱</th>
+                                        <th>电话</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="scrollbarStyle">
+                                    <tr>
+                                        <td>
+                                            <div class="iconfont address-uncheckIcon">&#xeadc;</div>
+                                            <div class="iconfont address-checkIcon">&#xead8;</div>
+                                        </td>
+                                        <td>王五</td>
+                                        <td>揭阳市自然资源局</td>
+                                        <td>zrzyt1@163.com</td>
+                                        <td>0821-22651234</td>
+                                        <td>
+                                            <span class="address-editIcon">
+                                                <i class="iconfont commonIcon">&#xeabe;</i>
+                                                <span>编辑</span>
+                                            </span>
+                                            <span class="address-delIcon">
+                                                <i class="iconfont commonIcon">&#xeafb;</i>
+                                                <span>删除</span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>-->
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--发送记录详情-->
+            <div class="pop-body" id="recordInfoPop" style="display: none;">
+                <div class="pop-back">
+                    <i class="iconfont recordBackIcon">&#xeb05;</i>
+                    <span>返回发送记录</span>
+                </div>
+                <div class="pop-record-content">
+                    <div class="pop-record-info">
+                        <div class="pop-record-word">收件人</div>
+                        <div class="pop-record-text" id="sendRecordRecipientsInfo">
+                            <!--<div class="pop-recive-item">
+                                <div class="pop-record-name">王五</div>
+                                <div class="pop-record-num">232651@qq.com</div>
+                            </div>
+                            <div class="pop-recive-item">
+                                <div class="pop-record-name">周四</div>
+                                <div class="pop-record-num">652157@qq.com</div>
+                            </div>-->
+                        </div>
+                    </div>
+                    <div class="pop-record-info">
+                        <div class="pop-record-word">主题</div>
+                        <div class="pop-record-text" id="sendRecordTitleInfo"><!--2020年2月26日海况预报单--></div>
+                    </div>
+                    <div class="pop-record-info">
+                        <div class="pop-record-word">正文</div>
+                        <div class="pop-record-text pop-record-height scrollbarStyle" id="sendRecordContentInfo"><!--这部分内容为正文，内容长度无限制。超过显示高度则出现滚动条。--></div>
+                    </div>
+                    <div class="pop-record-line"></div>
+                    <div class="pop-record-info">
+                        <div class="pop-record-word">当前附件</div>
+                        <div class="pop-record-text" id="sendRecordAttachmentsInfo">
+                            <!--<div class="pop-record-affix">26日每日常规预报单1.doc</div>
+                            <div class="pop-record-affix">26日每日常规预报单2.doc</div>-->
+                        </div>
+                    </div>
+                    <div class="pop-record-info">
+                        <div class="pop-record-word">发件人</div>
+                        <div class="pop-record-text" id="sendRecordSenderInfo"><!--gdzrzyt@163.com--></div>
+                    </div>
+                </div>
+            </div>
+            <!--新增通讯录-->
+            <div class="pop-body" id="addressAddPop" style="display: none;">
+                <div class="pop-back">
+                    <i class="iconfont addressAddBackIcon">&#xeb05;</i>
+                    <span>返回通讯录</span>
+                </div>
+                <div class="pop-address-content">
+                    <div class="pop-address-title">新增通讯录</div>
+                    <div class="pop-address-list">
+                        <div class="pop-address-item">
+                            <div class="pop-address-word">姓名</div>
+                            <div class="pop-address-input">
+                                <input type="text" class="address-input" placeholder="请输入姓名" id="nameAddressAdd"/>
+                            </div>
+                        </div>
+                        <div class="pop-address-item">
+                            <div class="pop-address-word">单位</div>
+                            <div class="pop-address-input">
+                                <input type="text" class="address-input" placeholder="请输入单位名称" id="unitAddressAdd"/>
+                            </div>
+                        </div>
+                        <div class="pop-address-item">
+                            <div class="pop-address-word">邮箱</div>
+                            <div class="pop-address-input">
+                                <input type="text" class="address-input" placeholder="请输入邮箱" id="emailAddressAdd"/>
+                            </div>
+                        </div>
+                        <div class="pop-address-item">
+                            <div class="pop-address-word">电话</div>
+                            <div class="pop-address-input">
+                                <input type="text" class="address-input" placeholder="请输入电话" id="phoneAddressAdd"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="addressBook-tips">姓名不能为空</div>
+                <div class="pop-address-btn">
+                    <button class="pop-address-common color-btnAddress" id="addressAddSure">确定</button>
+                </div>
+            </div>
+            <!--修改通讯录-->
+            <div class="pop-body" id="addressEditPop" style="display: none;">
+                <div class="pop-back">
+                    <i class="iconfont addressEditBackIcon">&#xeb05;</i>
+                    <span>返回通讯录</span>
+                </div>
+                <div class="pop-address-content">
+                    <div class="pop-address-title">编辑通讯录</div>
+                    <div class="pop-address-list">
+                        <div class="pop-address-item">
+                            <div class="pop-address-word">姓名</div>
+                            <div class="pop-address-input">
+                                <input type="text" class="address-input" placeholder="请输入姓名" id="nameAddressEdit"/>
+                            </div>
+                        </div>
+                        <div class="pop-address-item">
+                            <div class="pop-address-word">单位</div>
+                            <div class="pop-address-input">
+                                <input type="text" class="address-input" placeholder="请输入单位名称" id="unitAddressEdit"/>
+                            </div>
+                        </div>
+                        <div class="pop-address-item">
+                            <div class="pop-address-word">邮箱</div>
+                            <div class="pop-address-input">
+                                <input type="text" class="address-input" placeholder="请输入邮箱" id="emailAddressEdit"/>
+                            </div>
+                        </div>
+                        <div class="pop-address-item">
+                            <div class="pop-address-word">电话</div>
+                            <div class="pop-address-input">
+                                <input type="text" class="address-input" placeholder="请输入电话" id="phoneAddressEdit"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="addressBook-tips">姓名不能为空</div>
+                <div class="pop-address-btn">
+                    <button class="pop-address-common color-btnAddress" id="addressEditSure">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--普通邮件通讯录模块鼠标悬浮显示内容-->
+    <div class="email-address-show" id="email-address-show" style="display: none;">
+        <!--<span>232651@qq.com</span>-->
+    </div>
+    <!--发送记录超出部分鼠标悬浮显示内容-->
+    <div class="receive-show scrollbarStyle" id="receive-show">
+        <!--<div class="receive-show-item">
+            <div class="receive-show-name">王五</div>
+            <div class="receive-show-num">232651@qq.com</div>
+        </div>
+        <div class="receive-show-item">
+            <div class="receive-show-name">王五</div>
+            <div class="receive-show-num">232651@qq.com</div>
+        </div>
+        <div class="receive-show-item">
+            <div class="receive-show-name">王五</div>
+            <div class="receive-show-num">232651@qq.com</div>
+        </div>-->
+    </div>
+    <!--预报单导出-->
+    <div class="delAll-pop" id="export-pop" style="display: none;">
+        <div class="del-title">
+            <span>批量导出</span>
+            <i class="iconfont delAll-close">&#xeaf2;</i>
+        </div>
+        <div class="del-content">确定对检索的内容进行导出吗？</div>
+        <div class="del-btn">
+            <button class="del-btnIcon delclose-btn" id="exportClose">关闭</button>
+            <button class="del-btnIcon delsure-btn" id="exportSure">确定</button>
+        </div>
+    </div>
+    <!--预报单上传-->
+    <div class="delAll-pop" id="upload-pop" style="display: none;">
+        <div class="del-title">
+            <span>上传</span>
+            <i class="iconfont delAll-close">&#xeaf2;</i>
+        </div>
+        <div class="del-content">确定上传此内容吗？</div>
+        <div class="del-btn">
+            <button class="del-btnIcon delclose-btn" id="uploadClose">关闭</button>
+            <button class="del-btnIcon delsure-btn" id="uploadSure">确定</button>
+        </div>
+    </div>
+    <!--预报单删除-->
+    <div class="delAll-pop" id="del-pop" style="display: none;">
+        <div class="del-title">
+            <span>删除</span>
+            <i class="iconfont delAll-close">&#xeaf2;</i>
+        </div>
+        <div class="del-content">确定删除此内容吗？</div>
+        <div class="del-btn">
+            <button class="del-btnIcon delclose-btn" id="delClose">关闭</button>
+            <button class="del-btnIcon delsure-btn" id="delSure">确定</button>
+        </div>
+    </div>
+    <!--通讯录删除-->
+    <div class="delAll-pop" id="delAddress-pop" style="display: none;">
+        <div class="del-title">
+            <span>删除</span>
+            <i class="iconfont delAll-close">&#xeaf2;</i>
+        </div>
+        <div class="del-content">确定删除此内容吗？</div>
+        <div class="del-btn">
+            <button class="del-btnIcon delclose-btn" id="delCloseAddress">关闭</button>
+            <button class="del-btnIcon delsure-btn" id="delSureAddress">确定</button>
+        </div>
+    </div>
+    <!--发送邮件选择-->
+    <div class="delAll-pop" id="mailSelect-pop" style="display: none;">
+        <div class="del-title">
+            <span>发送邮件</span>
+            <i class="iconfont delAll-close">&#xeaf2;</i>
+        </div>
+        <div class="del-content">至少选择一项才可以发送邮件</div>
+        <div class="del-btn">
+            <button class="del-btnIcon delclose-btn">关闭</button>
+        </div>
+    </div>
+    <!--操作成功-->
+    <div class="totalPop" id="success" style="display: none;">
+        <img src="../image/success-icon.png"/>
+        <span>操作成功</span>
+    </div>
+    <!--操作失败-->
+    <div class="totalPop" id="fail" style="display: none;">
+        <img src="../image/fail-icon.png"/>
+        <span>操作失败</span>
+    </div>
+    <div class="totalPop" id="alert" style="display: none;">
+        <img src="../image/alert-icon.png"/>
+        <span>天文潮数据库中不存在此发布时间的数据，请人工填写</span>
+    </div>
+    <!--加载中提示-->
+    <div class="loading-pop" id="loading" style="display: none;">
+        <div class="overlayOpacity"></div>
+        <div class="loadingBox">
+            <img src="../image/loading.gif"/>
+        </div>
+    </div>
+</body>
+</html>

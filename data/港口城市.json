@@ -1,0 +1,4965 @@
+{
+	"msg": "success",
+	"code": 200,
+	"data": [
+		{
+			"location": {
+				"id": "064387",
+				"name": "基加利",
+				"path": "卢旺达, 基加利",
+				"longitude": 30.12,
+				"latitude": -1.97,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 25.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "4级",
+					"low": 15.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/13",
+					"high": 24.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "4级",
+					"low": 14.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/12 00:30"
+		}, {
+			"location": {
+				"id": "085574",
+				"name": "圣地亚哥",
+				"path": "智利, 圣地亚哥",
+				"longitude": -70.78,
+				"latitude": -33.28,
+				"timezone": -5
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 16.0,
+					"dayText": "阴",
+					"dayCode": 2,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "微风",
+					"low": 1.0,
+					"nightText": "中雨",
+					"nightCode": 8,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "7级"
+				}, {
+					"date": "2020/06/12",
+					"high": 12.0,
+					"dayText": "中雨",
+					"dayCode": 8,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "4级",
+					"low": -2.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "微风"
+				}
+			],
+			"lastUpdate": "2020/06/11 18:30"
+		}, {
+			"location": {
+				"id": "062721",
+				"name": "喀土穆",
+				"path": "苏丹, 喀土穆",
+				"longitude": 32.55,
+				"latitude": 15.6,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 41.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "6级",
+					"low": 28.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/13",
+					"high": 40.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 28.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "6级"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "041256",
+				"name": "马斯喀特",
+				"path": "阿曼, 马斯喀特",
+				"longitude": 58.6,
+				"latitude": 23.8,
+				"timezone": 4
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 40.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "3级",
+					"low": 33.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 41.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "3级",
+					"low": 36.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 02:30"
+		}, {
+			"location": {
+				"id": "041217",
+				"name": "阿布扎比",
+				"path": "阿联酋, 阿布扎比",
+				"longitude": 54.65,
+				"latitude": 24.43,
+				"timezone": 4
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 41.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "6级",
+					"low": 27.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "微风"
+				}, {
+					"date": "2020/06/13",
+					"high": 39.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "6级",
+					"low": 28.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 02:30"
+		}, {
+			"location": {
+				"id": "G84071",
+				"name": "基多",
+				"path": "厄瓜多尔, 基多",
+				"longitude": -78.47,
+				"latitude": -0.13,
+				"timezone": -5
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 20.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "5级",
+					"low": 9.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "微风"
+				}, {
+					"date": "2020/06/12",
+					"high": 20.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "5级",
+					"low": 10.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "微风"
+				}
+			],
+			"lastUpdate": "2020/06/11 17:30"
+		}, {
+			"location": {
+				"id": "078862",
+				"name": "圣约翰",
+				"path": "安提瓜和巴布达, 圣约翰",
+				"longitude": -61.78,
+				"latitude": 17.12,
+				"timezone": -4
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 29.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "4级",
+					"low": 25.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 30.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "微风",
+					"low": 26.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "微风"
+				}
+			],
+			"lastUpdate": "2020/06/11 19:30"
+		}, {
+			"location": {
+				"id": "096315",
+				"name": "斯里巴加湾市",
+				"path": "文莱, 斯里巴加湾市",
+				"longitude": 114.93,
+				"latitude": 4.93,
+				"timezone": 8
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 31.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "4级",
+					"low": 25.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 34.0,
+					"dayText": "中雨",
+					"dayCode": 8,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 25.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/12 06:30"
+		}, {
+			"location": {
+				"id": "044292",
+				"name": "乌兰巴托",
+				"path": "蒙古, 乌兰巴托",
+				"longitude": 106.87,
+				"latitude": 47.92,
+				"timezone": 7
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 13.0,
+					"dayText": "阴",
+					"dayCode": 2,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "6级",
+					"low": 4.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "6级"
+				}, {
+					"date": "2020/06/13",
+					"high": 20.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "7级",
+					"low": 4.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 06:30"
+		}, {
+			"location": {
+				"id": "027612",
+				"name": "莫斯科",
+				"path": "俄罗斯, 莫斯科",
+				"longitude": 37.62,
+				"latitude": 55.83,
+				"timezone": 3
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 22.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "5级",
+					"low": 12.0,
+					"nightText": "中雨",
+					"nightCode": 8,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/13",
+					"high": 17.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "6级",
+					"low": 10.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "6级"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "064810",
+				"name": "马拉博",
+				"path": "赤道几内亚, 马拉博",
+				"longitude": 8.28,
+				"latitude": 3.27,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 29.0,
+					"dayText": "中雨",
+					"dayCode": 8,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "微风",
+					"low": 23.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 29.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 24.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "013615",
+				"name": "地拉那",
+				"path": "阿尔巴尼亚, 地拉那",
+				"longitude": 19.78,
+				"latitude": 41.33,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 25.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "5级",
+					"low": 13.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "微风"
+				}, {
+					"date": "2020/06/12",
+					"high": 25.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "5级",
+					"low": 13.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "011520",
+				"name": "布拉格",
+				"path": "捷克, 布拉格",
+				"longitude": 14.45,
+				"latitude": 50.02,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 22.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "4级",
+					"low": 10.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/12",
+					"high": 26.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "5级",
+					"low": 14.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "067001",
+				"name": "莫罗尼",
+				"path": "科摩罗, 莫罗尼",
+				"longitude": 43.14,
+				"latitude": -11.42,
+				"timezone": 3
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 25.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 20.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/13",
+					"high": 25.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "6级",
+					"low": 21.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "6级"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "037788",
+				"name": "埃里温",
+				"path": "亚美尼亚, 埃里温",
+				"longitude": 44.38,
+				"latitude": 40.15,
+				"timezone": 3
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 32.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "6级",
+					"low": 15.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 34.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 16.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "微风"
+				}
+			],
+			"lastUpdate": "2020/06/12 02:30"
+		}, {
+			"location": {
+				"id": "011816",
+				"name": "布拉迪斯拉发",
+				"path": "斯洛伐克, 布拉迪斯拉发",
+				"longitude": 17.2,
+				"latitude": 48.2,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 23.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "4级",
+					"low": 13.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/12",
+					"high": 26.0,
+					"dayText": "阴",
+					"dayCode": 2,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "4级",
+					"low": 16.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "037864",
+				"name": "巴库",
+				"path": "阿塞拜疆, 巴库",
+				"longitude": 50.07,
+				"latitude": 40.45,
+				"timezone": 3
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 32.0,
+					"dayText": "阴",
+					"dayCode": 2,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "6级",
+					"low": 21.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 34.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "5级",
+					"low": 22.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 02:30"
+		}, {
+			"location": {
+				"id": "078970",
+				"name": "西班牙港",
+				"path": "特立尼达和多巴哥, 西班牙港",
+				"longitude": -61.35,
+				"latitude": 10.62,
+				"timezone": -4
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 29.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "6级",
+					"low": 23.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/12",
+					"high": 30.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "6级",
+					"low": 22.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/11 18:30"
+		}, {
+			"location": {
+				"id": "063705",
+				"name": "坎帕拉",
+				"path": "乌干达, 坎帕拉",
+				"longitude": 32.27,
+				"latitude": 0.03,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 23.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "4级",
+					"low": 19.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/13",
+					"high": 23.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 19.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "047108",
+				"name": "首尔",
+				"path": "韩国, 首尔",
+				"longitude": 126.97,
+				"latitude": 37.57,
+				"timezone": 8
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 29.0,
+					"dayText": "阴",
+					"dayCode": 2,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 18.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 31.0,
+					"dayText": "阴",
+					"dayCode": 2,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "4级",
+					"low": 18.0,
+					"nightText": "中雨",
+					"nightCode": 8,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/12 07:30"
+		}, {
+			"location": {
+				"id": "016242",
+				"name": "罗马",
+				"path": "意大利, 罗马",
+				"longitude": 12.23,
+				"latitude": 41.8,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 20.0,
+					"dayText": "中雨",
+					"dayCode": 8,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "6级",
+					"low": 12.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "微风"
+				}, {
+					"date": "2020/06/12",
+					"high": 24.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 13.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "G05025",
+				"name": "罗安达",
+				"path": "安哥拉, 罗安达",
+				"longitude": 13.2,
+				"latitude": -8.5,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 24.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "6级",
+					"low": 22.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "6级"
+				}, {
+					"date": "2020/06/12",
+					"high": 24.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 22.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "013586",
+				"name": "斯科普里",
+				"path": "北马其顿（原马其顿）, 斯科普里",
+				"longitude": 21.65,
+				"latitude": 41.97,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 25.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "微风",
+					"low": 11.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/12",
+					"high": 24.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "5级",
+					"low": 13.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "G05020",
+				"name": "朱巴",
+				"path": "南苏丹, 朱巴",
+				"longitude": 31.34,
+				"latitude": 4.51,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 29.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "4级",
+					"low": 20.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/13",
+					"high": 31.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 21.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "064390",
+				"name": "布琼布拉",
+				"path": "布隆迪, 布琼布拉",
+				"longitude": 29.19,
+				"latitude": -3.19,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 27.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 20.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/13",
+					"high": 26.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 19.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/12 00:30"
+		}, {
+			"location": {
+				"id": "014240",
+				"name": "萨格勒布",
+				"path": "克罗地亚, 萨格勒布",
+				"longitude": 16.03,
+				"latitude": 45.82,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 23.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 12.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 26.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "5级",
+					"low": 14.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "065387",
+				"name": "洛美",
+				"path": "多哥, 洛美",
+				"longitude": 1.15,
+				"latitude": 6.1,
+				"timezone": 0
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 29.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 23.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 29.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 23.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 22:30"
+		}, {
+			"location": {
+				"id": "014014",
+				"name": "卢布尔雅那",
+				"path": "斯洛文尼亚, 卢布尔雅那",
+				"longitude": 14.48,
+				"latitude": 46.22,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 23.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 10.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "微风"
+				}, {
+					"date": "2020/06/12",
+					"high": 25.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 11.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "G05022",
+				"name": "阿洛菲",
+				"path": "纽埃, 阿洛菲",
+				"longitude": -169.55,
+				"latitude": -19.03,
+				"timezone": -11
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 25.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "7级",
+					"low": 24.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "7级"
+				}, {
+					"date": "2020/06/12",
+					"high": 24.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "7级",
+					"low": 23.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "7级"
+				}
+			],
+			"lastUpdate": "2020/06/11 11:30"
+		}, {
+			"location": {
+				"id": "063125",
+				"name": "吉布提市",
+				"path": "吉布提, 吉布提市",
+				"longitude": 43.15,
+				"latitude": 11.55,
+				"timezone": 3
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 39.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "6级",
+					"low": 30.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "7级"
+				}, {
+					"date": "2020/06/13",
+					"high": 37.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "5级",
+					"low": 30.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "6级"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "064950",
+				"name": "雅温得",
+				"path": "喀麦隆, 雅温得",
+				"longitude": 11.31,
+				"latitude": 3.5,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 25.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 19.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 26.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "微风",
+					"low": 19.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "G05008",
+				"name": "圣乔治",
+				"path": "格林纳达, 圣乔治",
+				"longitude": -61.44,
+				"latitude": 12.04,
+				"timezone": -4
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 30.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "6级",
+					"low": 25.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "6级"
+				}, {
+					"date": "2020/06/12",
+					"high": 29.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 27.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/11 18:30"
+		}, {
+			"location": {
+				"id": "013274",
+				"name": "贝尔格莱德",
+				"path": "塞尔维亚, 贝尔格莱德",
+				"longitude": 20.47,
+				"latitude": 44.8,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 21.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "4级",
+					"low": 15.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/12",
+					"high": 22.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "5级",
+					"low": 16.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "078762",
+				"name": "圣何塞",
+				"path": "哥斯达黎加, 圣何塞",
+				"longitude": 275.82,
+				"latitude": 9.98,
+				"timezone": -6
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 25.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 18.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 26.0,
+					"dayText": "中雨",
+					"dayCode": 8,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 18.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/11 16:30"
+		}, {
+			"location": {
+				"id": "026730",
+				"name": "维尔纽斯",
+				"path": "立陶宛, 维尔纽斯",
+				"longitude": 25.1,
+				"latitude": 54.63,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 29.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "5级",
+					"low": 17.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/13",
+					"high": 22.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "6级",
+					"low": 11.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "6级"
+				}
+			],
+			"lastUpdate": "2020/06/12 00:30"
+		}, {
+			"location": {
+				"id": "G05021",
+				"name": "弗里敦",
+				"path": "塞拉利昂, 弗里敦",
+				"longitude": -13.17,
+				"latitude": 8.3,
+				"timezone": -1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 27.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 23.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 27.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "微风",
+					"low": 24.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/11 22:30"
+		}, {
+			"location": {
+				"id": "063260",
+				"name": "摩加迪沙",
+				"path": "索马里, 摩加迪沙",
+				"longitude": 45.35,
+				"latitude": 2.03,
+				"timezone": 3
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 28.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "6级",
+					"low": 26.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "6级"
+				}, {
+					"date": "2020/06/13",
+					"high": 28.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "6级",
+					"low": 26.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "6级"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "G05023",
+				"name": "乔治敦",
+				"path": "圭亚那, 乔治敦",
+				"longitude": -58.1,
+				"latitude": 6.46,
+				"timezone": -4
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 29.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "微风",
+					"low": 22.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/12",
+					"high": 27.0,
+					"dayText": "中雨",
+					"dayCode": 8,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "5级",
+					"low": 22.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 17:30"
+		}, {
+			"location": {
+				"id": "008589",
+				"name": "普拉亚",
+				"path": "佛得角, 普拉亚",
+				"longitude": -23.71,
+				"latitude": 14.54,
+				"timezone": -2
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 29.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 23.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 29.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "4级",
+					"low": 23.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 21:30"
+		}, {
+			"location": {
+				"id": "033345",
+				"name": "基辅",
+				"path": "乌克兰, 基辅",
+				"longitude": 30.57,
+				"latitude": 50.4,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 32.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "6级",
+					"low": 20.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 31.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "5级",
+					"low": 19.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/12 00:30"
+		}, {
+			"location": {
+				"id": "086580",
+				"name": "蒙得维的亚",
+				"path": "乌拉圭, 蒙得维的亚",
+				"longitude": -56.0,
+				"latitude": -34.83,
+				"timezone": -4
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 15.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "5级",
+					"low": 7.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/12",
+					"high": 14.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 8.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "8级"
+				}
+			],
+			"lastUpdate": "2020/06/11 19:30"
+		}, {
+			"location": {
+				"id": "012375",
+				"name": "华沙",
+				"path": "波兰, 华沙",
+				"longitude": 20.97,
+				"latitude": 52.17,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 26.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "4级",
+					"low": 17.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 31.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "微风",
+					"low": 17.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "060715",
+				"name": "突尼斯市",
+				"path": "突尼斯, 突尼斯市",
+				"longitude": 10.23,
+				"latitude": 36.83,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 29.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "6级",
+					"low": 19.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 35.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "6级",
+					"low": 20.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "016716",
+				"name": "雅典",
+				"path": "希腊, 雅典",
+				"longitude": 23.73,
+				"latitude": 37.9,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 29.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "4级",
+					"low": 19.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 30.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "5级",
+					"low": 20.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/12 00:30"
+		}, {
+			"location": {
+				"id": "067083",
+				"name": "塔那那利佛",
+				"path": "马达加斯加, 塔那那利佛",
+				"longitude": 47.48,
+				"latitude": -18.8,
+				"timezone": 3
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 20.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 11.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 22.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 9.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "041150",
+				"name": "麦纳麦",
+				"path": "巴林, 麦纳麦",
+				"longitude": 50.65,
+				"latitude": 26.27,
+				"timezone": 3
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 38.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "5级",
+					"low": 32.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/13",
+					"high": 36.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "6级",
+					"low": 31.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "7级"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "G05017",
+				"name": "班珠尔",
+				"path": "冈比亚, 班珠尔",
+				"longitude": -16.39,
+				"latitude": 13.28,
+				"timezone": -1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 35.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 23.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/12",
+					"high": 35.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "6级",
+					"low": 24.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/11 22:30"
+		}, {
+			"location": {
+				"id": "041170",
+				"name": "多哈",
+				"path": "卡塔尔, 多哈",
+				"longitude": 51.34,
+				"latitude": 25.15,
+				"timezone": 3
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 44.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "6级",
+					"low": 29.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/13",
+					"high": 41.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "微风",
+					"low": 33.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "6级"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "078224",
+				"name": "哈瓦那",
+				"path": "古巴, 哈瓦那",
+				"longitude": -82.4,
+				"latitude": 22.98,
+				"timezone": -5
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 29.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "5级",
+					"low": 24.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/12",
+					"high": 29.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "4级",
+					"low": 24.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 17:30"
+		}, {
+			"location": {
+				"id": "54511",
+				"name": "北京",
+				"path": "中国, 北京, 北京",
+				"longitude": 116.47,
+				"latitude": 39.8,
+				"timezone": 8
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 33.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "南风",
+					"dayWindScale": "微风",
+					"low": 23.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "南风",
+					"nightWindScale": "微风"
+				}, {
+					"date": "2020/06/13",
+					"high": 33.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "3~4级",
+					"low": 21.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "北风",
+					"nightWindScale": "3~4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 08:00"
+		}, {
+			"location": {
+				"id": "063980",
+				"name": "维多利亚",
+				"path": "塞舌尔, 维多利亚",
+				"longitude": 55.31,
+				"latitude": -4.4,
+				"timezone": 4
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 29.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "6级",
+					"low": 27.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/13",
+					"high": 30.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 26.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 02:30"
+		}, {
+			"location": {
+				"id": "061641",
+				"name": "达喀尔",
+				"path": "塞内加尔, 达喀尔",
+				"longitude": -17.5,
+				"latitude": 14.73,
+				"timezone": -1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 29.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 25.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 29.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 25.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 22:30"
+		}, {
+			"location": {
+				"id": "G05007",
+				"name": "阿皮亚",
+				"path": "萨摩亚, 阿皮亚",
+				"longitude": -171.45,
+				"latitude": -13.48,
+				"timezone": -11
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 27.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 26.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "6级"
+				}, {
+					"date": "2020/06/12",
+					"high": 27.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "6级",
+					"low": 26.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "7级"
+				}
+			],
+			"lastUpdate": "2020/06/11 11:30"
+		}, {
+			"location": {
+				"id": "065344",
+				"name": "波多诺伏",
+				"path": "贝宁, 波多诺伏",
+				"longitude": 2.23,
+				"latitude": 6.21,
+				"timezone": 0
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 29.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 24.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 28.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 24.0,
+					"nightText": "中雨",
+					"nightCode": 8,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "065125",
+				"name": "阿布贾",
+				"path": "尼日利亚, 阿布贾",
+				"longitude": 7.0,
+				"latitude": 9.15,
+				"timezone": 0
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 31.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 23.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/12",
+					"high": 30.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "4级",
+					"low": 23.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "065563",
+				"name": "亚穆苏克罗",
+				"path": "科特迪瓦, 亚穆苏克罗",
+				"longitude": -5.61,
+				"latitude": 6.54,
+				"timezone": 0
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 28.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 22.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 30.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "3级",
+					"low": 22.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 22:30"
+		}, {
+			"location": {
+				"id": "G05012",
+				"name": "维拉港",
+				"path": "瓦努阿图, 维拉港",
+				"longitude": 168.19,
+				"latitude": -17.44,
+				"timezone": 11
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 25.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "7级",
+					"low": 24.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "7级"
+				}, {
+					"date": "2020/06/13",
+					"high": 26.0,
+					"dayText": "阴",
+					"dayCode": 2,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "7级",
+					"low": 24.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "7级"
+				}
+			],
+			"lastUpdate": "2020/06/12 09:30"
+		}, {
+			"location": {
+				"id": "G05001",
+				"name": "金斯敦",
+				"path": "牙买加, 金斯敦",
+				"longitude": -76.48,
+				"latitude": 17.58,
+				"timezone": -5
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 28.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "5级",
+					"low": 26.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 28.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "微风",
+					"low": 25.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/11 17:30"
+		}, {
+			"location": {
+				"id": "048991",
+				"name": "金边",
+				"path": "柬埔寨, 金边",
+				"longitude": 104.85,
+				"latitude": 11.55,
+				"timezone": 7
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 34.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "微风",
+					"low": 25.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/13",
+					"high": 33.0,
+					"dayText": "中雨",
+					"dayCode": 8,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 25.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "微风"
+				}
+			],
+			"lastUpdate": "2020/06/12 05:30"
+		}, {
+			"location": {
+				"id": "061291",
+				"name": "巴马科",
+				"path": "马里, 巴马科",
+				"longitude": -7.97,
+				"latitude": 12.32,
+				"timezone": -1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 36.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 24.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/12",
+					"high": 36.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 24.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 22:30"
+		}, {
+			"location": {
+				"id": "G05013",
+				"name": "阿瓦鲁阿",
+				"path": "库克群岛, 阿瓦鲁阿",
+				"longitude": -159.45,
+				"latitude": -21.12,
+				"timezone": -11
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 25.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 23.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "6级"
+				}, {
+					"date": "2020/06/12",
+					"high": 23.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "6级",
+					"low": 22.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/11 12:30"
+		}, {
+			"location": {
+				"id": "064700",
+				"name": "恩贾梅纳",
+				"path": "乍得, 恩贾梅纳",
+				"longitude": 15.02,
+				"latitude": 12.08,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 38.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 27.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 45.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "7级",
+					"low": 26.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "038457",
+				"name": "塔什干",
+				"path": "乌兹别克斯坦, 塔什干",
+				"longitude": 69.27,
+				"latitude": 41.27,
+				"timezone": 5
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 32.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "4级",
+					"low": 17.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/13",
+					"high": 35.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "4级",
+					"low": 19.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/12 03:30"
+		}, {
+			"location": {
+				"id": "G05018",
+				"name": "多多马",
+				"path": "坦桑尼亚, 多多马",
+				"longitude": 35.4,
+				"latitude": -6.1,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 27.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 17.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "6级"
+				}, {
+					"date": "2020/06/13",
+					"high": 27.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 17.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "026850",
+				"name": "明斯克",
+				"path": "白俄罗斯, 明斯克",
+				"longitude": 27.63,
+				"latitude": 53.93,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 29.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "6级",
+					"low": 17.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/13",
+					"high": 21.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "7级",
+					"low": 14.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "7级"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "G05011",
+				"name": "卢森堡",
+				"path": "卢森堡, 卢森堡",
+				"longitude": 6.08,
+				"latitude": 49.37,
+				"timezone": 0
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 19.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "微风",
+					"low": 11.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 23.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 12.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "G05019",
+				"name": "温得和克",
+				"path": "纳米比亚, 温得和克",
+				"longitude": 17.06,
+				"latitude": -22.34,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 16.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "6级",
+					"low": 2.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "7级"
+				}, {
+					"date": "2020/06/12",
+					"high": 14.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "7级",
+					"low": 2.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "6级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "G05016",
+				"name": "帕拉马里博",
+				"path": "苏里南, 帕拉马里博",
+				"longitude": -55.14,
+				"latitude": 5.52,
+				"timezone": -4
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 32.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "5级",
+					"low": 22.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/12",
+					"high": 30.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "微风",
+					"low": 22.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 19:30"
+		}, {
+			"location": {
+				"id": "048820",
+				"name": "河内",
+				"path": "越南, 河内",
+				"longitude": 105.48,
+				"latitude": 21.01,
+				"timezone": 7
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 37.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 26.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 37.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "4级",
+					"low": 25.0,
+					"nightText": "大雨",
+					"nightCode": 9,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 05:30"
+		}, {
+			"location": {
+				"id": "065472",
+				"name": "阿克拉",
+				"path": "加纳, 阿克拉",
+				"longitude": -0.5,
+				"latitude": 5.36,
+				"timezone": 0
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 30.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 24.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 30.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 24.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 22:30"
+		}, {
+			"location": {
+				"id": "044454",
+				"name": "加德满都",
+				"path": "尼泊尔, 加德满都",
+				"longitude": 85.37,
+				"latitude": 27.7,
+				"timezone": 6
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 28.0,
+					"dayText": "中雨",
+					"dayCode": 8,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "4级",
+					"low": 20.0,
+					"nightText": "大雨",
+					"nightCode": 9,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/13",
+					"high": 29.0,
+					"dayText": "大雨",
+					"dayCode": 9,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 20.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "微风"
+				}
+			],
+			"lastUpdate": "2020/06/12 03:30"
+		}, {
+			"location": {
+				"id": "067341",
+				"name": "马普托",
+				"path": "莫桑比克, 马普托",
+				"longitude": 32.34,
+				"latitude": -25.55,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 24.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "6级",
+					"low": 12.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/13",
+					"high": 24.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 12.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/12 00:30"
+		}, {
+			"location": {
+				"id": "G05026",
+				"name": "罗索",
+				"path": "多米尼克, 罗索",
+				"longitude": -61.23,
+				"latitude": 15.18,
+				"timezone": -4
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 29.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "5级",
+					"low": 26.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/12",
+					"high": 28.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 26.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/11 18:30"
+		}, {
+			"location": {
+				"id": "043555",
+				"name": "马累",
+				"path": "马尔代夫, 马累",
+				"longitude": 73.53,
+				"latitude": 4.2,
+				"timezone": 5
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 31.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 28.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "6级"
+				}, {
+					"date": "2020/06/13",
+					"high": 30.0,
+					"dayText": "中雨",
+					"dayCode": 8,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "7级",
+					"low": 27.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "微风"
+				}
+			],
+			"lastUpdate": "2020/06/12 03:30"
+		}, {
+			"location": {
+				"id": "011035",
+				"name": "维也纳",
+				"path": "奥地利, 维也纳",
+				"longitude": 16.37,
+				"latitude": 48.25,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 22.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "4级",
+					"low": 11.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/12",
+					"high": 25.0,
+					"dayText": "阴",
+					"dayCode": 2,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "3级",
+					"low": 15.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "013462",
+				"name": "波德戈里察",
+				"path": "黑山, 波德戈里察",
+				"longitude": 19.25,
+				"latitude": 42.37,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 22.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "4级",
+					"low": 14.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/12",
+					"high": 25.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 16.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "微风"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "078806",
+				"name": "巴拿马城",
+				"path": "巴拿马, 巴拿马城",
+				"longitude": -79.55,
+				"latitude": 8.98,
+				"timezone": -5
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 27.0,
+					"dayText": "中雨",
+					"dayCode": 8,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "4级",
+					"low": 23.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/12",
+					"high": 27.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 24.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "微风"
+				}
+			],
+			"lastUpdate": "2020/06/11 17:30"
+		}, {
+			"location": {
+				"id": "061832",
+				"name": "科纳克里",
+				"path": "几内亚, 科纳克里",
+				"longitude": -13.77,
+				"latitude": 9.34,
+				"timezone": -1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 28.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 25.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 28.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "4级",
+					"low": 25.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/11 22:30"
+		}, {
+			"location": {
+				"id": "012843",
+				"name": "布达佩斯",
+				"path": "匈牙利, 布达佩斯",
+				"longitude": 19.18,
+				"latitude": 47.43,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 22.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "3级",
+					"low": 13.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 26.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "5级",
+					"low": 16.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "076405",
+				"name": "拉巴斯",
+				"path": "玻利维亚, 拉巴斯",
+				"longitude": -110.18,
+				"latitude": 24.1,
+				"timezone": -7
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 37.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "3级",
+					"low": 20.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/12",
+					"high": 39.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "3级",
+					"low": 21.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 15:30"
+		}, {
+			"location": {
+				"id": "040438",
+				"name": "利雅得",
+				"path": "沙特阿拉伯, 利雅得",
+				"longitude": 46.73,
+				"latitude": 24.72,
+				"timezone": 3
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 43.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "微风",
+					"low": 26.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 41.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "4级",
+					"low": 26.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "G05004",
+				"name": "苏瓦",
+				"path": "斐济, 苏瓦",
+				"longitude": 178.25,
+				"latitude": 18.08,
+				"timezone": 12
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 25.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "微风",
+					"low": 22.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "6级"
+				}, {
+					"date": "2020/06/13",
+					"high": 26.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "6级",
+					"low": 22.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "6级"
+				}
+			],
+			"lastUpdate": "2020/06/12 10:30"
+		}, {
+			"location": {
+				"id": "026422",
+				"name": "里加",
+				"path": "拉脱维亚, 里加",
+				"longitude": 24.05,
+				"latitude": 56.97,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 23.0,
+					"dayText": "阴",
+					"dayCode": 2,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "5级",
+					"low": 16.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/13",
+					"high": 21.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "6级",
+					"low": 11.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/12 00:30"
+		}, {
+			"location": {
+				"id": "G05024",
+				"name": "布拉柴维尔",
+				"path": "刚果布, 布拉柴维尔",
+				"longitude": 15.14,
+				"latitude": -4.14,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 28.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 18.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/12",
+					"high": 28.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 18.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "041923",
+				"name": "达卡",
+				"path": "孟加拉国, 达卡",
+				"longitude": 90.38,
+				"latitude": 23.77,
+				"timezone": 6
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 31.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "6级",
+					"low": 26.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/13",
+					"high": 31.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "6级",
+					"low": 26.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 04:30"
+		}, {
+			"location": {
+				"id": "G05009",
+				"name": "蒙罗维亚",
+				"path": "利比里亚, 蒙罗维亚",
+				"longitude": -10.46,
+				"latitude": 6.2,
+				"timezone": -1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 26.0,
+					"dayText": "中雨",
+					"dayCode": 8,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "3级",
+					"low": 23.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/12",
+					"high": 28.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "4级",
+					"low": 23.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/11 22:30"
+		}, {
+			"location": {
+				"id": "067665",
+				"name": "卢萨卡",
+				"path": "赞比亚, 卢萨卡",
+				"longitude": 28.45,
+				"latitude": -15.32,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 26.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 13.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 23.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "7级",
+					"low": 12.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/12 00:30"
+		}, {
+			"location": {
+				"id": "048647",
+				"name": "吉隆坡",
+				"path": "马来西亚, 吉隆坡",
+				"longitude": 101.55,
+				"latitude": 3.12,
+				"timezone": 7
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 30.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "4级",
+					"low": 25.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/13",
+					"high": 33.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 25.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "微风"
+				}
+			],
+			"lastUpdate": "2020/06/12 06:30"
+		}, {
+			"location": {
+				"id": "G05006",
+				"name": "圣多明各",
+				"path": "多米尼加, 圣多明各",
+				"longitude": -69.57,
+				"latitude": 18.3,
+				"timezone": -5
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 30.0,
+					"dayText": "阴",
+					"dayCode": 2,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "4级",
+					"low": 25.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 30.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "4级",
+					"low": 25.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 18:30"
+		}, {
+			"location": {
+				"id": "040650",
+				"name": "巴格达",
+				"path": "伊拉克, 巴格达",
+				"longitude": 44.23,
+				"latitude": 33.23,
+				"timezone": 3
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 38.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "6级",
+					"low": 24.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/13",
+					"high": 38.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "6级",
+					"low": 24.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "067775",
+				"name": "哈拉雷",
+				"path": "津巴布韦, 哈拉雷",
+				"longitude": 31.08,
+				"latitude": -17.55,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 22.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 8.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/13",
+					"high": 21.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 9.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/12 00:30"
+		}, {
+			"location": {
+				"id": "097390",
+				"name": "帝力",
+				"path": "东帝汶, 帝力",
+				"longitude": 125.57,
+				"latitude": -8.57,
+				"timezone": 8
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 27.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "5级",
+					"low": 23.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/13",
+					"high": 26.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "4级",
+					"low": 22.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 07:30"
+		}, {
+			"location": {
+				"id": "096741",
+				"name": "雅加达",
+				"path": "印度尼西亚, 雅加达",
+				"longitude": 106.87,
+				"latitude": -6.1,
+				"timezone": 7
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 32.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "4级",
+					"low": 27.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/13",
+					"high": 31.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "4级",
+					"low": 27.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/12 05:30"
+		}, {
+			"location": {
+				"id": "040582",
+				"name": "科威特城",
+				"path": "科威特, 科威特城",
+				"longitude": 47.98,
+				"latitude": 29.22,
+				"timezone": 3
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 45.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "7级",
+					"low": 31.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/13",
+					"high": 43.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "7级",
+					"low": 29.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "6级"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "063450",
+				"name": "亚的斯亚贝巴",
+				"path": "埃塞俄比亚, 亚的斯亚贝巴",
+				"longitude": 38.75,
+				"latitude": 9.03,
+				"timezone": 3
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 19.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "5级",
+					"low": 10.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/13",
+					"high": 19.0,
+					"dayText": "中雨",
+					"dayCode": 8,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 10.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "094035",
+				"name": "莫尔斯比港",
+				"path": "巴布亚新几内亚, 莫尔斯比港",
+				"longitude": 147.22,
+				"latitude": -9.43,
+				"timezone": 10
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 29.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 24.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/13",
+					"high": 29.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "4级",
+					"low": 23.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/12 08:30"
+		}, {
+			"location": {
+				"id": "043466",
+				"name": "科伦坡",
+				"path": "斯里兰卡, 科伦坡",
+				"longitude": 79.87,
+				"latitude": 6.9,
+				"timezone": 5
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 30.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "6级",
+					"low": 26.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/13",
+					"high": 30.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "6级",
+					"low": 25.0,
+					"nightText": "中雨",
+					"nightCode": 8,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "7级"
+				}
+			],
+			"lastUpdate": "2020/06/12 03:30"
+		}, {
+			"location": {
+				"id": "G05002",
+				"name": "布里奇顿",
+				"path": "巴巴多斯, 布里奇顿",
+				"longitude": -59.37,
+				"latitude": 13.06,
+				"timezone": -4
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 27.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "6级",
+					"low": 25.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/12",
+					"high": 27.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 26.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/11 18:30"
+		}, {
+			"location": {
+				"id": "040754",
+				"name": "德黑兰",
+				"path": "伊朗, 德黑兰",
+				"longitude": 51.35,
+				"latitude": 35.68,
+				"timezone": 3
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 35.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 23.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/13",
+					"high": 35.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "6级",
+					"low": 23.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "041571",
+				"name": "伊斯兰堡",
+				"path": "巴基斯坦, 伊斯兰堡",
+				"longitude": 73.05,
+				"latitude": 33.58,
+				"timezone": 5
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 35.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "5级",
+					"low": 25.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 36.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 23.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/12 03:30"
+		}, {
+			"location": {
+				"id": "033815",
+				"name": "基希讷乌",
+				"path": "摩尔多瓦, 基希讷乌",
+				"longitude": 28.98,
+				"latitude": 47.02,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 28.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "5级",
+					"low": 18.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 28.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "4级",
+					"low": 16.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/12 00:30"
+		}, {
+			"location": {
+				"id": "048074",
+				"name": "内比都",
+				"path": "缅甸, 内比都",
+				"longitude": 96.22,
+				"latitude": 19.72,
+				"timezone": 6
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 34.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 24.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 35.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 24.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 04:30"
+		}, {
+			"location": {
+				"id": "037545",
+				"name": "第比利斯",
+				"path": "格鲁吉亚, 第比利斯",
+				"longitude": 44.77,
+				"latitude": 41.75,
+				"timezone": 3
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 33.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 16.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 34.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "6级",
+					"low": 17.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/12 02:30"
+		}, {
+			"location": {
+				"id": "015420",
+				"name": "布加勒斯特",
+				"path": "罗马尼亚, 布加勒斯特",
+				"longitude": 26.13,
+				"latitude": 44.5,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 24.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 13.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/13",
+					"high": 25.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "4级",
+					"low": 15.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 00:30"
+		}, {
+			"location": {
+				"id": "084628",
+				"name": "利马",
+				"path": "秘鲁, 利马",
+				"longitude": -77.12,
+				"latitude": -12.0,
+				"timezone": -5
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 19.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "5级",
+					"low": 16.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "微风"
+				}, {
+					"date": "2020/06/12",
+					"high": 19.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "5级",
+					"low": 14.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "微风"
+				}
+			],
+			"lastUpdate": "2020/06/11 17:30"
+		}, {
+			"location": {
+				"id": "064500",
+				"name": "利伯维尔",
+				"path": "加蓬, 利伯维尔",
+				"longitude": 9.25,
+				"latitude": 0.27,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 28.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 23.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 28.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 24.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "063740",
+				"name": "内罗毕",
+				"path": "肯尼亚, 内罗毕",
+				"longitude": 36.92,
+				"latitude": -1.32,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 23.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "4级",
+					"low": 13.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/13",
+					"high": 24.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 15.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "038836",
+				"name": "杜尚别",
+				"path": "塔吉克斯坦, 杜尚别",
+				"longitude": 68.78,
+				"latitude": 38.55,
+				"timezone": 5
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 32.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "4级",
+					"low": 16.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 33.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "4级",
+					"low": 16.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/12 03:30"
+		}, {
+			"location": {
+				"id": "093439",
+				"name": "惠灵顿",
+				"path": "新西兰, 惠灵顿",
+				"longitude": 174.8,
+				"latitude": -41.33,
+				"timezone": 12
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 15.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "7级",
+					"low": 8.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "6级"
+				}, {
+					"date": "2020/06/13",
+					"high": 10.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 6.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 10:30"
+		}, {
+			"location": {
+				"id": "048455",
+				"name": "曼谷",
+				"path": "泰国, 曼谷",
+				"longitude": 100.57,
+				"latitude": 13.73,
+				"timezone": 7
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 37.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "6级",
+					"low": 27.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 38.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "6级",
+					"low": 27.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 05:30"
+		}, {
+			"location": {
+				"id": "G05005",
+				"name": "瓦莱塔",
+				"path": "马耳他, 瓦莱塔",
+				"longitude": 14.31,
+				"latitude": 35.53,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 23.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "3级",
+					"low": 20.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 23.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "4级",
+					"low": 21.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "G05003",
+				"name": "努库阿洛法",
+				"path": "汤加, 努库阿洛法",
+				"longitude": -175.12,
+				"latitude": -21.07,
+				"timezone": -12
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 23.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "7级",
+					"low": 22.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "7级"
+				}, {
+					"date": "2020/06/12",
+					"high": 23.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "7级",
+					"low": 21.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "7级"
+				}
+			],
+			"lastUpdate": "2020/06/11 10:30"
+		}, {
+			"location": {
+				"id": "014654",
+				"name": "萨拉热窝",
+				"path": "波黑, 萨拉热窝",
+				"longitude": 18.43,
+				"latitude": 43.87,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 22.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "5级",
+					"low": 7.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/12",
+					"high": 23.0,
+					"dayText": "阴",
+					"dayCode": 2,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "5级",
+					"low": 9.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "040100",
+				"name": "贝鲁特",
+				"path": "黎巴嫩, 贝鲁特",
+				"longitude": 35.48,
+				"latitude": 33.82,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 28.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "6级",
+					"low": 22.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 29.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 21.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 00:30"
+		}, {
+			"location": {
+				"id": "061442",
+				"name": "努瓦克肖特",
+				"path": "毛里塔尼亚, 努瓦克肖特",
+				"longitude": -15.57,
+				"latitude": 18.06,
+				"timezone": -1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 43.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "6级",
+					"low": 29.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/12",
+					"high": 42.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "7级",
+					"low": 22.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "7级"
+				}
+			],
+			"lastUpdate": "2020/06/11 22:30"
+		}, {
+			"location": {
+				"id": "040103",
+				"name": "的黎波里",
+				"path": "利比亚, 的黎波里",
+				"longitude": 35.8,
+				"latitude": 34.45,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 26.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "7级",
+					"low": 22.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "6级"
+				}, {
+					"date": "2020/06/13",
+					"high": 25.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "6级",
+					"low": 20.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 00:30"
+		}, {
+			"location": {
+				"id": "048940",
+				"name": "万象",
+				"path": "老挝, 万象",
+				"longitude": 102.57,
+				"latitude": 17.95,
+				"timezone": 7
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 36.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "5级",
+					"low": 26.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 37.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 26.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 05:30"
+		}, {
+			"location": {
+				"id": "G05010",
+				"name": "尼科西亚",
+				"path": "塞浦路斯, 尼科西亚",
+				"longitude": 33.23,
+				"latitude": 35.11,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 30.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "7级",
+					"low": 15.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "6级"
+				}, {
+					"date": "2020/06/13",
+					"high": 31.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "7级",
+					"low": 14.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "微风"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "048698",
+				"name": "新加坡市",
+				"path": "新加坡, 新加坡市",
+				"longitude": 103.98,
+				"latitude": 1.37,
+				"timezone": 7
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 31.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 25.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 30.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "6级",
+					"low": 27.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "微风"
+				}
+			],
+			"lastUpdate": "2020/06/12 06:30"
+		}, {
+			"location": {
+				"id": "G05015",
+				"name": "圣萨尔瓦多",
+				"path": "萨尔瓦多, 圣萨尔瓦多",
+				"longitude": -89.1,
+				"latitude": 13.4,
+				"timezone": -6
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 30.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "3级",
+					"low": 24.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/12",
+					"high": 30.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "4级",
+					"low": 24.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/11 16:30"
+		}, {
+			"location": {
+				"id": "098425",
+				"name": "马尼拉",
+				"path": "菲律宾, 马尼拉",
+				"longitude": 120.98,
+				"latitude": 14.58,
+				"timezone": 8
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 28.0,
+					"dayText": "中雨",
+					"dayCode": 8,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 26.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 32.0,
+					"dayText": "中雨",
+					"dayCode": 8,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "5级",
+					"low": 26.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 06:30"
+		}, {
+			"location": {
+				"id": "017130",
+				"name": "安卡拉",
+				"path": "土耳其, 安卡拉",
+				"longitude": 32.88,
+				"latitude": 39.95,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 22.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东南风",
+					"dayWindScale": "5级",
+					"low": 11.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "3级"
+				}, {
+					"date": "2020/06/13",
+					"high": 22.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "5级",
+					"low": 12.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "041404",
+				"name": "萨那",
+				"path": "也门, 萨那",
+				"longitude": 44.18,
+				"latitude": 15.52,
+				"timezone": 3
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 29.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "7级",
+					"low": 15.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "6级"
+				}, {
+					"date": "2020/06/13",
+					"high": 28.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "6级",
+					"low": 15.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/12 01:30"
+		}, {
+			"location": {
+				"id": "062366",
+				"name": "开罗",
+				"path": "埃及, 开罗",
+				"longitude": 31.4,
+				"latitude": 30.13,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 36.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "6级",
+					"low": 25.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "6级"
+				}, {
+					"date": "2020/06/13",
+					"high": 38.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "6级",
+					"low": 19.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/12 00:30"
+		}, {
+			"location": {
+				"id": "038353",
+				"name": "比什凯克",
+				"path": "吉尔吉斯斯坦, 比什凯克",
+				"longitude": 74.53,
+				"latitude": 42.85,
+				"timezone": 5
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 25.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "4级",
+					"low": 11.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "4级"
+				}, {
+					"date": "2020/06/13",
+					"high": 27.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "4级",
+					"low": 12.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/12 04:30"
+		}, {
+			"location": {
+				"id": "060135",
+				"name": "拉巴特",
+				"path": "摩洛哥, 拉巴特",
+				"longitude": -6.77,
+				"latitude": 34.05,
+				"timezone": 0
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 22.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "6级",
+					"low": 14.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/12",
+					"high": 21.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "7级",
+					"low": 16.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "6级"
+				}
+			],
+			"lastUpdate": "2020/06/11 22:30"
+		}, {
+			"location": {
+				"id": "008535",
+				"name": "里斯本",
+				"path": "葡萄牙, 里斯本",
+				"longitude": -9.15,
+				"latitude": 38.72,
+				"timezone": -1
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 20.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "6级",
+					"low": 14.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "6级"
+				}, {
+					"date": "2020/06/12",
+					"high": 20.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "6级",
+					"low": 13.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "5级"
+				}
+			],
+			"lastUpdate": "2020/06/11 22:30"
+		}, {
+			"location": {
+				"id": "040948",
+				"name": "喀布尔",
+				"path": "阿富汗, 喀布尔",
+				"longitude": 69.22,
+				"latitude": 34.55,
+				"timezone": 5
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 29.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "6级",
+					"low": 14.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/13",
+					"high": 26.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "微风",
+					"low": 13.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "3级"
+				}
+			],
+			"lastUpdate": "2020/06/12 02:30"
+		}, {
+			"location": {
+				"id": "060390",
+				"name": "阿尔及尔",
+				"path": "阿尔及利亚, 阿尔及尔",
+				"longitude": 3.22,
+				"latitude": 36.68,
+				"timezone": 0
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 27.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "4级",
+					"low": 13.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "6级"
+				}, {
+					"date": "2020/06/12",
+					"high": 28.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "西南风",
+					"dayWindScale": "6级",
+					"low": 16.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "7级"
+				}
+			],
+			"lastUpdate": "2020/06/11 23:30"
+		}, {
+			"location": {
+				"id": "068816",
+				"name": "开普敦",
+				"path": "南非, 开普敦",
+				"longitude": 18.6,
+				"latitude": -33.97,
+				"timezone": 1
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 15.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "7级",
+					"low": 10.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "7级"
+				}, {
+					"date": "2020/06/13",
+					"high": 16.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "6级",
+					"low": 10.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "7级"
+				}
+			],
+			"lastUpdate": "2020/06/12 00:30"
+		}, {
+			"location": {
+				"id": "080415",
+				"name": "加拉加斯",
+				"path": "委内瑞拉, 加拉加斯",
+				"longitude": -66.98,
+				"latitude": 10.6,
+				"timezone": -4
+			},
+			"daily": [
+				{
+					"date": "2020/06/11",
+					"high": 27.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "5级",
+					"low": 26.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/12",
+					"high": 27.0,
+					"dayText": "多云",
+					"dayCode": 1,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "5级",
+					"low": 26.0,
+					"nightText": "阴",
+					"nightCode": 2,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "6级"
+				}
+			],
+			"lastUpdate": "2020/06/11 18:30"
+		}, {
+			"location": {
+				"id": "015614",
+				"name": "索非亚",
+				"path": "保加利亚, 索非亚",
+				"longitude": 23.38,
+				"latitude": 42.65,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 20.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "7级",
+					"low": 12.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "西北风",
+					"nightWindScale": "6级"
+				}, {
+					"date": "2020/06/13",
+					"high": 22.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "西北风",
+					"dayWindScale": "6级",
+					"low": 12.0,
+					"nightText": "多云",
+					"nightCode": 1,
+					"nightWindDirection": "西南风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 00:30"
+		}, {
+			"location": {
+				"id": "G05014",
+				"name": "帕利基尔",
+				"path": "密克罗尼西亚联邦, 帕利基尔",
+				"longitude": 158.09,
+				"latitude": 6.54,
+				"timezone": 11
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 28.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "6级",
+					"low": 27.0,
+					"nightText": "小雨",
+					"nightCode": 7,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "6级"
+				}, {
+					"date": "2020/06/13",
+					"high": 28.0,
+					"dayText": "小雨",
+					"dayCode": 7,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "6级",
+					"low": 26.0,
+					"nightText": "中雨",
+					"nightCode": 8,
+					"nightWindDirection": "东南风",
+					"nightWindScale": "7级"
+				}
+			],
+			"lastUpdate": "2020/06/12 09:30"
+		}, {
+			"location": {
+				"id": "026038",
+				"name": "塔林",
+				"path": "爱沙尼亚, 塔林",
+				"longitude": 24.58,
+				"latitude": 59.38,
+				"timezone": 2
+			},
+			"daily": [
+				{
+					"date": "2020/06/12",
+					"high": 19.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "7级",
+					"low": 11.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "5级"
+				}, {
+					"date": "2020/06/13",
+					"high": 21.0,
+					"dayText": "晴",
+					"dayCode": 0,
+					"dayWindDirection": "东北风",
+					"dayWindScale": "6级",
+					"low": 10.0,
+					"nightText": "晴",
+					"nightCode": 0,
+					"nightWindDirection": "东北风",
+					"nightWindScale": "4级"
+				}
+			],
+			"lastUpdate": "2020/06/12 00:30"
+		}
+	]
+}

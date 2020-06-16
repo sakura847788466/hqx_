@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>堤防工程</title>
+    <link type="text/css" rel="stylesheet" href="../css/page.css"/>
+    <link type="text/css" rel="stylesheet" href="../font/iconfont.css"/>
+    <link type="text/css" rel="stylesheet" href="../layui/css/layui.css"/>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../layui/layui.js"></script>
+    <script type="text/javascript" src="../js/seawall.js"></script>
+</head>
+<body>
+    <div class="seawall-div" id="seawall-list">
+        <div class="table-title" id="hazard-title">堤防工程</div>
+        <div class="table-operate">
+            <div class="table-search">
+                <i class="iconfont search-icon" id="searchIcon">&#xeafe;</i>
+                <input class="search-input" placeholder="请输入名称关键字" id="seawallSearch" autocomplete="off"/>
+            </div>
+            <div class="table-menu">
+                <div class="table-menuItem" id="seawallNumber-export">
+                    <i class="iconfont menu-icon">&#xeabf;</i>
+                    <span class="table-menuTxt">堤防分段导出</span>
+                </div>
+                <div class="table-menuItem" id="seawallPoint-export">
+                    <i class="iconfont menu-icon">&#xeabf;</i>
+                    <span class="table-menuTxt">测点导出</span>
+                </div>
+                <div class="table-menuItem" id="seawall-add">
+                    <i class="iconfont menu-icon">&#xe67a;</i>
+                    <span class="table-menuTxt">新建</span>
+                </div>
+            </div>
+        </div>
+        <div class="item-content seawallList-no">
+            <img src="../image/no-info.png"/>
+            <div class="table-no-text">暂无信息，请先创建</div>
+        </div>
+        <div class="item-content seawallList-yes scrollbarStyle">
+            <div class="seawall-list">
+                <!--<div class="seawall-item">
+                    <div class="seawall-item-id" style="display:none;">01</div>
+                    <div class="seawall-item-head">见龙海堤</div>
+                    <div class="seawall-item-subTxt">
+                        <div class="seawall-item-num">分段数量：1</div>
+                        <div class="seawall-item-time">创建时间：2014/04/24</div>
+                    </div>
+                    <div class="seawall-item-btn">
+                        <div class="seawall-item-icon">
+                            <i class="iconfont seawall-icon">&#xeabe;</i>
+                            <span>编辑</span>
+                        </div>
+                        <div class="seawall-item-icon">
+                            <i class="iconfont seawall-icon">&#xeafb;</i>
+                            <span>删除</span>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <div class="seawall-div" id="seawall-number" style="display: none;">
+        <div class="seawall-nav">
+            <span id="seawall-back">堤防工程/</span>
+            <span id="seawall-name">见龙海堤</span>
+        </div>
+        <div class="seawall-img">
+            <img src="../image/num-list.png"/>
+        </div>
+        <div class="seawall-no" style="display: none;">
+            <img src="../image/infoNo-bg.png"/>
+            <div class="seawall-no-txt">暂无信息</div>
+            <div class="seawall-no-txt">请创建分段信息</div>
+            <div class="seawall-no-btn">创建分段信息</div>
+        </div>
+        <div class="seawall-yes">
+            <div class="seawall-yes-menu scrollbarStyle">
+                <div class="seawall-number-list">
+                    <!--<div class="seawall-number-item">
+                        <span>见龙海堤左堤</span>
+                        <i class="iconfont seawall-number-del">&#xeafb;</i>
+                    </div>
+                    <div class="seawall-number-item">
+                        <span>见龙海堤右堤</span>
+                        <i class="iconfont seawall-number-del">&#xeafb;</i>
+                    </div>-->
+                </div>
+                <div class="seawall-number-add iconfont">&#xeaf4;</div>
+            </div>
+            <div class="seawall-yes-detail">
+                <div class="seawall-number-title">
+                    <div class="seawall-number-txt" id="seawall-info">分段详情</div>
+                    <div class="seawall-number-txt" id="seawall-point">测点信息</div>
+                </div>
+                <div class="seawall-number-body">
+                    <div class="seawall-number-box scrollbarStyle" id="seawall-info-box">
+                        <!--<div class="seawall-info-head">
+                            <div class="seawall-info-left">
+                                <span class="seawall-info-name">见龙海堤左堤</span>
+                                <span class="seawall-info-type">一线堤</span>
+                            </div>
+                            <div class="seawall-info-right">
+                                <i class="iconfont seawall-info-edit">&#xeabe;</i>
+                                <span>编辑</span>
+                            </div>
+                        </div>
+                        <div class="seawall-info-address">
+                            <i class="iconfont seawall-info-addressIcon">&#xeb33;</i>
+                            <span>揭阳市惠来县龙江河左岸</span>
+                        </div>
+                        <div class="seawall-info-list">
+                            <div class="seawall-info-item">
+                                <div class="seawall-info-txt">海堤长度(m)</div>
+                                <div class="seawall-info-word">7148</div>
+                            </div>
+                            <div class="seawall-info-item">
+                                <div class="seawall-info-txt">堤顶高程(m)</div>
+                                <div class="seawall-info-word">9.0804</div>
+                            </div>
+                            <div class="seawall-info-item">
+                                <div class="seawall-info-txt">挡浪墙高程(m)</div>
+                                <div class="seawall-info-word">7148</div>
+                            </div>
+                            <div class="seawall-info-item">
+                                <div class="seawall-info-txt">海堤宽度(m)</div>
+                                <div class="seawall-info-word">7148</div>
+                            </div>
+                            <div class="seawall-info-item">
+                                <div class="seawall-info-txt">筑堤材料</div>
+                                <div class="seawall-info-word">土料石料</div>
+                            </div>
+                            <div class="seawall-info-item">
+                                <div class="seawall-info-txt">护岸形式</div>
+                                <div class="seawall-info-word">护式护墙</div>
+                            </div>
+                            <div class="seawall-info-item">
+                                <div class="seawall-info-txt">设计防护标准</div>
+                                <div class="seawall-info-word">无</div>
+                            </div>
+                            <div class="seawall-info-item">
+                                <div class="seawall-info-txt">设计高潮位(cm)</div>
+                                <div class="seawall-info-word">257</div>
+                            </div>
+                            <div class="seawall-info-item">
+                                <div class="seawall-info-txt">建成时间</div>
+                                <div class="seawall-info-word">1995</div>
+                            </div>
+                            <div class="seawall-info-item">
+                                <div class="seawall-info-txt">起点经纬度坐标</div>
+                                <div class="seawall-info-word">116.25 ；23.2345</div>
+                            </div>
+                            <div class="seawall-info-item">
+                                <div class="seawall-info-txt">终点经纬度坐标</div>
+                                <div class="seawall-info-word">116.25 ；23.2345</div>
+                            </div>
+                            <div class="seawall-info-item">
+                                <div class="seawall-info-txt">行政代码区划</div>
+                                <div class="seawall-info-word">无</div>
+                            </div>
+                            <div class="seawall-info-item">
+                                <div class="seawall-info-txt">行政区划</div>
+                                <div class="seawall-info-word">无</div>
+                            </div>
+                            <div class="seawall-info-item">
+                                <div class="seawall-info-txt">资料来源</div>
+                                <div class="seawall-info-word">无</div>
+                            </div>
+                            <div class="seawall-info-item">
+                                <div class="seawall-info-txt">填表单位</div>
+                                <div class="seawall-info-word">无</div>
+                            </div>
+                            <div class="seawall-info-item">
+                                <div class="seawall-info-txt">填表人</div>
+                                <div class="seawall-info-word">无</div>
+                            </div>
+                            <div class="seawall-info-item">
+                                <div class="seawall-info-txt">填表日期</div>
+                                <div class="seawall-info-word">无</div>
+                            </div>
+                            <div class="seawall-info-item">
+                                <div class="seawall-info-txt">审核人</div>
+                                <div class="seawall-info-word">无</div>
+                            </div>
+                            <div class="seawall-info-item">
+                                <div class="seawall-info-txt">审核时间</div>
+                                <div class="seawall-info-word">无</div>
+                            </div>
+                            <div class="seawall-info-item">
+                                <div class="seawall-info-txt">备注</div>
+                                <div class="seawall-info-word">无</div>
+                            </div>
+                        </div>
+                        <div class="seawall-info-img">
+                            <div class="seawall-info-imgShow">
+                                <img src="../image/detail-show.png"/>
+                            </div>
+                            <div class="seawall-info-imgList">
+                                <div class="seawall-info-imgItem">
+                                    <img src="../image/detail-listOne.png"/>
+                                </div>
+                                <div class="seawall-info-imgItem">
+                                    <img src="../image/detail-listSecond.png"/>
+                                </div>
+                                <div class="seawall-info-imgItem">
+                                    <img src="../image/detail-listOne.png"/>
+                                </div>
+                                <div class="seawall-info-imgItem">
+                                    <img src="../image/detail-listSecond.png"/>
+                                </div>
+                                <div class="seawall-info-imgItem">
+                                    <img src="../image/detail-listOne.png"/>
+                                </div>
+                                <div class="seawall-info-imgItem">
+                                    <img src="../image/detail-listSecond.png"/>
+                                </div>
+                            </div>
+                        </div>-->
+                    </div>
+                    <div class="seawall-number-box" id="seawall-point-box">
+                        <div class="seawall-content-operate">
+                            <div class="seawall-content-txt" id="seawallPointName">见龙海堤右堤</div>
+                            <div class="seawall-content-tab">
+                                <div class="seawall-tab-item" id="seawallPoint-select">
+                                    <i class="iconfont seawall-tab-icon">&#xeac3;</i>
+                                    <span>筛选</span>
+                                </div>
+                                <div class="seawall-tab-item" id="seawallPoint-delAll">
+                                    <i class="iconfont seawall-tab-icon">&#xeafb;</i>
+                                    <span>批量删除</span>
+                                </div>
+                                <div class="seawall-tab-item" id="seawallPoint-add">
+                                    <i class="iconfont seawall-tab-icon">&#xe67a;</i>
+                                    <span>新建</span>
+                                </div>
+                                <!--<div class="seawall-tab-item" id="seawallPoint-export">
+                                    <i class="iconfont seawall-tab-icon">&#xeabf;</i>
+                                    <span>导出</span>
+                                </div>-->
+                            </div>
+                        </div>
+                        <div class="table-no" style="display: none;">
+                            <img src="../image/no-info.png"/>
+                            <div class="table-no-text">暂无信息，请先创建</div>
+                        </div>
+                        <div class="table-yes">
+                            <div class="seawall-content scrollbarStyle">
+                                <table class="table seawall-table" id="seawallPoint-table">
+                                    <!--<thead>
+                                        <tr>
+                                            <th>
+                                                <i class="iconfont checkbox-uncheck">&#xeadc;</i>
+                                                <i class="iconfont checkbox-check">&#xead8;</i>
+                                            </th>
+                                            <th>点位编号</th>
+                                            <th>点位经度</th>
+                                            <th>点位纬度</th>
+                                            <th>点位堤顶高程</th>
+                                            <th>点位防浪墙高程</th>
+                                            <th>行政区划代码</th>
+                                            <th>行政区划</th>
+                                            <th>资料来源</th>
+                                            <th>填表单位</th>
+                                            <th>填表人</th>
+                                            <th>填表日期</th>
+                                            <th>审核人</th>
+                                            <th>审核时间</th>
+                                            <th>备注</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <i class="iconfont checkbox-uncheck">&#xeadc;</i>
+                                                <i class="iconfont checkbox-check">&#xead8;</i>
+                                            </td>
+                                            <td>1</td>
+                                            <td>116.23</td>
+                                            <td>23.23</td>
+                                            <td>100</td>
+                                            <td>120</td>
+                                            <td>无</td>
+                                            <td>无</td>
+                                            <td>无</td>
+                                            <td>无</td>
+                                            <td>无</td>
+                                            <td>无</td>
+                                            <td>无</td>
+                                            <td>无</td>
+                                            <td>无</td>
+                                            <td>
+                                                <i class="iconfont table-infoIcon">&#xeb46;</i>
+                                            </td>
+                                            <td>
+                                                <i class="iconfont table-editIcon">&#xeabe;</i>
+                                            </td>
+                                            <td>
+                                                <i class="iconfont table-delIcon">&#xeafb;</i>
+                                            </td>
+                                        </tr>
+                                    </tbody>-->
+                                </table>
+                            </div>
+                            <div class="table-page seawall-page">
+                                <div class="page-txt">共<span id="totalPage">1</span>页</div>
+                                <div class="page-txt">共<span id="totalRecord">1</span>项</div>
+                                <div class="page-txt">当前第<span id="currentPage">1</span>页</div>
+                                <div class="page-item" id="firstPage">首页</div>
+                                <div class="page-item" id="prevPage">上一页</div>
+                                <div class="page-item" id="nextPage">下一页</div>
+                                <div class="page-item" id="endPage">尾页</div>
+                                <div class="page-inputBox">
+                                    <span id="pageTo">跳转</span>
+                                    <input type="text" class="page-input" id="pageValue"/>
+                                    <span>页</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--新建堤防工程-->
+    <div class="add-pop" id="seawall-pop" style="display: none;">
+        <div class="overlay"></div>
+        <div class="seawall-showBox">
+            <div class="add-seawall-title">
+                <span>新建</span>
+                <i class="iconfont add-seawall-close">&#xeaf2;</i>
+            </div>
+            <div class="add-seawall-content">
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">堤防工程名称</div>
+                        <div class="add-input-from">
+                            <input class="add-input add-input-seawall" placeholder="请输入堤防工程名称" id="seawallName"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add-seawall-btn">
+                <button class="add-seawall-btnIcon close-btn" id="addSeawall-close">关闭</button>
+                <button class="add-seawall-btnIcon sure-btn" id="addSeawall-sure">保存</button>
+            </div>
+        </div>
+    </div>
+    <!--修改堤防工程-->
+    <div class="add-pop" id="seawallEdit-pop" style="display: none;">
+        <div class="overlay"></div>
+        <div class="seawall-showBox">
+            <div class="add-seawall-title">
+                <span>修改</span>
+                <i class="iconfont edit-seawall-close">&#xeaf2;</i>
+            </div>
+            <div class="add-seawall-content">
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">堤防工程名称</div>
+                        <div class="add-input-from">
+                            <input class="add-input add-input-seawall" placeholder="请输入堤防工程名称" id="seawallNameEdit"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add-seawall-btn">
+                <button class="edit-seawall-btnIcon close-btn" id="editSeawall-close">关闭</button>
+                <button class="edit-seawall-btnIcon sure-btn" id="editSeawall-sure">保存</button>
+            </div>
+        </div>
+    </div>
+    <!--删除堤防工程-->
+    <div class="delAll-pop" id="seawallDel-pop" style="display: none;">
+        <div class="del-title">
+            <span>删除</span>
+            <i class="iconfont delAll-close">&#xeaf2;</i>
+        </div>
+        <div class="del-content">确定删除此内容吗？</div>
+        <div class="del-btn">
+            <button class="del-btnIcon close-btn" id="delSeawall-close">关闭</button>
+            <button class="del-btnIcon sure-btn" id="delSeawall-sure">确定</button>
+        </div>
+    </div>
+    <!--新建分段-->
+    <div class="add-pop" id="seawallNum-pop" style="display: none;">
+        <div class="overlay"></div>
+        <div class="showBox">
+            <div class="add-title">
+                <span>新建</span>
+                <i class="iconfont add-close seawallNumberAdd-iconClose">&#xeaf2;</i>
+            </div>
+            <div class="add-content scrollbarStyle">
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt"><span class="star-icon">*</span>分段名称</div>
+                        <div class="add-input-from">
+                            <input class="add-input add-input-large" placeholder="请输入分段名称" id="numberName"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">海堤类型</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入海堤类型" id="numberType"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">海堤长度(米)</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="海堤长度" id="numberLength"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">堤顶高程(米)</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入堤顶高程" id="numberHeight"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">挡浪墙高程(米)</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入挡浪墙高程" id="numberWallHeight"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">海堤宽度(米)</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入海堤宽度" id="numberWidth"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">筑堤材料</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入筑堤材料" id="numberMaterial"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">护岸形式</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入护岸形式" id="numberRevetment"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">设计防护标准</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入设计防护标准" id="numberStandard"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">设计高潮位(厘米)</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入设计高潮位" id="numberLevel"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">建成时间</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入建成时间" id="numberCreate" readonly="readonly"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">起点经度坐标</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入起点经度坐标" id="numberStartLon"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">终点经度坐标</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入终点经度坐标" id="numberEndLon"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">起点纬度坐标</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入起点纬度坐标" id="numberStartLat"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">终点纬度坐标</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入终点纬度坐标" id="numberEndLat"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">地理位置</div>
+                        <div class="add-input-from">
+                            <input class="add-input add-input-large" placeholder="请输入地理位置" id="numberAddress"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">行政区划代码</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入行政区划代码" id="numberCode"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">行政区划</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入行政区划" id="numberArea"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">资料来源</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入资料来源" id="numberOrigin"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">填表单位</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入填表单位" id="numberUnit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">填表人</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入填表人" id="numberBy"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">填表日期</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入填表日期" id="numberFillTime" readonly="readonly"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">审核人</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入审核人" id="numberChecker"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">审核时间</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入审核时间" id="numberCheckTime" readonly="readonly"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">备注</div>
+                        <div class="add-input-from">
+                            <textarea class="add-input add-input-textarea" placeholder="请输入备注" id="numberRemark"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="seawallNumber-tips alert">
+                    <img src="../image/alert-icon.png"/>
+                    <span></span>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">上传图片</div>
+                        <div class="add-input-from">
+                            <div class="upload-btn">
+                                <span>点击上传</span>
+                                <form class="uploadForm" enctype="multipart/form-data" id="seawallNumber-form">
+                                    <input type="file" name="file" class="upload" id="seawallNumber-upload" multiple/>
+                                </form>
+                            </div>
+                            <div class="button-txt">请上传jpg、png图片，单个文件大小不能超过2M，文件名不能大于20个字符，最多只能上传6张图片</div>
+                            <div class="seawallNumber-imgList" style="display: none;">
+                                <!--<div class="seawallNumber-imgItem">
+                                    <i class="iconfont upload-imgIcon">&#xeac5;</i>
+                                    <span>图片名称.png</span>
+                                    <i class="iconfont upload-successIcon">&#xe606;</i>
+                                </div>
+                                <div class="seawallNumber-imgItem">
+                                    <i class="iconfont upload-imgIcon">&#xeac5;</i>
+                                    <span>图片名称.png</span>
+                                    <i class="iconfont upload-successIcon">&#xe606;</i>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add-btn">
+                <button class="add-btnIcon close-btn" id="seawallPoint-close">关闭</button>
+                <button class="add-btnIcon sure-btn" id="seawallPoint-sure">保存</button>
+            </div>
+        </div>
+    </div>
+    <!--修改分段-->
+    <div class="add-pop" id="seawallNumEdit-pop" style="display: none;">
+        <div class="overlay"></div>
+        <div class="showBox">
+            <div class="add-title">
+                <span>修改</span>
+                <i class="iconfont add-close seawallNumberEdit-iconClose">&#xeaf2;</i>
+            </div>
+            <div class="add-content scrollbarStyle">
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt"><span class="star-icon">*</span>分段名称</div>
+                        <div class="add-input-from">
+                            <input class="add-input add-input-large" id="numberNameEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">海堤类型</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberTypeEdit"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">海堤长度(米)</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberLengthEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">堤顶高程(米)</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberHeightEdit"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">挡浪墙高程(米)</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberWallHeightEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">海堤宽度(米)</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberWidthEdit"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">筑堤材料</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberMaterialEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">护岸形式</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberRevetmentEdit"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">设计防护标准</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberStandardEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">设计高潮位(厘米)</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberLevelEdit"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">建成时间</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberCreateEdit" readonly="readonly"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">起点经度坐标</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberStartLonEdit"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">终点经度坐标</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberEndLonEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">起点纬度坐标</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberStartLatEdit"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">终点纬度坐标</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberEndLatEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">地理位置</div>
+                        <div class="add-input-from">
+                            <input class="add-input add-input-large" id="numberAddressEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">行政区划代码</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberCodeEdit"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">行政区划</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberAreaEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">资料来源</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberOriginEdit"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">填表单位</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberUnitEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">填表人</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberByEdit"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">填表日期</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberFillTimeEdit" readonly="readonly"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">审核人</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberCheckerEdit"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">审核时间</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="numberCheckTimeEdit" readonly="readonly"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">备注</div>
+                        <div class="add-input-from">
+                            <textarea class="add-input add-input-textarea" id="numberRemarkEdit"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="seawallNumberEdit-tips alert">
+                    <img src="../image/alert-icon.png"/>
+                    <span></span>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">上传图片</div>
+                        <div class="add-input-from">
+                            <div class="upload-btn">
+                                <span>点击上传</span>
+                                <form class="uploadForm" enctype="multipart/form-data" id="seawallNumberEdit-form">
+                                    <input type="file" name="file" class="upload" id="seawallNumberEdit-upload" multiple/>
+                                </form>
+                            </div>
+                            <div class="button-txt">请上传jpg、png图片，单个文件大小不能超过2M，文件名不能大于20个字符，最多只能上传6张图片</div>
+                            <div class="seawallNumber-imgList" style="display: none;">
+                                <!--<div class="seawallNumber-imgItem">
+                                    <i class="iconfont upload-imgIcon">&#xeac5;</i>
+                                    <span>图片名称.png</span>
+                                    <i class="iconfont upload-successIcon">&#xe606;</i>
+                                </div>
+                                <div class="seawallNumber-imgItem">
+                                    <i class="iconfont upload-imgIcon">&#xeac5;</i>
+                                    <span>图片名称.png</span>
+                                    <i class="iconfont upload-successIcon">&#xe606;</i>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add-btn">
+                <button class="add-btnIcon close-btn" id="seawallPointEdit-close">关闭</button>
+                <button class="add-btnIcon sure-btn" id="seawallPointEdit-sure">保存</button>
+            </div>
+        </div>
+    </div>
+    <!--删除分段-->
+    <div class="delAll-pop" id="seawallNumberDel-pop" style="display: none;">
+        <div class="del-title">
+            <span>删除</span>
+            <i class="iconfont delAll-close">&#xeaf2;</i>
+        </div>
+        <div class="del-content">确定删除此内容吗？</div>
+        <div class="del-btn">
+            <button class="del-btnIcon close-btn" id="seawallNumberDel-close">关闭</button>
+            <button class="del-btnIcon sure-btn" id="seawallNumberDel-sure">确定</button>
+        </div>
+    </div>
+    <!--测量点筛选-->
+    <div class="filtrate-pop scrollbarStyle" id="seawallPoint-pop" style="display: none;">
+        <!--<div class="filtrate-item">
+            <i class="iconfont filtrate-uncheck">&#xeadc;</i>
+            <i class="iconfont filtrate-check">&#xead8;</i>
+            <span class="filtrate-txt">海堤名称</span>
+        </div>
+        <div class="filtrate-item">
+            <i class="iconfont filtrate-uncheck">&#xeadc;</i>
+            <i class="iconfont filtrate-check">&#xead8;</i>
+            <span class="filtrate-txt">海堤名称</span>
+        </div>-->
+    </div>
+    <!--新建测量点-->
+    <div class="add-pop" id="seawallPointAdd-pop" style="display: none;">
+        <div class="overlay"></div>
+        <div class="showBox">
+            <div class="add-title">
+                <span>新建</span>
+                <i class="iconfont addSeawall-close">&#xeaf2;</i>
+            </div>
+            <div class="add-content scrollbarStyle">
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">点位编号</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入点位编号" id="pointNumber"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">点位经度</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入点位经度" id="pointLon"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">点位纬度</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入点位纬度" id="pointLat"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">点位堤顶高程（米）</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入点位堤顶高程" id="pointHeight"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">点位挡浪墙高程（米）</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入点位挡浪墙高程" id="pointWall"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">行政区划代码</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入行政区划代码" id="pointCode"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">行政区划</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入行政区划" id="pointArea"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">资料来源</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入资料来源" id="pointOrigin"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">填表单位</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入填表单位" id="pointUnit"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">填表人</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入填表人" id="pointBy"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">填表日期</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入填表日期" id="pointDate" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">审核人</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入审核人" id="pointCheck"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">审核时间</div>
+                        <div class="add-input-from">
+                            <input class="add-input" placeholder="请输入审核时间" id="pointTime" readonly="readonly"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">备注</div>
+                        <div class="add-input-from">
+                            <textarea class="add-input add-input-textarea" placeholder="请输入备注" id="pointRemark"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="seawallPoint-tips alert">
+                    <img src="../image/alert-icon.png"/>
+                    <span></span>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">上传图片</div>
+                        <div class="add-input-from">
+                            <div class="upload-btn">
+                                <span>点击上传</span>
+                                <form class="uploadForm" enctype="multipart/form-data" id="seawallPoint-uploadForm">
+                                    <input type="file" name="file" class="upload" id="seawallPoint-upload" multiple/>
+                                </form>
+                            </div>
+                            <div class="button-txt">请上传jpg、png图片，单个文件大小不能超过2M，文件名不能大于20个字符，最多只能上传6张图片</div>
+                            <div class="seawallPoint-imgList" style="display: none;">
+                                <!--<div class="seawallPoint-imgItem">
+                                    <i class="iconfont upload-imgIcon">&#xeac5;</i>
+                                    <span>图片名称.png</span>
+                                    <i class="iconfont upload-successIcon">&#xe606;</i>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add-btn">
+                <button class="seawallPoint-btnIcon close-btn" id="seawallPointAdd-close">关闭</button>
+                <button class="seawallPoint-btnIcon sure-btn" id="seawallPointAdd-sure">保存</button>
+            </div>
+        </div>
+    </div>
+    <!--测量点修改-->
+    <div class="add-pop" id="seawallPointEdit-pop" style="display: none;">
+        <div class="overlay"></div>
+        <div class="showBox">
+            <div class="add-title">
+                <span>修改</span>
+                <i class="iconfont addSeawall-close">&#xeaf2;</i>
+            </div>
+            <div class="add-content scrollbarStyle">
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">点位编号</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointNumberEdit"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">点位经度</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointLonEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">点位纬度</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointLatEdit"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">点位堤顶高程（米）</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointHeightEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">点位挡浪墙高程（米）</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointWallEdit"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">行政区划代码</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointCodeEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">行政区划</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointAreaEdit"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">资料来源</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointOriginEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">填表单位</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointUnitEdit"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">填表人</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointByEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">填表日期</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointDateEdit" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">审核人</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointCheckEdit"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">审核时间</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointTimeEdit" readonly="readonly"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">备注</div>
+                        <div class="add-input-from">
+                            <textarea class="add-input add-input-textarea" id="pointRemarkEdit"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="seawallPoint-tips alert">
+                    <img src="../image/alert-icon.png"/>
+                    <span></span>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">上传图片</div>
+                        <div class="add-input-from">
+                            <div class="upload-btn">
+                                <span>点击上传</span>
+                                <form class="uploadForm" enctype="multipart/form-data" id="seawallPoint-uploadFormEdit">
+                                    <input type="file" name="file" class="upload" id="seawallPoint-uploadEdit" multiple/>
+                                </form>
+                            </div>
+                            <div class="button-txt">请上传jpg、png图片，单个文件大小不能超过2M，文件名不能大于20个字符，最多只能上传6张图片</div>
+                            <div class="seawallPoint-imgList" style="display: none;">
+                                <!--<div class="seawallPoint-imgItem">
+                                    <i class="iconfont upload-imgIcon">&#xeac5;</i>
+                                    <span>图片名称.png</span>
+                                    <i class="iconfont upload-successIcon">&#xe606;</i>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add-btn">
+                <button class="seawallPoint-btnIcon close-btn" id="seawallDotEdit-close">关闭</button>
+                <button class="seawallPoint-btnIcon sure-btn" id="seawallDotEdit-sure">保存</button>
+            </div>
+        </div>
+    </div>
+    <!--测量点详情-->
+    <div class="add-pop" id="seawallPointInfo-pop" style="display: none;">
+        <div class="overlay"></div>
+        <div class="showBox">
+            <div class="add-title">
+                <span>详情</span>
+                <i class="iconfont addSeawall-close">&#xeaf2;</i>
+            </div>
+            <div class="add-content scrollbarStyle">
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">点位编号</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointNumberInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">点位经度</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointLonInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">点位纬度</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointLatInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">点位堤顶高程（米）</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointHeightInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">点位挡浪墙高程（米）</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointWallInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">行政区划代码</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointCodeInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">行政区划</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointAreaInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">资料来源</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointOriginInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">填表单位</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointUnitInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">填表人</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointByInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">填表日期</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointDateInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <div class="add-input-item add-input-itemLast">
+                        <div class="add-input-txt">审核人</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointCheckInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">审核时间</div>
+                        <div class="add-input-from">
+                            <input class="add-input" id="pointTimeInfo" readonly="readonly"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt">备注</div>
+                        <div class="add-input-from">
+                            <textarea class="add-input add-input-textarea" id="pointRemarkInfo" readonly="readonly"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-input-list">
+                    <div class="add-input-item">
+                        <div class="add-input-txt"></div>
+                        <div class="add-input-from">
+                            <div class="seawallPointInfo-imgList">
+                                <!--<div class="seawall-info-imgShow">
+                                    <img src="../image/detail-show.png"/>
+                                </div>
+                                <div class="seawall-info-imgList">
+                                    <div class="seawall-info-imgItem">
+                                        <img src="../image/detail-listOne.png"/>
+                                    </div>
+                                    <div class="seawall-info-imgItem">
+                                        <img src="../image/detail-listSecond.png"/>
+                                    </div>
+                                    <div class="seawall-info-imgItem">
+                                        <img src="../image/detail-listOne.png"/>
+                                    </div>
+                                    <div class="seawall-info-imgItem">
+                                        <img src="../image/detail-listSecond.png"/>
+                                    </div>
+                                    <div class="seawall-info-imgItem">
+                                        <img src="../image/detail-listOne.png"/>
+                                    </div>
+                                    <div class="seawall-info-imgItem">
+                                        <img src="../image/detail-listSecond.png"/>
+                                    </div>
+                                    <div class="seawall-info-imgItem">
+                                        <img src="../image/detail-listSecond.png"/>
+                                    </div>
+                                    <div class="seawall-info-imgItem">
+                                        <img src="../image/detail-listSecond.png"/>
+                                    </div>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add-btn">
+                <button class="seawallPoint-btnIcon close-btn" id="seawallDotInfo-close">关闭</button>
+                <button class="seawallPoint-btnIcon sure-btn" id="seawallDotInfo-sure">确定</button>
+            </div>
+        </div>
+    </div>
+    <!--测点单个删除-->
+    <div class="delAll-pop" id="seawallPointDel-pop" style="display: none;">
+        <div class="del-title">
+            <span>删除</span>
+            <i class="iconfont delAll-close">&#xeaf2;</i>
+        </div>
+        <div class="del-content">确定删除此内容吗？</div>
+        <div class="del-btn">
+            <button class="del-btnIcon close-btn" id="seawallPointDel-close">关闭</button>
+            <button class="del-btnIcon sure-btn" id="seawallPointDel-sure">确定</button>
+        </div>
+    </div>
+    <!--测点批量删除-->
+    <div class="delAll-pop" id="seawallPointDelAll-pop" style="display: none;">
+        <div class="del-title">
+            <span>批量删除</span>
+            <i class="iconfont delAll-close">&#xeaf2;</i>
+        </div>
+        <div class="del-content">确定对所选的内容进行删除吗？</div>
+        <div class="del-btn">
+            <button class="del-btnIcon close-btn" id="seawallPointDelAll-close">关闭</button>
+            <button class="del-btnIcon sure-btn" id="seawallPointDelAll-sure">确定</button>
+        </div>
+    </div>
+    <!--堤防分段导出-->
+    <div class="delAll-pop" id="exportNumber-pop" style="display: none;">
+        <div class="del-title">
+            <span>堤防分段导出</span>
+            <i class="iconfont delAll-close">&#xeaf2;</i>
+        </div>
+        <div class="del-content">确定对所有的堤防分段导出吗？</div>
+        <div class="del-btn">
+            <button class="del-btnIcon close-btn" id="exportNumberClose">关闭</button>
+            <button class="del-btnIcon sure-btn" id="exportNumberSure">确定</button>
+        </div>
+    </div>
+    <!--测点导出-->
+    <div class="delAll-pop" id="exportPoint-pop" style="display: none;">
+        <div class="del-title">
+            <span>测点导出</span>
+            <i class="iconfont delAll-close">&#xeaf2;</i>
+        </div>
+        <div class="del-content">确定对所有的测点导出吗？</div>
+        <div class="del-btn">
+            <button class="del-btnIcon close-btn" id="exportPointClose">关闭</button>
+            <button class="del-btnIcon sure-btn" id="exportPointSure">确定</button>
+        </div>
+    </div>
+    <!--导出未成功-->
+    <div class="add-tip" id="exportFail" style="display: none;">
+        <div class="add-tip-txt">没有数据可以导出~~~</div>
+    </div>
+    <!--添加成功-->
+    <div class="add-tip" id="addSuccess" style="display: none;">
+        <div class="add-tip-txt">添加成功~~~</div>
+    </div>
+    <!--修改成功-->
+    <div class="add-tip" id="editSuccess" style="display: none;">
+        <div class="add-tip-txt">修改成功~~~</div>
+    </div>
+    <!--删除成功-->
+    <div class="add-tip" id="delSuccess" style="display: none;">
+        <div class="add-tip-txt">删除成功~~~</div>
+    </div>
+    <!--操作成功-->
+    <div class="totalPop" id="success" style="display: none;">
+        <img src="../image/success-icon.png"/>
+        <span>操作成功</span>
+    </div>
+    <!--操作失败-->
+    <div class="totalPop" id="fail" style="display: none;">
+        <img src="../image/fail-icon.png"/>
+        <span>操作失败</span>
+    </div>
+    <!--加载中提示-->
+    <div class="loading-pop" id="loading" style="display:none;">
+        <div class="overlayOpacity"></div>
+        <div class="loadingBox">
+            <img src="../image/loading.gif"/>
+        </div>
+    </div>
+</body>
+</html>
