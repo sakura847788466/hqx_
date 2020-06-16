@@ -31,10 +31,401 @@ function navClickStyleOne() {
         delateInfo()
         closeINfoBox()
         $('.road-check-btn,.reback-center-btn,.navigation-controls,.report-organ').hide()
-        $('.riskAnalysis,.boatInfoBox,.boatRunDirection').show()
+        $('.riskAnalysis,.boatRunDirection').show()
 
+        // 获取船只信息
+        getBoatDetailInfo('412604000')
+        // 点击船只显示轨迹信息
+        $('.box_item').click(function(){
+            var id = $(this).attr('data-id')
+
+            //模拟数据
+            let boatLine =JSON.parse(JSON.stringify({
+                "data": [{
+                    "latitude": "23.060762",
+                    "longitude": "113.41532",
+                    "mmsi": "412476890",
+                    "time": "2020-06-05 00:50:00"
+                }, {
+                    "latitude": "23.061266",
+                    "longitude": "113.41568",
+                    "mmsi": "412476890",
+                    "time": "2020-06-05 01:42:00"
+                }, {
+                    "latitude": "23.060568",
+                    "longitude": "113.415344",
+                    "mmsi": "412476890",
+                    "time": "2020-06-05 11:00:00"
+                }, {
+                    "latitude": "23.061424",
+                    "longitude": "113.41573",
+                    "mmsi": "412476890",
+                    "time": "2020-06-05 12:30:00"
+                }, {
+                    "latitude": "23.061497",
+                    "longitude": "113.41584",
+                    "mmsi": "412476890",
+                    "time": "2020-06-05 16:50:00"
+                }, {
+                    "latitude": "23.061462",
+                    "longitude": "113.41588",
+                    "mmsi": "412476890",
+                    "time": "2020-06-05 20:00:00"
+                }, {
+                    "latitude": "23.06122",
+                    "longitude": "113.41529",
+                    "mmsi": "412476890",
+                    "time": "2020-06-05 21:56:00"
+                }, {
+                    "latitude": "23.06066",
+                    "longitude": "113.41541",
+                    "mmsi": "412476890",
+                    "time": "2020-06-05 23:42:00"
+                }, {
+                    "latitude": "23.061413",
+                    "longitude": "113.41581",
+                    "mmsi": "412476890",
+                    "time": "2020-06-06 08:00:00"
+                }, {
+                    "latitude": "23.060863",
+                    "longitude": "113.41532",
+                    "mmsi": "412476890",
+                    "time": "2020-06-06 08:50:00"
+                }, {
+                    "latitude": "23.060604",
+                    "longitude": "113.41541",
+                    "mmsi": "412476890",
+                    "time": "2020-06-06 11:54:00"
+                }, {
+                    "latitude": "23.06128",
+                    "longitude": "113.41518",
+                    "mmsi": "412476890",
+                    "time": "2020-06-06 12:56:00"
+                }, {
+                    "latitude": "23.06148",
+                    "longitude": "113.41584",
+                    "mmsi": "412476890",
+                    "time": "2020-06-06 19:56:00"
+                }, {
+                    "latitude": "23.060915",
+                    "longitude": "113.41516",
+                    "mmsi": "412476890",
+                    "time": "2020-06-06 22:54:00"
+                }, {
+                    "latitude": "23.060986",
+                    "longitude": "113.41518",
+                    "mmsi": "412476890",
+                    "time": "2020-06-07 02:00:00"
+                }, {
+                    "latitude": "23.061382",
+                    "longitude": "113.41566",
+                    "mmsi": "412476890",
+                    "time": "2020-06-07 02:32:00"
+                }, {
+                    "latitude": "23.061474",
+                    "longitude": "113.41581",
+                    "mmsi": "412476890",
+                    "time": "2020-06-07 07:44:00"
+                }, {
+                    "latitude": "23.060566",
+                    "longitude": "113.415344",
+                    "mmsi": "412476890",
+                    "time": "2020-06-07 10:46:00"
+                }, {
+                    "latitude": "23.061207",
+                    "longitude": "113.41557",
+                    "mmsi": "412476890",
+                    "time": "2020-06-07 13:40:00"
+                }, {
+                    "latitude": "23.06142",
+                    "longitude": "113.41591",
+                    "mmsi": "412476890",
+                    "time": "2020-06-07 17:02:00"
+                }, {
+                    "latitude": "23.061441",
+                    "longitude": "113.41591",
+                    "mmsi": "412476890",
+                    "time": "2020-06-07 20:06:00"
+                }, {
+                    "latitude": "23.06129",
+                    "longitude": "113.415344",
+                    "mmsi": "412476890",
+                    "time": "2020-06-07 23:46:00"
+                }, {
+                    "latitude": "23.061306",
+                    "longitude": "113.41539",
+                    "mmsi": "412476890",
+                    "time": "2020-06-08 02:58:00"
+                }, {
+                    "latitude": "23.061483",
+                    "longitude": "113.4158",
+                    "mmsi": "412476890",
+                    "time": "2020-06-08 06:08:00"
+                }, {
+                    "latitude": "23.061438",
+                    "longitude": "113.41584",
+                    "mmsi": "412476890",
+                    "time": "2020-06-08 09:22:00"
+                }, {
+                    "latitude": "23.060797",
+                    "longitude": "113.415344",
+                    "mmsi": "412476890",
+                    "time": "2020-06-08 10:32:00"
+                }, {
+                    "latitude": "23.061487",
+                    "longitude": "113.41588",
+                    "mmsi": "412476890",
+                    "time": "2020-06-08 19:38:00"
+                }, {
+                    "latitude": "23.06147",
+                    "longitude": "113.41586",
+                    "mmsi": "412476890",
+                    "time": "2020-06-08 22:56:00"
+                }, {
+                    "latitude": "23.061424",
+                    "longitude": "113.41573",
+                    "mmsi": "412476890",
+                    "time": "2020-06-09 02:02:00"
+                }, {
+                    "latitude": "23.061502",
+                    "longitude": "113.41588",
+                    "mmsi": "412476890",
+                    "time": "2020-06-09 05:12:00"
+                }, {
+                    "latitude": "23.06148",
+                    "longitude": "113.41588",
+                    "mmsi": "412476890",
+                    "time": "2020-06-09 08:44:00"
+                }, {
+                    "latitude": "23.061169",
+                    "longitude": "113.41532",
+                    "mmsi": "412476890",
+                    "time": "2020-06-09 11:10:00"
+                }, {
+                    "latitude": "23.061518",
+                    "longitude": "113.41559",
+                    "mmsi": "412476890",
+                    "time": "2020-06-09 14:28:00"
+                }, {
+                    "latitude": "23.061462",
+                    "longitude": "113.41588",
+                    "mmsi": "412476890",
+                    "time": "2020-06-09 17:38:00"
+                }, {
+                    "latitude": "23.061451",
+                    "longitude": "113.41591",
+                    "mmsi": "412476890",
+                    "time": "2020-06-09 21:28:00"
+                }, {
+                    "latitude": "23.061472",
+                    "longitude": "113.41586",
+                    "mmsi": "412476890",
+                    "time": "2020-06-10 00:28:00"
+                }, {
+                    "latitude": "23.061434",
+                    "longitude": "113.41588",
+                    "mmsi": "412476890",
+                    "time": "2020-06-10 03:34:00"
+                }, {
+                    "latitude": "23.061422",
+                    "longitude": "113.41588",
+                    "mmsi": "412476890",
+                    "time": "2020-06-10 06:48:00"
+                }, {
+                    "latitude": "23.061447",
+                    "longitude": "113.41588",
+                    "mmsi": "412476890",
+                    "time": "2020-06-10 09:56:00"
+                }, {
+                    "latitude": "23.060867",
+                    "longitude": "113.41557",
+                    "mmsi": "412476890",
+                    "time": "2020-06-10 13:32:00"
+                }, {
+                    "latitude": "23.061497",
+                    "longitude": "113.41573",
+                    "mmsi": "412476890",
+                    "time": "2020-06-10 15:02:00"
+                }, {
+                    "latitude": "23.061497",
+                    "longitude": "113.41588",
+                    "mmsi": "412476890",
+                    "time": "2020-06-10 18:54:00"
+                }, {
+                    "latitude": "23.061512",
+                    "longitude": "113.41586",
+                    "mmsi": "412476890",
+                    "time": "2020-06-11 11:18:00"
+                }, {
+                    "latitude": "23.06148",
+                    "longitude": "113.41557",
+                    "mmsi": "412476890",
+                    "time": "2020-06-11 16:16:00"
+                }, {
+                    "latitude": "23.061493",
+                    "longitude": "113.41588",
+                    "mmsi": "412476890",
+                    "time": "2020-06-11 19:20:00"
+                }, {
+                    "latitude": "23.06148",
+                    "longitude": "113.41584",
+                    "mmsi": "412476890",
+                    "time": "2020-06-12 00:30:00"
+                }, {
+                    "latitude": "23.061426",
+                    "longitude": "113.41581",
+                    "mmsi": "412476890",
+                    "time": "2020-06-12 03:42:00"
+                }, {
+                    "latitude": "23.061474",
+                    "longitude": "113.41581",
+                    "mmsi": "412476890",
+                    "time": "2020-06-12 06:54:00"
+                }, {
+                    "latitude": "23.061462",
+                    "longitude": "113.41581",
+                    "mmsi": "412476890",
+                    "time": "2020-06-12 10:10:00"
+                }, {
+                    "latitude": "23.061213",
+                    "longitude": "113.415215",
+                    "mmsi": "412476890",
+                    "time": "2020-06-12 14:44:00"
+                }, {
+                    "latitude": "23.061504",
+                    "longitude": "113.41573",
+                    "mmsi": "412476890",
+                    "time": "2020-06-12 17:48:00"
+                }, {
+                    "latitude": "23.061497",
+                    "longitude": "113.41584",
+                    "mmsi": "412476890",
+                    "time": "2020-06-13 01:26:00"
+                }, {
+                    "latitude": "23.0614",
+                    "longitude": "113.4158",
+                    "mmsi": "412476890",
+                    "time": "2020-06-13 04:28:00"
+                }, {
+                    "latitude": "23.061354",
+                    "longitude": "113.41591",
+                    "mmsi": "412476890",
+                    "time": "2020-06-13 07:46:00"
+                }, {
+                    "latitude": "23.061464",
+                    "longitude": "113.41586",
+                    "mmsi": "412476890",
+                    "time": "2020-06-13 10:52:00"
+                }, {
+                    "latitude": "23.061337",
+                    "longitude": "113.41584",
+                    "mmsi": "412476890",
+                    "time": "2020-06-13 13:52:00"
+                }, {
+                    "latitude": "23.06066",
+                    "longitude": "113.41518",
+                    "mmsi": "412476890",
+                    "time": "2020-06-13 15:28:00"
+                }, {
+                    "latitude": "23.061329",
+                    "longitude": "113.41577",
+                    "mmsi": "412476890",
+                    "time": "2020-06-13 19:22:00"
+                }, {
+                    "latitude": "23.061396",
+                    "longitude": "113.41593",
+                    "mmsi": "412476890",
+                    "time": "2020-06-13 22:24:00"
+                }, {
+                    "latitude": "23.06147",
+                    "longitude": "113.41586",
+                    "mmsi": "412476890",
+                    "time": "2020-06-14 01:52:00"
+                }, {
+                    "latitude": "23.061174",
+                    "longitude": "113.41528",
+                    "mmsi": "412476890",
+                    "time": "2020-06-14 03:58:00"
+                }, {
+                    "latitude": "23.061022",
+                    "longitude": "113.41509",
+                    "mmsi": "412476890",
+                    "time": "2020-06-14 07:12:00"
+                }, {
+                    "latitude": "23.061487",
+                    "longitude": "113.41543",
+                    "mmsi": "412476890",
+                    "time": "2020-06-14 08:28:00"
+                }, {
+                    "latitude": "23.061531",
+                    "longitude": "113.41571",
+                    "mmsi": "412476890",
+                    "time": "2020-06-14 11:58:00"
+                }, {
+                    "latitude": "23.061497",
+                    "longitude": "113.4158",
+                    "mmsi": "412476890",
+                    "time": "2020-06-14 15:28:00"
+                }, {
+                    "latitude": "23.061321",
+                    "longitude": "113.415215",
+                    "mmsi": "412476890",
+                    "time": "2020-06-14 16:40:00"
+                }, {
+                    "latitude": "23.061384",
+                    "longitude": "113.41525",
+                    "mmsi": "412476890",
+                    "time": "2020-06-14 19:42:00"
+                }, {
+                    "latitude": "23.061472",
+                    "longitude": "113.4158",
+                    "mmsi": "412476890",
+                    "time": "2020-06-14 22:58:00"
+                }, {
+                    "latitude": "23.061483",
+                    "longitude": "113.4158",
+                    "mmsi": "412476890",
+                    "time": "2020-06-15 02:00:00"
+                }, {
+                    "latitude": "23.060944",
+                    "longitude": "113.41525",
+                    "mmsi": "412476890",
+                    "time": "2020-06-15 04:58:00"
+                }]
+            }))
+            console.log(boatLine)
+            var str = ''
+            var arrT =[] //接收船只的所有路线
+            boatLine.data.findIndex(x=>{
+                if(x.mmsi = id){
+                    arrT.push(x)
+                    // str+='<div class="time-item">'+
+                    //     '<span>'+x.time+'</span>'+
+                    //     '<span>'+x.latitude+'</span>'+
+                    //     '<span>'+x.longitude+'</span>'+
+                    // '</div>'
+                    // arr.forEach(item,index=>{
+                    //     str+='<div class="time-item">'+
+                    //     '<span>'+item.time+'</span>'+
+                    //     '<span>'+item.latitude+'</span>'+
+                    //     '<span>'+item.longitude+'</span>'+
+                    // '</div>'
+                    // })
+                    // $('.time-list').empty().append(str)
+                }
+            })
+            console.log(arrT)
+             arrT.forEach(item=>{
+                        str+='<div class="time-item">'+
+                        '<span>'+item.time+'</span>'+
+                        '<span>'+item.latitude+'</span>'+
+                        '<span>'+item.longitude+'</span>'+
+                    '</div>'
+                    })
+                    $('.time-list').empty().append(str)
+        })
+       
         $('.toDetail').click(function() {
-                $('.boatInfoBox').hide()
                 $('.detailInfo_box').show()
             })
             // 风险类型切换
@@ -48,6 +439,7 @@ function navClickStyleOne() {
         delateInfo()
         closeINfoBox()
 
+        
         $('.header-nav-right,.road-check-btn,.reback-center-btn,.navigation-controls,.report-organ').hide()
         $('.timeShow,.tutide').show()
         $('.cloudImg').show()
@@ -112,7 +504,6 @@ function navClickStyleOne() {
     } else if (index == 5) {
         delateInfo()
         closeINfoBox()
-
         $('.subnav-context').height(0 + 'px').css('padding', '0')
         $('.areaDetailBox').show()
 
@@ -164,6 +555,9 @@ function delateInfo() {
  *@windDirection 风向
  *@temperatrueM  最高温度
  *@temperatrueMin 最低温度
+ *@ 中文名称 ChinseName
+ *@经度 latitude
+ *@未读 longitude
  */
 function showWeatherInfo(data) {
     if (data) {
@@ -232,7 +626,35 @@ function showWeatherInfo(data) {
                 '</ul>' +
                 '<div class="direct_iconArea">' + '</div>'
             $('.weatherInfo').empty().append(str).show()
-        } else {
+        } else if (data.type == '海区气象风险') {
+            str +=
+                '<ul>' +
+                '<li>' +
+                '<span>MMSI</span>' +
+                '<span>'+data.params.mmsi+'</span>'+
+                '</li>' +
+                '<li>' +
+                '<span>中文名称</span>' +
+                '<p>' + data.params.ChinseName + '</p>' +
+                '</li>' +
+                '<li>' +
+                '<span>经度</span>' +
+                '<p>' + data.params.latitude + '</p>' +
+                '</li>' +
+                '<li>' +
+                '<span>纬度</span>' +
+                '<p>' + data.params.longitude + '</p>' +
+                '</li>' +
+                '<li>' +
+                '<span>风力</span>' +
+                '<p>' + data.params.longitude + '</p>' +
+                '</li>' +
+                '</ul>' +
+                '<div class="toDetail" data-id="'+data.params.mmsi+'">查看详情</div>'+
+                '<div class="direct_iconArea">' + '</div>'
+            $('.boatInfoBox').empty().append(str).show()
+        } 
+        else {
 
         }
     } else {
@@ -252,8 +674,9 @@ function setByremove(leftX, topY) {
 function getInfoBytype(type) {
     //获取方法
     if (type == "城市天气") {
-        removeInfoLast("海洋天气")
-        removeInfoLast("港口天气")
+        console.log(type)
+        // removeInfoLast("海洋天气")
+        // removeInfoLast("港口天气")
         loadWeatherData(type)
 
     } else if (type == "海区天气") {
@@ -311,6 +734,7 @@ function leftOffest() {
 }
 // 获取船只详情信息 @id  船只id
 function getBoatDetailInfo(id) {
+    console.log(id)
     // 假数据模拟
     var dataTest = {
         "data": {
@@ -514,9 +938,26 @@ function getBoatDetailInfo(id) {
     }
     var res = JSON.parse(JSON.stringify(dataTest))
     var str = ''
-    res.list.forEach(function(item, index) {
-        console.log(item)
-    })
+    res.data.list.findIndex(x => {
+        if(x.mmsi === id){
+            let info = x
+            let str ='<div class="box_item" data-id="'+id+'">'+
+                        '<div class="title_s">'+info.name+'</div>'+
+                        '<div class="area-item">'+
+                            '<div>'+
+                                '<span>风力</span>'+'<span>'+info.windPower+'</span>'+
+                            '</div>'+
+                            '<div>'+
+                                '<span>海浪</span>'+'<span>'+info.wave+'</span>'+
+                            '</div>'+
+                            '<div>'+
+                                '<span>阵风等级</span>'+'<span>'+info.windPower+'</span>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>'
+            $('.box_list').empty().append(str)
+        }
+    } );
 }
 // 云图动画
 function cloudPlay(inputVal) {
