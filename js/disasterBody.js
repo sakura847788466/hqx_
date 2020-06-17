@@ -1,6 +1,6 @@
 var disasterBodyPoints = []
 var seaWeatherData = []
-
+var ShipLineList=[]
 function disasterBody(type, areaType) {
     var disasterBodyParams = {
         type: type,
@@ -69,6 +69,7 @@ function disasterBodyPointClick(pick, movement) {
 // 弹窗位置监听用到的参数
 var disasterPosition, disasterPosition2, disasterCartesian
 var WeatherPosition, WeatherPosition2, WeatherCartesian
+var ShipPosition, ShipPosition2, ShipCartesian
 scene.postRender.addEventListener(function() {
     // 监测点击气泡位置
     if (disasterPosition !== disasterPosition2) {
@@ -89,6 +90,18 @@ scene.postRender.addEventListener(function() {
                 var changeLeftX = WeatherPosition2.x + 18
                 var changeTopY = WeatherPosition2.y - 70
                 setByremove(changeLeftX, changeTopY)
+            }
+        }
+    }
+     //监测船舶位置变化
+    if (ShipPosition !== ShipPosition2) {
+        if (ShipCartesian !== undefined) {
+            ShipPosition2 = Cesium.SceneTransforms.wgs84ToWindowCoordinates(scene, ShipCartesian)
+            if (ShipPosition2) {
+                var changeLeftX = ShipPosition2.x + 18
+                var changeTopY = ShipPosition2.y - 70
+                console.log(changeLeftX+"  "+changeTopY);
+                 setBoatRemove(changeLeftX, changeTopY)
             }
         }
     }
@@ -428,9 +441,133 @@ function WeatherDataClick(pick, movement) {
         showWeatherInfo(data)
         return
     }
+    if (pick && pick.id && pick.id.name && pick.id.name == '船舶气象风险') {
+        var clickEntity = pick.id;
+        var shipId = clickEntity._id;
+        ShipCartesian = clickEntity.position._value
+        var movementPick = movement.position
+        ShipPosition = { x: movementPick.x, y: movementPick.y }
+        var shipName=clickEntity._properties._shipName._value;
+        var lon=clickEntity._properties._lon._value;
+        var lat=clickEntity._properties._lat._value;
+        var windPower=clickEntity._properties._windPower._value;
+        var data = {
+            left: movementPick.x,
+            top: movementPick.y,
+            shipId:shipId,
+            type: "船舶气象风险",
+            params: {
+            	 name: shipName,
+                longitude: lon,
+                latitude: lat,
+                wind: windPower+"级"
+            }
+        };
+        showWeatherInfo(data)
+        return
+    }
     if(pick===undefined){
     	closeINfoBox()
+    	clearBoatBox()
     }
+}
+function shipLineClick(drillPick, movement){
+	for (var i = 0; i < drillPick.length; i++) {
+    var pick = drillPick[i]
+
+    if (pick && pick.id && pick.id.id && pick.id.name === '广州港-海口港') {
+     GZ_HKLineHight(true)
+     GZ_SHLineHight(false)
+     GZ_XMLineHight(false)
+     GZ_TJLineHight(false)
+     setPointLineHeight('广州港-海口港')
+     
+     return;
+    }
+    if (pick && pick.id && pick.id.id && pick.id.name === '广州港-上海港') {
+     GZ_HKLineHight(false)
+     GZ_SHLineHight(true)
+     GZ_XMLineHight(false)
+     GZ_TJLineHight(false)
+     setPointLineHeight('广州港-上海港')
+     return;
+    }
+    if (pick && pick.id && pick.id.id && pick.id.name === '广州港-厦门港') {
+     GZ_HKLineHight(false)
+     GZ_SHLineHight(false)
+     GZ_XMLineHight(true)
+     GZ_TJLineHight(false)
+     setPointLineHeight('广州港-厦门港')
+     return;
+    }
+    if (pick && pick.id && pick.id.id && pick.id.name === '广州港-天津港') {
+     GZ_HKLineHight(false)
+     GZ_SHLineHight(false)
+     GZ_XMLineHight(false)
+     GZ_TJLineHight(true)
+     setPointLineHeight('广州港-天津港')
+    return;
+    }
+  }
+  if (drillPick.length === 0) {
+     GZ_HKLineHight(false)
+     GZ_SHLineHight(false)
+     GZ_XMLineHight(false)
+     GZ_TJLineHight(false)
+     clearLineHeight()
+  }
+
+}
+//封装港口变亮方法
+function GZ_HKLineHight(isHight){
+	var AllEntities=ShipLineList[0].GZ_HKdataSource
+	if(isHight){
+     AllEntities._entityCollection._entities._array[1]._polyline._material._color._value.alpha=1;
+     AllEntities._entityCollection._entities._array[2]._polyline._material._color._value.alpha=1;
+     AllEntities._entityCollection._entities._array[3]._polyline._material._color._value.alpha=1;		
+	}else{
+	 AllEntities._entityCollection._entities._array[1]._polyline._material._color._value.alpha=0.3;
+     AllEntities._entityCollection._entities._array[2]._polyline._material._color._value.alpha=0.3;
+     AllEntities._entityCollection._entities._array[3]._polyline._material._color._value.alpha=0.3;			
+	}    
+}
+function GZ_SHLineHight(isHight){
+	var AllEntities=ShipLineList[0].GZ_SHdataSource
+     if(isHight){
+     AllEntities._entityCollection._entities._array[1]._polyline._material._color._value.alpha=1;
+     AllEntities._entityCollection._entities._array[2]._polyline._material._color._value.alpha=1;
+     AllEntities._entityCollection._entities._array[3]._polyline._material._color._value.alpha=1;		
+	}else{
+	 AllEntities._entityCollection._entities._array[1]._polyline._material._color._value.alpha=0.3;
+     AllEntities._entityCollection._entities._array[2]._polyline._material._color._value.alpha=0.3;
+     AllEntities._entityCollection._entities._array[3]._polyline._material._color._value.alpha=0.3;			
+	}    
+}
+function GZ_XMLineHight(isHight){
+	var AllEntities=ShipLineList[0].GZ_XMdataSource
+	if(isHight){
+     AllEntities._entityCollection._entities._array[1]._polyline._material._color._value.alpha=1;
+     AllEntities._entityCollection._entities._array[2]._polyline._material._color._value.alpha=1;
+     AllEntities._entityCollection._entities._array[3]._polyline._material._color._value.alpha=1;		
+	}else{
+	 AllEntities._entityCollection._entities._array[1]._polyline._material._color._value.alpha=0.3;
+     AllEntities._entityCollection._entities._array[2]._polyline._material._color._value.alpha=0.3;
+     AllEntities._entityCollection._entities._array[3]._polyline._material._color._value.alpha=0.3;			
+	}    
+}
+function GZ_TJLineHight(isHight){
+	var AllEntities=ShipLineList[0].GZ_TJdataSource
+	if(isHight){
+     AllEntities._entityCollection._entities._array[1]._polyline._material._color._value.alpha=1;
+     AllEntities._entityCollection._entities._array[2]._polyline._material._color._value.alpha=1;
+     AllEntities._entityCollection._entities._array[3]._polyline._material._color._value.alpha=1;
+     AllEntities._entityCollection._entities._array[4]._polyline._material._color._value.alpha=1;
+	}else{
+	 AllEntities._entityCollection._entities._array[1]._polyline._material._color._value.alpha=0.3;
+     AllEntities._entityCollection._entities._array[2]._polyline._material._color._value.alpha=0.3;
+     AllEntities._entityCollection._entities._array[3]._polyline._material._color._value.alpha=0.3;			
+	 AllEntities._entityCollection._entities._array[4]._polyline._material._color._value.alpha=0.3;	
+	}
 }
 /**
  * 加载海区天气预报
@@ -438,12 +575,12 @@ function WeatherDataClick(pick, movement) {
 //loadWeatherData("城市天气")
 //loadWeatherData("海区天气")
 //loadWeatherData("港口天气")
+//loadWeatherData("船舶气象风险") 
 function loadWeatherData(name) {
     if (name === "海区天气") {
         getForecastData("data/海洋天气预报.json", function(res) {
             if (res.code == 200 && res.data) {
                 var landCity = res.data
-                console.log(landCity);
                 loadWheatherDataPoint(landCity, name)
 
             }
@@ -465,6 +602,16 @@ function loadWeatherData(name) {
                         loadWheatherDataPoint(landCity, name)
                     }
                 })
+            }else{
+            	if(name ==="船舶气象风险"){
+            	 getForecastData("data/ship.json", function(res) {
+                    if (res.code == 200 && res.data) {
+                    	 var landCity = res.data.list
+                    	console.log(landCity);  
+                    	loadWheatherDataPoint(landCity, name)
+                    }
+                })	
+            	}
             }
         }
     }
@@ -523,6 +670,29 @@ function loadWheatherDataPoint(wheatherDatas, name) {
                     }
                     addBillboardSeaArea(locatInfo.name, "港口天气", locatInfo.name, locatInfo.longitude, locatInfo.latitude, imgSrc, 1.5, info)
                 }
+            }else{
+            	if(name === "船舶气象风险"){
+            	 for (var i = 0; i < wheatherDatas.length; i++) {
+                    var wheatherData = wheatherDatas[i]
+                    var shipId = wheatherData.mmsi
+                    var direction = wheatherData.boatMoveDirection;
+                    var imgSrc = shipImage(direction);                 
+                    var lon=cacuLonLat(wheatherData.longitude)
+                    var lat=cacuLonLat(wheatherData.latitude);
+                    var shipName=wheatherData.name;
+                    var windPower=wheatherData.windPower;                   
+                    seaWeatherData.push(shipId);
+                    var info = {
+                       shipId:shipId,
+                       shipName:shipName,
+                       lon:lon,
+                       lat:lat,
+                       windPower:windPower,
+                       direction:direction
+                    }
+                    addBillboardSeaArea(shipId, "船舶气象风险", shipId, wheatherData.longitude, wheatherData.latitude, imgSrc, 1, info)
+                }	
+            	}
             }
         }
     }
@@ -547,6 +717,13 @@ function removeWheatherDataPoint(name) {
                     removeBillboardByBillboardName(seaWeatherData[i])
                 }
                 seaWeatherData = [];
+            }else{
+            	if(name === "船舶气象风险"){
+            	for (var i = 0; i < seaWeatherData.length; i++) {
+                    removeBillboardByBillboardName(seaWeatherData[i])
+                }
+                seaWeatherData = [];	
+            	}
             }
         }
 
@@ -592,4 +769,80 @@ function searchImage(weatherPhenomena1) {
             wheatherImage = "image/weather/cloudy.png";
     }
     return wheatherImage;
+}
+
+function shipImage(weatherPhenomena1) {
+    var wheatherImage = "";
+    if(weatherPhenomena1>0&&weatherPhenomena1<90){
+    	wheatherImage=wheatherImage = "image/ship/东北.png";
+    	return wheatherImage;
+    }
+    if(weatherPhenomena1>90&&weatherPhenomena1<180){
+    	wheatherImage=wheatherImage = "image/ship/东南.png";
+    	return wheatherImage;
+    }
+    if(weatherPhenomena1>180&&weatherPhenomena1<270){
+    	wheatherImage=wheatherImage = "image/ship/西南.png";
+    	return wheatherImage;
+    }
+    if(weatherPhenomena1>270&&weatherPhenomena1<360){
+    	wheatherImage=wheatherImage = "image/ship/西北.png";
+    	return wheatherImage;
+    }
+//  switch (weatherPhenomena1) {
+//      case weatherPhenomena1:
+//          wheatherImage = "image/ship/东南.png";
+//          break;
+//
+//      case "东北":
+//          wheatherImage = "image/ship/东北.png";
+//          break;
+//
+//      case "西北":
+//          wheatherImage = "image/ship/西北.png";
+//          break;
+//
+//      case "西南":
+//          wheatherImage = "image/ship/西南.png";
+//          break;
+//
+//      default:
+//          wheatherImage = "image/ship/东南.png";
+//  }
+    return wheatherImage;
+}
+
+function cacuLonLat(a) {
+  var degree = parseInt(a);
+  var min = parseInt((a - degree) * 60);
+  var sec = parseInt((a - degree) * 3600 - min * 60);
+  return degree + '°' + min + '′' + sec + '″';
+}
+//loadShipLine()
+//加载船等级线段
+function loadShipLine(){
+	var GZ_HKdataSource = new Cesium.CzmlDataSource()
+	var GZ_SHdataSource = new Cesium.CzmlDataSource()
+	var GZ_XMdataSource = new Cesium.CzmlDataSource()
+	var GZ_TJdataSource = new Cesium.CzmlDataSource()
+	ShipLineList.push({
+    GZ_HKdataSource:GZ_HKdataSource,
+    GZ_SHdataSource:GZ_SHdataSource,
+    GZ_XMdataSource:GZ_XMdataSource,
+    GZ_TJdataSource:GZ_TJdataSource
+  })
+	viewer.dataSources.add(GZ_HKdataSource.load(gz_hkdata))
+    viewer.dataSources.add(GZ_SHdataSource.load(gz_shdata))
+    viewer.dataSources.add(GZ_XMdataSource.load(gz_xmdata))
+	viewer.dataSources.add(GZ_TJdataSource.load(gz_tjdata))
+}
+//清除船只等级线段
+function deleteShipLine () {
+    var typhoonItem = ShipLineList[0]
+    typhoonItem.GZ_HKdataSource.entities.removeAll()
+    typhoonItem.GZ_SHdataSource.entities.removeAll()
+    typhoonItem.GZ_XMdataSource.entities.removeAll()
+    typhoonItem.GZ_TJdataSource.entities.removeAll()
+  
+  ShipLineList = []
 }

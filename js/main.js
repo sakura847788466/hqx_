@@ -146,6 +146,8 @@ handler.setInputAction(function (movement) {
     DisasterBodyJsonClick(pick)
     //点击天气数据
     WeatherDataClick(pick,movement)
+    //航线信息点击
+    shipLineClick(drillPick, movement)
 }, Cesium.ScreenSpaceEventType.LEFT_CLICK)
 
 /**
@@ -345,6 +347,27 @@ function addBillboardSeaArea(id, name, billboardName, lon, lat, imgSrc, scale,in
 			},
 			billboardName: billboardName
 		})
+  	}else{
+  		if(name==="船舶气象风险"){
+  		  viewer.entities.add({
+			id: id,
+			name: name,
+			position: Cesium.Cartesian3.fromDegrees(lon, lat),
+			billboard: {
+				image: imgSrc,
+				scale: scale
+			},
+			properties: {
+	         shipId:info.shipId,
+			 shipName:info.shipName,
+			 lon:info.lon,
+			 lat: info.lat,
+			 windPower:info.windPower,
+			 direction:info.direction			 
+			},
+			billboardName: billboardName
+		 })	
+  		}
   	}
   	}
   }

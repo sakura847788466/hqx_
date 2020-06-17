@@ -12,11 +12,12 @@ function navClickStyleOne() {
     $('.areaDetailBox').hide()
     $('.subnav-context,.road-check-btn,.reback-center-btn,.navigation-controls,.report-organ').show()
     $('.report-organ .report-organ-list1').show()
-    $('.report-organ .report-organ-list,.riskAnalysis,.boatInfoBox,.boatRunDirection').hide()
+    $('.report-organ .report-organ-list,.riskAnalysis,.boatInfoBox,.boatRunDirection,.boatList_r,.boatDrection').hide()
     $('.subnav-context').css('padding', '24px')
     $('.lineThrouth').hide()
     $('.header-nav-right').show()
     $('.timeShow,.tutide,.cloudImg').hide()
+
 
     var index = $(this).index();
     if (index == currentNavIndex) {
@@ -27,20 +28,25 @@ function navClickStyleOne() {
         changeLegendShow(-1, false)
     }
     if (index == 1) { //风险区划
+        $('.btuBox1 .btn-nav1 ').removeClass('btn-active') //默认清除
         changeLegendShow(subNavIndex, false)
-        delateInfo()
         closeINfoBox()
-        $('.road-check-btn,.reback-center-btn,.navigation-controls,.report-organ').hide()
-        $('.riskAnalysis,.boatRunDirection').show()
-
-        // 获取船只信息
-        getBoatDetailInfo('412604000')
-        // 点击船只显示轨迹信息
-        $('.box_item').click(function(){
+        $('.road-check-btn,.reback-center-btn,.navigation-controls,.report-organ,.boatRunDirection,.riskAnalysis').hide()
+            // 点击查看详情获取船只信息
+        getBoatDetailInfo()
+            //tab 切换
+        $('.subnav-context .btuBox1 .btn-nav1').click(function() {
+                $('.subnav-context .btuBox1 .btn-nav1').removeClass('btn-active')
+                $(this).addClass('btn-active')
+                getInfoBytype($(this).text(), $(this)) //获取船舶信息
+                showBox($(this).text()) //显示相应的盒子
+            })
+            // 点击船只显示轨迹信息
+        $('.box_item').click(function() {
             var id = $(this).attr('data-id')
 
             //模拟数据
-            let boatLine =JSON.parse(JSON.stringify({
+            let boatLine = JSON.parse(JSON.stringify({
                 "data": [{
                     "latitude": "23.060762",
                     "longitude": "113.41532",
@@ -393,42 +399,29 @@ function navClickStyleOne() {
                     "time": "2020-06-15 04:58:00"
                 }]
             }))
-            console.log(boatLine)
             var str = ''
-            var arrT =[] //接收船只的所有路线
-            boatLine.data.findIndex(x=>{
-                if(x.mmsi = id){
+            var arrT = [] //接收船只的所有路线
+            boatLine.data.findIndex(x => {
+                if (x.mmsi == id) {
                     arrT.push(x)
-                    // str+='<div class="time-item">'+
-                    //     '<span>'+x.time+'</span>'+
-                    //     '<span>'+x.latitude+'</span>'+
-                    //     '<span>'+x.longitude+'</span>'+
-                    // '</div>'
-                    // arr.forEach(item,index=>{
-                    //     str+='<div class="time-item">'+
-                    //     '<span>'+item.time+'</span>'+
-                    //     '<span>'+item.latitude+'</span>'+
-                    //     '<span>'+item.longitude+'</span>'+
-                    // '</div>'
-                    // })
-                    // $('.time-list').empty().append(str)
+
                 }
             })
             console.log(arrT)
-             arrT.forEach(item=>{
-                        str+='<div class="time-item">'+
-                        '<span>'+item.time+'</span>'+
-                        '<span>'+item.latitude+'</span>'+
-                        '<span>'+item.longitude+'</span>'+
+            arrT.forEach(item => {
+                str += '<div class="time-item">' +
+                    '<span>' + item.time + '</span>' +
+                    '<span>' + item.latitude + '</span>' +
+                    '<span>' + item.longitude + '</span>' +
                     '</div>'
-                    })
-                    $('.time-list').empty().append(str)
-        })
-       
-        $('.toDetail').click(function() {
-                $('.detailInfo_box').show()
             })
-            // 风险类型切换
+            $('.boatRunDirection .time-list .nullInfo').hide()
+            $('.boatRunDirection .time-list').empty().append(str)
+        })
+        $('.toDetail').click(function() {
+            $('.detailInfo_box').show()
+        })
+
     }
     $(".nav-item").removeClass("nav-click");
     $(this).addClass("nav-click");
@@ -436,10 +429,9 @@ function navClickStyleOne() {
     $('.subnav-context').eq(index).show().siblings().hide()
         // 卫星云图
     if (index == 2) {
-        delateInfo()
         closeINfoBox()
 
-        
+
         $('.header-nav-right,.road-check-btn,.reback-center-btn,.navigation-controls,.report-organ').hide()
         $('.timeShow,.tutide').show()
         $('.cloudImg').show()
@@ -450,10 +442,7 @@ function navClickStyleOne() {
     }
     // 近岸预报
     if (index === 3) {
-        delateInfo()
         closeINfoBox()
-            // $('.report-dialog').hide()
-
         $('.subnav-context').height(550 + 'px')
         $('.report-organ-close .report-organ-btn').trigger('click')
 
@@ -476,33 +465,26 @@ function navClickStyleOne() {
         })
     } else if (index == 4) {
         // ada
-        //设置默认选择项
-        delateInfo()
-        closeINfoBox()
 
-        getInfoBytype("城市天气")
+
+        closeINfoBox()
         $('.report-organ .report-organ-list').show()
         $('.report-organ .report-organ-list1').hide()
         $('.subnav-context').height(0 + 'px').css('padding', '0')　　
 
-        $('.reback-center-btn').click(function() {
-            let type = localStorage.getItem('type')
-            removeInfoLast(type)
-        })
         $('.but_box .btn-nav ').click(function() {
-            $('.but_box .btn-nav ').removeClass('btn-active')
-            $(this).addClass('btn-active')
-            closeINfoBox()
-            getInfoBytype($(this).text()) //获取信息
-            localStorage.setItem('type', $(this).text())
-        })
-        setImageryViewModels('电子云图')
+                $('.but_box .btn-nav ').removeClass('btn-active')
+                $(this).addClass('btn-active')
+                closeINfoBox()
+                getInfoBytype($(this).text(), $(this)) //获取信息
+                localStorage.setItem('type', $(this).text())
+            })
+            // setImageryViewModels('电子云图')
         if (isSeaZoneShow) {
             // 如果海域单元有显示的话，在切换时需要删除
             offshoreForecast($('.nav-fold-level li').eq(0), false)
         }
     } else if (index == 5) {
-        delateInfo()
         closeINfoBox()
         $('.subnav-context').height(0 + 'px').css('padding', '0')
         $('.areaDetailBox').show()
@@ -537,11 +519,23 @@ function navClickStyleOne() {
         reBuildHeight(-1);
     }
 }
-//根据本地类型删除
-function delateInfo() {
-    let type = localStorage.getItem('type')
+//tab切换根据类型显示盒子
+function showBox(type) {
     console.log(type)
-    removeInfoLast(type)
+    if (type == '海区气象风险') {
+        $('.areaRightBox').show()
+        $('.riskAnalysis,.boatRunDirection,.boatList_r').hide()
+
+    } else if (type == '船舶气象风险') {
+        $('.areaRightBox,.boatList_r,').hide()
+        $('.riskAnalysis,.boatRunDirection').show()
+    } else if (type == '航线气象风险') {
+        $('.boatList_r').show()
+        $('.riskAnalysis,.boatRunDirection,.areaRightBox,').hide()
+
+    } else {
+
+    }
 }
 /* 点击根据传入类型出现弹窗
  *@parmas
@@ -627,15 +621,33 @@ function showWeatherInfo(data) {
                 '<div class="direct_iconArea">' + '</div>'
             $('.weatherInfo').empty().append(str).show()
         } else if (data.type == '海区气象风险') {
+            str += '<div class="areaInfo-title">编号:' + '<span>' + data.params.code + '</span>' +
+                '</div>' +
+                '<ul>' +
+                '<li>' +
+                '<span>海域</span>' +
+                '<span>' + data.params.areaName + '</span>' +
+                '</li>' +
+                '<li>' +
+                '<span>中心</span>' +
+                '<p>' + data.params.Center + '</p>' +
+                '</li>' +
+                '<li>' +
+                '<span>浪高</span>' +
+                '<p>' + data.params.waveHeight + '</p>' +
+                '</li>' +
+                '<div class="direct_iconArea">' + '</div>'
+            $('.area-info').empty().append(str).show()
+        } else if (data.type == '船舶气象风险') {
             str +=
                 '<ul>' +
                 '<li>' +
                 '<span>MMSI</span>' +
-                '<span>'+data.params.mmsi+'</span>'+
+                '<span>' + data.shipId + '</span>' +
                 '</li>' +
                 '<li>' +
                 '<span>中文名称</span>' +
-                '<p>' + data.params.ChinseName + '</p>' +
+                '<p>' + data.params.name + '</p>' +
                 '</li>' +
                 '<li>' +
                 '<span>经度</span>' +
@@ -647,14 +659,19 @@ function showWeatherInfo(data) {
                 '</li>' +
                 '<li>' +
                 '<span>风力</span>' +
-                '<p>' + data.params.longitude + '</p>' +
+                '<p>' + data.params.wind + '</p>' +
                 '</li>' +
                 '</ul>' +
-                '<div class="toDetail" data-id="'+data.params.mmsi+'">查看详情</div>'+
+                '<div class="toDetail" data-id="' + data.shipId + '">查看详情</div>' +
                 '<div class="direct_iconArea">' + '</div>'
             $('.boatInfoBox').empty().append(str).show()
-        } 
-        else {
+
+            $('.toDetail').click(function() {
+                var id = $(this).attr('data-id')
+                getBoatDetailInfo_new(id)
+            })
+
+        } else {
 
         }
     } else {
@@ -663,27 +680,456 @@ function showWeatherInfo(data) {
 
 
 }
+
+//根据id去获取船只详情
+function getBoatDetailInfo_new(id) {
+    clearBoatBox()
+        // 假数据模拟
+    var dataTest = {
+        "data": {
+            "list": [{
+                    "mmsi": "412604000",
+                    "imo": "0",
+                    "name": "中国发展2",
+                    "counter": "中国",
+                    "call": "BYFA",
+                    "boatLen": "199米",
+                    "boatWide": "32米",
+                    "loadDu": "52300.00",
+                    "totalDu": "33511.0",
+                    "netDu": "52300.0",
+                    "windPower": "5级",
+                    "preArrival": "FANG CHENG",
+                    "preArrivalTime": "06-12 18:20",
+                    "longitude": 110.8355,
+                    "latitude": 21.7583,
+                    "boatDirection": "241度",
+                    "boatMoveDirection": "161.0度",
+                    "status": "锚泊/0.1节",
+                    "draft": "12.8米",
+                    "updateTime": "2020-06-15 11:36:09",
+                    "boatType": "客船",
+                    "wave": "1.2米",
+                    "gust": "6级"
+                },
+
+                {
+                    "mmsi": "413055580",
+                    "imo": "0",
+                    "name": "",
+                    "counter": "",
+                    "call": "",
+                    "boatLen": "22米",
+                    "boatWide": "5米",
+                    "loadDu": "67.00",
+                    "totalDu": "52.0",
+                    "netDu": "67.0",
+                    "windPower": "5级",
+                    "preArrival": "GUI SHAN",
+                    "preArrivalTime": "06-13 08:00",
+                    "longitude": 113.9588,
+                    "latitude": 22.9938,
+                    "boatDirection": "未知",
+                    "boatMoveDirection": "82.1度",
+                    "status": "在航(主机推动)/0.0节",
+                    "draft": "1.5米",
+                    "updateTime": "2020-06-15 11:27:08",
+                    "boatType": "客船",
+                    "wave": "1.2米",
+                    "gust": "6级"
+                },
+                {
+                    "mmsi": "413471030",
+                    "imo": "0",
+                    "name": "",
+                    "counter": "",
+                    "call": "",
+                    "boatLen": "26米",
+                    "boatWide": "6米",
+                    "loadDu": "吨",
+                    "totalDu": "吨",
+                    "netDu": "吨",
+                    "windPower": "8级",
+                    "preArrival": "BDAM",
+                    "preArrivalTime": "00-00 00:00",
+                    "longitude": 113.8722,
+                    "latitude": 23.0316,
+                    "boatDirection": "22度",
+                    "boatMoveDirection": "248.9度",
+                    "status": "未定义/0.7节",
+                    "draft": "1.5米",
+                    "updateTime": "2020-06-15 11:42:55",
+                    "boatType": "引航",
+                    "wave": "1.5米",
+                    "gust": "9级"
+                },
+                {
+                    "mmsi": "413907633",
+                    "imo": "0",
+                    "name": "",
+                    "counter": "",
+                    "call": "",
+                    "boatLen": "53米",
+                    "boatWide": "9米",
+                    "loadDu": "吨",
+                    "totalDu": "吨",
+                    "netDu": "吨",
+                    "windPower": "4级",
+                    "preArrival": "SHATIAN",
+                    "preArrivalTime": "06-12 20:50",
+                    "longitude": 115.15166,
+                    "latitude": 23.4416,
+                    "boatDirection": "63度",
+                    "boatMoveDirection": "146.9度",
+                    "status": "锚泊/0.0节",
+                    "draft": "3.5米",
+                    "updateTime": "2020-06-15 11:28:04",
+                    "boatType": "邮轮",
+                    "wave": "1.7米",
+                    "gust": "5级"
+                },
+                {
+                    "mmsi": "413377770",
+                    "imo": "0",
+                    "call": "0",
+                    "name": "",
+                    "counter": "",
+                    "boatLen": "53米",
+                    "boatWide": "9米",
+                    "loadDu": "吨",
+                    "totalDu": "吨",
+                    "netDu": "吨",
+                    "windPower": "4级",
+                    "preArrival": "8",
+                    "preArrivalTime": "06-10 00:00",
+                    "longitude": 111.6672,
+                    "latitude": 23.566,
+                    "boatDirection": "212度",
+                    "boatMoveDirection": "212.3度",
+                    "status": "锚泊/0.6节",
+                    "draft": "3.4米",
+                    "updateTime": "2020-06-15 11:30:48",
+                    "boatType": "邮轮",
+                    "wave": "1.7米",
+                    "gust": "5级"
+                },
+                {
+                    "mmsi": "412476890",
+                    "imo": "888888",
+                    "call": "",
+                    "name": "",
+                    "counter": "",
+                    "boatLen": "50米",
+                    "boatWide": "8米",
+                    "loadDu": "吨",
+                    "totalDu": "吨",
+                    "netDu": "吨",
+                    "windPower": "3级",
+                    "preArrival": "GUANGZHOU",
+                    "preArrivalTime": "03-05 08:08",
+                    "longitude": 115.9116,
+                    "latitude": 24.9002,
+                    "boatDirection": "0度",
+                    "boatMoveDirection": "83.1度",
+                    "status": "未定义/0.2节",
+                    "draft": "3.1米",
+                    "updateTime": "2020-06-15 07:43:22",
+                    "boatType": "其他",
+                    "wave": "1.6米",
+                    "gust": "4级"
+                },
+                {
+                    "mmsi": "413782091",
+                    "imo": "",
+                    "call": "",
+                    "name": "",
+                    "counter": "",
+                    "boatLen": "米",
+                    "boatWide": "米",
+                    "loadDu": "吨",
+                    "totalDu": "吨",
+                    "netDu": "吨",
+                    "windPower": "10级",
+                    "preArrival": "",
+                    "preArrivalTime": "03-05 08:08",
+                    "longitude": 115.9116,
+                    "latitude": 24.9002,
+                    "boatDirection": "140度",
+                    "boatMoveDirection": "140.5度",
+                    "status": "未定义/5.9节",
+                    "draft": "米",
+                    "updateTime": "2020-06-15 11:39:36",
+                    "boatType": "其他",
+                    "wave": "2.5米",
+                    "gust": "11级"
+                },
+                {
+                    "mmsi": "477519200",
+                    "imo": "9683178",
+                    "call": "VRMM7",
+                    "name": "",
+                    "counter": "Hong Kong",
+                    "boatLen": "31米",
+                    "boatWide": "10米",
+                    "loadDu": "214吨",
+                    "totalDu": "278吨",
+                    "netDu": "214吨",
+                    "windPower": "4级",
+                    "preArrival": "A",
+                    "preArrivalTime": "00-00 24:60",
+                    "longitude": 115.755,
+                    "latitude": 23.05,
+                    "boatDirection": "未知",
+                    "boatMoveDirection": "23.13度",
+                    "status": "在航/1.2节",
+                    "draft": "0.0米",
+                    "updateTime": "2020-06-15 11:45:17",
+                    "boatType": "其他",
+                    "wave": "1.4米",
+                    "gust": "5级"
+                }
+            ]
+
+        },
+        "code": 200
+    }
+    var res = JSON.parse(JSON.stringify(dataTest))
+    var str = ''
+    res.data.list.findIndex(x => {
+        if (x.mmsi == id) {
+            let info = x
+            str += `<div class="title">查看详情
+            <span class="closeDetailBox" onclick="closeDetailBox()">X</span>
+        </div>
+        <div class="container_detail">
+            <h1>` + info.name + `</h1>
+            <ul>
+                <li>
+                    <div>
+                        <span>MMSI</span>
+                        <span>` + info.mmsi + `</span>
+                    </div>
+                    <div>
+                        <span>预到港</span>
+                        <span>` + info.preArrival + `</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span>IMO</span>
+                        <span>` + info.imo + `</span>
+                    </div>
+                    <div>
+                        <span>预到时间</span>
+                        <span>` + info.preArrivalTime + `</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span>呼号</span>
+                        <span>` + info.call + `</span>
+                    </div>
+                    <div>
+                        <span>经度</span>
+                        <span>` + info.longitude + `</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span>中文名称</span>
+                        <span>` + info.name + `</span>
+                    </div>
+                    <div>
+                        <span>纬度</span>
+                        <span>` + info.latitude + `</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span>国籍</span>
+                        <span> ` + info.counter + `</span>
+                    </div>
+                    <div>
+                        <span>船首向</span>
+                        <span>` + info.boatDirection + `</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span>船长</span>
+                        <span> ` + info.boatLen + `</span>
+                    </div>
+                    <div>
+                        <span>船迹向</span>
+                        <span>` + info.boatMoveDirection + `</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span>船宽</span>
+                        <span> ` + info.boatWide + `</span>
+                    </div>
+                    <div>
+                        <span>状态/航速</span>
+                        <span>` + info.status + `</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span>载重吨</span>
+                        <span> ` + info.loadDu + `</span>
+                    </div>
+                    <div>
+                        <span>吃水</span>
+                        <span>` + info.draft + `</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span>总吨</span>
+                        <span> ` + info.totalDu + `</span>
+                    </div>
+                    <div>
+                        <span>更新时间</span>
+                        <span>` + info.updateTime + `</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span>净吨</span>
+                        <span> ` + info.netDu + `</span>
+                    </div>
+                    <div>
+                        <span>船舶类型</span>
+                        <span>` + info.boatType + `</span>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <span>风力</span>
+                        <span> ` + info.windPower + `</span>
+                    </div>
+                    <div>
+                        <span>海浪</span>
+                        <span>` + info.wave + `</span>
+                    </div>
+                </li>
+            </ul>
+        </div>`
+
+            $('.detailInfo_box').empty().append(str).show()
+            var length = $('.riskAnalysis .box_list').find('.box_item')
+        } else {
+
+        }
+    });
+}
+//清除船舶气象风险弹框
+function clearBoatBox() {
+    $('.boatInfoBox').hide()
+}
+
+function setBoatRemove(leftX, topY) {
+    $('.boatInfoBox').css({
+        left: leftX,
+        top: topY
+    })
+}
 // 时间戳转换
-function getMyDate(str){
+function getMyDate(str) {
     var oDate = new Date(str),
-    oYear = oDate.getFullYear(),
-    oMonth = oDate.getMonth()+1,
-    oDay = oDate.getDate(),
-    oHour = oDate.getHours(),
-    oMin = oDate.getMinutes(),
-    oSen = oDate.getSeconds(),
-    oTime = oYear +'-'+ getzf(oMonth) +'-'+ getzf(oDay) +' '+ getzf(oHour) +':'+ getzf(oMin) +':'+getzf(oSen);//最后拼接时间
+        oYear = oDate.getFullYear(),
+        oMonth = oDate.getMonth() + 1,
+        oDay = oDate.getDate(),
+        oHour = oDate.getHours(),
+        oMin = oDate.getMinutes(),
+        oSen = oDate.getSeconds(),
+        oTime = oYear + '-' + getzf(oMonth) + '-' + getzf(oDay) + ' ' + getzf(oHour) + ':' + getzf(oMin) + ':' + getzf(oSen); //最后拼接时间
     return oTime;
 };
 //补0操作
-function getzf(num){
-    if(parseInt(num) < 10){
-        num = '0'+num;
+function getzf(num) {
+    if (parseInt(num) < 10) {
+        num = '0' + num;
     }
     return num;
 
 
-          }
+          
+}
+// 船舶航线数据
+function boatLineArr() {
+    var res = {
+        data: [{
+            name: '广州港-海口港'
+        }, {
+            name: '广州港-上海港'
+        }, {
+            name: '广州港-天津港'
+        }, {
+            name: '广州港-厦门港'
+        }],
+        code: 200
+    }
+    var str = ''
+    res.data.forEach(item => {
+        str += `<li >
+                    <span>` + item.name + `</span>
+                </li>`
+        $('.boatLine').empty().append(str)
+
+    })
+    $('.boatLine li').on('click', 'span', function() {
+        $('.boatLine li span').removeClass('colorheight')
+        $(this).addClass('colorheight')
+        if ($(this).text() == '广州港-海口港') {
+            GZ_HKLineHight(true)
+            GZ_SHLineHight(false)
+            GZ_XMLineHight(false)
+            GZ_TJLineHight(false)
+        } else if ($(this).text() == '广州港-上海港') {
+            GZ_HKLineHight(false)
+            GZ_SHLineHight(true)
+            GZ_XMLineHight(false)
+            GZ_TJLineHight(false)
+        } else if ($(this).text() == '广州港-厦门港') {
+            GZ_HKLineHight(false)
+            GZ_SHLineHight(false)
+            GZ_XMLineHight(true)
+            GZ_TJLineHight(false)
+        } else if ($(this).text() == '广州港-天津港') {
+            GZ_HKLineHight(false)
+            GZ_SHLineHight(false)
+            GZ_XMLineHight(false)
+            GZ_TJLineHight(true)
+        } else {
+
+        }
+
+    })
+
+}
+//点击坐标点改变起始地
+function setPointLineHeight(str) {
+    var spanVal = $('.boatLine li').find('span')
+    var arr1 = new Array;
+    spanVal.each(function() {
+        if ($(this).text() == str) {
+            $('.boatLine li span').removeClass('colorheight')
+            $(this).addClass('colorheight')
+        }
+
+    });
+
+
+}
+//清除高亮显示
+function clearLineHeight() {
+    var spanVal = $('.boatLine li').find('span')
+    spanVal.each(function() {
+        $('.boatLine li span').removeClass('colorheight')
+    })
+}
 // 天气弹窗坐标轴设置
 function setByremove(leftX, topY) {
     $('.weatherInfo').css({
@@ -692,31 +1138,40 @@ function setByremove(leftX, topY) {
     })
 }
 // 切换天气类型获取天气数据
-function getInfoBytype(type) {
+function getInfoBytype(type, el) {
     //获取方法
     if (type == "城市天气") {
-        console.log(type)
-        // removeInfoLast("海洋天气")
-        // removeInfoLast("港口天气")
+
         loadWeatherData(type)
 
     } else if (type == "海区天气") {
-        removeInfoLast("城市天气")
-        removeInfoLast("港口天气")
         loadWeatherData(type)
     } else if (type == "港口天气") {
-        removeInfoLast("城市天气")
-        removeInfoLast("海洋天气")
+
         loadWeatherData(type)
+    } else if (type == '船舶气象风险') {
+        loadWeatherData(type)
+
+    } else if (type == '航线气象风险') {
+        $('.boatDrection').show()
+        loadShipLine()
+        boatLineArr()
+            // removeWheatherDataPoint('船舶气象风险')
     } else {
+        // removeWheatherDataPoint('船舶气象风险')
 
     }
 
 
 }
+
+function removeAll() {
+    removeWheatherDataPoint('船舶气象风险')
+    removeWheatherDataPoint('航线气象风险')
+    deleteShipLine()
+}
 // 清除数据
 function removeInfoLast(type) {
-    //清除方法
     removeWheatherDataPoint(type)
 }
 //close  弹窗
@@ -753,9 +1208,8 @@ function leftOffest() {
 
     }
 }
-// 获取船只详情信息 @id  船只id
-function getBoatDetailInfo(id) {
-    console.log(id)
+// 获取船只列表，右上角默认信息
+function getBoatDetailInfo() {
     // 假数据模拟
     var dataTest = {
         "data": {
@@ -781,7 +1235,8 @@ function getBoatDetailInfo(id) {
                     "draft": "12.8米",
                     "updateTime": "2020-06-15 11:36:09",
                     "boatType": "客船",
-                    "wave": "1.2米"
+                    "wave": "1.2米",
+                    "gust": "6级"
                 },
 
                 {
@@ -806,7 +1261,8 @@ function getBoatDetailInfo(id) {
                     "draft": "1.5米",
                     "updateTime": "2020-06-15 11:27:08",
                     "boatType": "客船",
-                    "wave": "1.2米"
+                    "wave": "1.2米",
+                    "gust": "6级"
                 },
                 {
                     "mmsi": "413471030",
@@ -830,7 +1286,8 @@ function getBoatDetailInfo(id) {
                     "draft": "1.5米",
                     "updateTime": "2020-06-15 11:42:55",
                     "boatType": "引航",
-                    "wave": "1.5米"
+                    "wave": "1.5米",
+                    "gust": "9级"
                 },
                 {
                     "mmsi": "413907633",
@@ -854,7 +1311,8 @@ function getBoatDetailInfo(id) {
                     "draft": "3.5米",
                     "updateTime": "2020-06-15 11:28:04",
                     "boatType": "邮轮",
-                    "wave": "1.7米"
+                    "wave": "1.7米",
+                    "gust": "5级"
                 },
                 {
                     "mmsi": "413377770",
@@ -878,7 +1336,8 @@ function getBoatDetailInfo(id) {
                     "draft": "3.4米",
                     "updateTime": "2020-06-15 11:30:48",
                     "boatType": "邮轮",
-                    "wave": "1.7米"
+                    "wave": "1.7米",
+                    "gust": "5级"
                 },
                 {
                     "mmsi": "412476890",
@@ -902,7 +1361,8 @@ function getBoatDetailInfo(id) {
                     "draft": "3.1米",
                     "updateTime": "2020-06-15 07:43:22",
                     "boatType": "其他",
-                    "wave": "1.6米"
+                    "wave": "1.6米",
+                    "gust": "4级"
                 },
                 {
                     "mmsi": "413782091",
@@ -926,7 +1386,8 @@ function getBoatDetailInfo(id) {
                     "draft": "米",
                     "updateTime": "2020-06-15 11:39:36",
                     "boatType": "其他",
-                    "wave": "2.5米"
+                    "wave": "2.5米",
+                    "gust": "11级"
                 },
                 {
                     "mmsi": "477519200",
@@ -950,7 +1411,8 @@ function getBoatDetailInfo(id) {
                     "draft": "0.0米",
                     "updateTime": "2020-06-15 11:45:17",
                     "boatType": "其他",
-                    "wave": "1.4米"
+                    "wave": "1.4米",
+                    "gust": "5级"
                 }
             ]
 
@@ -959,26 +1421,24 @@ function getBoatDetailInfo(id) {
     }
     var res = JSON.parse(JSON.stringify(dataTest))
     var str = ''
-    res.data.list.findIndex(x => {
-        if(x.mmsi === id){
-            let info = x
-            let str ='<div class="box_item" data-id="'+id+'">'+
-                        '<div class="title_s">'+info.name+'</div>'+
-                        '<div class="area-item">'+
-                            '<div>'+
-                                '<span>风力</span>'+'<span>'+info.windPower+'</span>'+
-                            '</div>'+
-                            '<div>'+
-                                '<span>海浪</span>'+'<span>'+info.wave+'</span>'+
-                            '</div>'+
-                            '<div>'+
-                                '<span>阵风等级</span>'+'<span>'+info.windPower+'</span>'+
-                            '</div>'+
-                        '</div>'+
-                    '</div>'
-            $('.box_list').empty().append(str)
-        }
-    } );
+    res.data.list.forEach(item => {
+        str +=
+            '<div class="box_item" data-id="' + item.mmsi + '">' +
+            '<div class="title_s">' + (item.name == '' ? item.mmsi : item.name) + '</div>' +
+            '<div class="area-item">' +
+            '<div>' +
+            '<span>风力</span>' + '<span>' + item.windPower + '</span>' +
+            '</div>' +
+            '<div>' +
+            '<span>海浪</span>' + '<span>' + item.wave + '</span>' +
+            '</div>' +
+            '<div>' +
+            '<span>阵风等级</span>' + '<span>' + item.gust + '</span>' +
+            '</div>' +
+            '</div>' +
+            '</div>'
+        $('.riskAnalysis .box_list').empty().append(str)
+    })
 }
 // 云图动画
 function cloudPlay(inputVal) {
