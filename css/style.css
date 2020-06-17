@@ -2073,6 +2073,16 @@
     width: 100%;
     cursor: pointer;
 }
+/* .SatelliteCloud .timeList .li-item:before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    display: inline-block;
+    border-radius: 50%;
+    background: #4F8EFF;
+    vertical-align: middle;
+    margin-right: 14px;
+    } */
 
 .SatelliteCloud .aimate-btn {
     width: 279px;

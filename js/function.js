@@ -12,7 +12,7 @@ function navClickStyleOne() {
     $('.areaDetailBox').hide()
     $('.subnav-context,.road-check-btn,.reback-center-btn,.navigation-controls,.report-organ').show()
     $('.report-organ .report-organ-list1').show()
-    $('.report-organ .report-organ-list,.riskAnalysis,.boatInfoBox,.boatRunDirection,.boatList_r,.boatDrection').hide()
+    $('.report-organ .report-organ-list,.riskAnalysis,.boatInfoBox,.boatRunDirection,.boatList_r,.boatDrection,.img_box').hide()
     $('.subnav-context').css('padding', '24px')
     $('.lineThrouth').hide()
     $('.header-nav-right').show()
@@ -430,15 +430,17 @@ function navClickStyleOne() {
         // 卫星云图
     if (index == 2) {
         closeINfoBox()
-
-
         $('.header-nav-right,.road-check-btn,.reback-center-btn,.navigation-controls,.report-organ').hide()
-        $('.timeShow,.tutide').show()
+        $('.timeShow,.tutide,.img_box').show()
         $('.cloudImg').show()
-        $('.aimate-btn').click(function() {
-            let inputVal = $(".setTime input[type='radio']:checked").val();
-            cloudPlay(inputVal)
-        })
+        let inputVal_h = $(".timeSlect input[type='radio']:checked").val();
+        let inputVal = $(".setTime input[type='radio']:checked").val();
+        console.log(inputVal_h)
+        cloudPlay(inputVal_h,inputVal)
+        // $('.aimate-btn').click(function() {
+        //     let inputVal = $(".setTime input[type='radio']:checked").val();
+        //     cloudPlay(inputVal)
+        // })
     }
     // 近岸预报
     if (index === 3) {
@@ -1137,17 +1139,22 @@ function setByremove(leftX, topY) {
         top: topY
     })
 }
-// 切换天气类型获取天气数据
+/*切换类型获取地图数据
+@loadWeatherData(type)加载数据
+@removeWheatherDataPoint(type)清除数据
+@deleteShipLine()清除航线
+*/
 function getInfoBytype(type, el) {
     //获取方法
     if (type == "城市天气") {
-
         loadWeatherData(type)
+       
 
     } else if (type == "海区天气") {
         loadWeatherData(type)
+        
     } else if (type == "港口天气") {
-
+        removeWheatherDataPoint('海区天气')
         loadWeatherData(type)
     } else if (type == '船舶气象风险') {
         loadWeatherData(type)
@@ -1156,9 +1163,7 @@ function getInfoBytype(type, el) {
         $('.boatDrection').show()
         loadShipLine()
         boatLineArr()
-            // removeWheatherDataPoint('船舶气象风险')
     } else {
-        // removeWheatherDataPoint('船舶气象风险')
 
     }
 
@@ -1170,10 +1175,7 @@ function removeAll() {
     removeWheatherDataPoint('航线气象风险')
     deleteShipLine()
 }
-// 清除数据
-function removeInfoLast(type) {
-    removeWheatherDataPoint(type)
-}
+
 //close  弹窗
 function closeINfoBox() {
     $('.weatherInfo').hide()
@@ -1441,27 +1443,116 @@ function getBoatDetailInfo() {
     })
 }
 // 云图动画
-function cloudPlay(inputVal) {
+function cloudPlay(inputVal_h,inputVal) {
     console.log(inputVal)
-    var imgArray = new Array("./image/cloudImage/Fy2E_202006090115.jpg", "./image/cloudImage/Fy2E_202006090215.jpg", "./image/cloudImage/Fy2E_202006090315.jpg",
-        "./image/cloudImage/Fy2E_202006090415.jpg", "./image/cloudImage/Fy2E_202006090515.jpg", "./image/cloudImage/Fy2E_202006090615.jpg", "./image/cloudImage/Fy2E_202006090715.jpg", "./image/cloudImage/Fy2E_202006090815.jpg", "./image/cloudImage/Fy2E_202006090915.jpg", "./image/cloudImage/Fy2E_202006091015.jpg", "./image/cloudImage/Fy2E_202006091115.jpg", "./image/cloudImage/Fy2E_202006091215.jpg", "./image/cloudImage/Fy2E_202006091315.jpg", "./image/cloudImage/Fy2E_202006091415.jpg", "./image/cloudImage/Fy2E_202006091515.jpg"
-    );
+    var hour6 =JSON.parse(JSON.stringify({
+        "data": {
+            "list": [{
+                "url": "./image/cloudImage/Fy2E_202006090115.jpg",
+                "time": 1591920900000
+            }, {
+                "url": "./image/cloudImage/Fy2E_202006090215.jpg",
+                "time": 1591924500000
+            }, {
+                "url": "./image/cloudImage/Fy2E_202006090315.jpg",
+                "time": 1591928100000
+            }, {
+                "url": "./image/cloudImage/Fy2E_202006090415.jpg",
+                "time": 1591931700000
+            }, {
+                "url": "./image/cloudImage/Fy2E_202006090515.jpg",
+                "time": 1591935300000
+            }, {
+                "url": "./image/cloudImage/Fy2E_202006090615.jpg",
+                "time": 1591938900000
+            }, {
+                "url": "./image/cloudImage/Fy2E_202006090715.jpg",
+                "time": 1591940700000
+            }, {
+                "url": "./image/cloudImage/Fy2E_202006090815.jpg",
+                "time": 1591942500000
+            }]
+        },
+        "code": 200
+    }))
+    var hour12 =JSON.parse(JSON.stringify({
+        "data": {
+            "list": [{
+                "url": "/cloud_picture/FY2E/2020/06/11/FY2E_202006111815.jpg",
+                "time": 1591899300000
+            }, {
+                "url": "/cloud_picture/FY2E/2020/06/11/FY2E_202006111915.jpg",
+                "time": 1591902900000
+            }, {
+                "url": "/cloud_picture/FY2E/2020/06/11/FY2E_202006112015.jpg",
+                "time": 1591906500000
+            }, {
+                "url": "/cloud_picture/FY2E/2020/06/11/FY2E_202006112115.jpg",
+                "time": 1591910100000
+            }, {
+                "url": "/cloud_picture/FY2E/2020/06/11/FY2E_202006112215.jpg",
+                "time": 1591913700000
+            }, {
+                "url": "/cloud_picture/FY2E/2020/06/11/FY2E_202006112315.jpg",
+                "time": 1591917300000
+            }, {
+                "url": "/cloud_picture/FY2E/2020/06/11/FY2E_202006112345.jpg",
+                "time": 1591919100000
+            }, {
+                "url": "/cloud_picture/FY2E/2020/06/12/FY2E_202006120015.jpg",
+                "time": 1591920900000
+            }, {
+                "url": "/cloud_picture/FY2E/2020/06/12/FY2E_202006120115.jpg",
+                "time": 1591924500000
+            }, {
+                "url": "/cloud_picture/FY2E/2020/06/12/FY2E_202006120215.jpg",
+                "time": 1591928100000
+            }, {
+                "url": "/cloud_picture/FY2E/2020/06/12/FY2E_202006120315.jpg",
+                "time": 1591931700000
+            }, {
+                "url": "/cloud_picture/FY2E/2020/06/12/FY2E_202006120415.jpg",
+                "time": 1591935300000
+            }, {
+                "url": "/cloud_picture/FY2E/2020/06/12/FY2E_202006120515.jpg",
+                "time": 1591938900000
+            }, {
+                "url": "/cloud_picture/FY2E/2020/06/12/FY2E_202006120545.jpg",
+                "time": 1591940700000
+            }, {
+                "url": "/cloud_picture/FY2E/2020/06/12/FY2E_202006120615.jpg",
+                "time": 1591942500000
+            }]
+        },
+        "code": 200
+    }))
+    var imgArray = hour6.data.list
     var i = 0,
         len = imgArray.length;
     $(document).ready(function() {
         $(".cloudImg").attr("src", "./image/cloudImage/Fy2E_202006090015.jpg");
+        
         change(i, len, inputVal);
 
     });
 
     function change(i, len, inputVal) {
+       
         if (i < len) {
-            $(".cloudImg").attr("src", imgArray[i++]);
+            $(".cloudImg").attr("src", imgArray[i++].url);
+            var str = ''
+            imgArray.forEach(item=>{
+                str+=`<li class="li-item">`+getMyDate(item.time)+`</li>`
+                $('.timeList ul').empty().append(str)
+                $('.timeList ul li').eq(i).css('color','red')
+            })
+          
             t = setTimeout(function() {
                 change(i, len, inputVal)
             }, inputVal);
         } else {
-            clearTimeout(t)
+            // clearTimeout(t)
+            // cloudPlay(inputVal)
         }
     }
 }
