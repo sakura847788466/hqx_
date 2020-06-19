@@ -421,7 +421,7 @@ function JYBillboardListener() {
         removeBillboardByBillboardName('JY.png')
         isJY = true
     } else if (isJY) {
-        addBillboard('JY', 'JY.png', 'JY.png', 116.116924, 23.338324, './image/JY.png', 0.9)
+        addBillboard('JY', 'JY.png', 'JY.png', 113.27, 23.13, './image/JY.png', 0.9)
         isJY = false
     }
 }

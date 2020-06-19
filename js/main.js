@@ -14,6 +14,10 @@ var viewer = new Cesium.Viewer('cesiumContainer', {
     // selectedTerrainProviderViewModel: terrainModels[1]//初始化地形图层的显示
     requestVertexNormals: true // 光照
 })
+ /* 去除大气层效果 */
+viewer.scene.globe.showGroundAtmosphere = false
+  // 更亮的星空
+viewer.scene.highDynamicRange = false
 /* 去除Cesium图标 */
 viewer._cesiumWidget._creditContainer.style.display = 'none'
 
@@ -83,48 +87,48 @@ var handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas)
  * 24小时警戒线颜色： （1.0， 0.0， 0.0）
  * 48小时警戒线颜色： （1.0， 1.0， 0.0）
  */
-var yellowCordon = viewer.entities.add({
-    name: '48-hour cordon',
-    polyline: {
-        positions: Cesium.Cartesian3.fromDegreesArray([
-            131.981362, 33.959468,
-            131.981362, 14.967340,
-            119.950703, -0.035507,
-            104.998940, -0.035507
-        ]),
-        width: 3,
-        material: new Cesium.PolylineDashMaterialProperty({
-            color: Cesium.Color.fromCssColorString('#ffff00'),
-            dashLength: 30.0
-        })
-    }
-})
-viewer.scene.imageryLayers.addImageryProvider(new Cesium.SingleTileImageryProvider({
-    url: './image/48cordon.png',
-    rectangle: Cesium.Rectangle.fromDegrees(131.5, 25.0, 132.5, 32.0)
-}))
-var redCordon = viewer.entities.add({
-    name: '24-hour cordon',
-    polyline: {
-        positions: Cesium.Cartesian3.fromDegreesArray([
-            126.993563, 34.005023,
-            126.993563, 21.971246,
-            118.995323, 17.965997,
-            118.995323, 10.971043,
-            113.018954, 4.486274,
-            104.998940, -0.035507
-        ]),
-        width: 3,
-        material: new Cesium.PolylineDashMaterialProperty({
-            color: Cesium.Color.fromCssColorString('#ff0000'),
-            dashLength: 15.0
-        })
-    }
-})
-viewer.scene.imageryLayers.addImageryProvider(new Cesium.SingleTileImageryProvider({
-    url: './image/24cordon.png',
-    rectangle: Cesium.Rectangle.fromDegrees(126.5, 25.0, 127.5, 32.0)
-}))
+//var yellowCordon = viewer.entities.add({
+//  name: '48-hour cordon',
+//  polyline: {
+//      positions: Cesium.Cartesian3.fromDegreesArray([
+//          131.981362, 33.959468,
+//          131.981362, 14.967340,
+//          119.950703, -0.035507,
+//          104.998940, -0.035507
+//      ]),
+//      width: 3,
+//      material: new Cesium.PolylineDashMaterialProperty({
+//          color: Cesium.Color.fromCssColorString('#ffff00'),
+//          dashLength: 30.0
+//      })
+//  }
+//})
+//viewer.scene.imageryLayers.addImageryProvider(new Cesium.SingleTileImageryProvider({
+//  url: './image/48cordon.png',
+//  rectangle: Cesium.Rectangle.fromDegrees(131.5, 25.0, 132.5, 32.0)
+//}))
+//var redCordon = viewer.entities.add({
+//  name: '24-hour cordon',
+//  polyline: {
+//      positions: Cesium.Cartesian3.fromDegreesArray([
+//          126.993563, 34.005023,
+//          126.993563, 21.971246,
+//          118.995323, 17.965997,
+//          118.995323, 10.971043,
+//          113.018954, 4.486274,
+//          104.998940, -0.035507
+//      ]),
+//      width: 3,
+//      material: new Cesium.PolylineDashMaterialProperty({
+//          color: Cesium.Color.fromCssColorString('#ff0000'),
+//          dashLength: 15.0
+//      })
+//  }
+//})
+//viewer.scene.imageryLayers.addImageryProvider(new Cesium.SingleTileImageryProvider({
+//  url: './image/24cordon.png',
+//  rectangle: Cesium.Rectangle.fromDegrees(126.5, 25.0, 127.5, 32.0)
+//}))
 
 /**
  * 鼠标单击事件
@@ -146,8 +150,14 @@ handler.setInputAction(function (movement) {
     DisasterBodyJsonClick(pick)
     //点击天气数据
     WeatherDataClick(pick,movement)
+
+    // 海区预报点击
+    seaTemperaturePick(pick)
+
+
     //航线信息点击
     shipLineClick(drillPick, movement)
+
 }, Cesium.ScreenSpaceEventType.LEFT_CLICK)
 
 /**
@@ -163,7 +173,7 @@ handler.setInputAction(function (movement) {
         labelDisaster.label.show = false
     }
     // 近岸预报悬停
-    offshoreForecastMouseMove(pick)
+//  offshoreForecastMouseMove(pick)
 }, Cesium.ScreenSpaceEventType.MOUSE_MOVE)
 
 /**
@@ -363,15 +373,15 @@ function addBillboardSeaArea(id, name, billboardName, lon, lat, imgSrc, scale,in
 			 lon:info.lon,
 			 lat: info.lat,
 			 windPower:info.windPower,
-			 direction:info.direction			 
+			 direction:info.direction
 			},
 			billboardName: billboardName
-		 })	
+		 })
   		}
   	}
   	}
   }
-	
+
 }
 
 /**
@@ -408,7 +418,7 @@ function removeBillboardByBillboardName(billboardName) {
 /**
  * 加载以揭阳市为中心的圆圈
  */
-loadCircleJson()
+//loadCircleJson()
 
 function loadCircleJson() {
     var options = {
@@ -517,3 +527,17 @@ var cameraHeightListener = scene.postRender.addEventListener(cameraHeightAction)
 
 // viewer.scene.screenSpaceCameraController.minimumZoomDistance = minCenterHeight //相机的高度的最小值
 // viewer.scene.screenSpaceCameraController.maximumZoomDistance = maxCenterHeight  //相机高度的最大值
+//风杆数据加载
+
+Arrow_Draw_Plugin()
+function Arrow_Draw_Plugin(){
+	$.ajax({
+		type:"get",
+		url:"data/风杆数据/SEA_WIND_15682176000001.json",
+		async:false,
+	    success:function(dataobj){
+	        Arrow_DrawDatas=dataobj;      
+	        console.log(Arrow_DrawDatas);
+	    }
+	});
+}

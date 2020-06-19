@@ -93,8 +93,13 @@
 .logo {
     width: 192px;
     height: 156px;
-    background: url("../image/logo.png");
+    /* background: url("../image/logo1.png"); */
     margin: 40px 0px 47px 46px;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
 }
 
 .line {
@@ -898,8 +903,22 @@
     color: red;
 } */
 
+.lineHeightShow {
+    background-color: cyan!important;
+}
+
 
 /*航线等级说明  */
+
+.boatDrection2,
+.boatDrection3,
+.boatDrection1 {
+    width: 253px;
+    position: fixed;
+    bottom: 30px;
+    left: 319px;
+    background: rgba(243, 245, 253, 0.9);
+}
 
 .boatDrection {
     width: 253px;
@@ -909,15 +928,81 @@
     background: rgba(243, 245, 253, 0.9);
 }
 
+.boatDrection1 .title,
 .boatDrection .title {
     height: 40px;
     line-height: 40px;
     padding: 0 10px;
 }
 
+.boatDrection2 .title {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+}
+
+.boatDrection3 .title {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+}
+
+.boatDrection .title span {
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+}
+
+.boatDrection .title .toBottom {
+    font-size: 30px;
+    font-weight: bold;
+    color: #000;
+    position: absolute;
+    right: 6px;
+    cursor: pointer;
+}
+
+.boatDrection1 .title .toBottom {
+    font-size: 30px;
+    font-weight: bold;
+    color: #000;
+    position: absolute;
+    right: 6px;
+    cursor: pointer;
+}
+
+.boatDrection2 .title .toBottom,
+.boatDrection3 .title .toBottom {
+    font-size: 30px;
+    font-weight: bold;
+    color: #000;
+    position: absolute;
+    right: 6px;
+    cursor: pointer;
+}
+
 .boatDrection .lineList img {
     width: 253px;
-    height: 230px;
+    /* height: 230px; */
+    display: block;
+    cursor: pointer;
+}
+
+.boatDrection3 .lineList3 img {
+    width: 253px;
+    /* height: 230px; */
+    display: block;
+    cursor: pointer;
+}
+
+.boatDrection1 .lineList1 img {
+    width: 253px;
+    display: block;
+    cursor: pointer;
+}
+
+.boatDrection2 .lineList2 img {
+    width: 253px;
     display: block;
     cursor: pointer;
 }
@@ -2073,16 +2158,6 @@
     width: 100%;
     cursor: pointer;
 }
-/* .SatelliteCloud .timeList .li-item:before {
-    content: "";
-    width: 6px;
-    height: 6px;
-    display: inline-block;
-    border-radius: 50%;
-    background: #4F8EFF;
-    vertical-align: middle;
-    margin-right: 14px;
-    } */
 
 .SatelliteCloud .aimate-btn {
     width: 279px;
@@ -3019,12 +3094,11 @@
 
 .area-info ul li span {
     flex: 1;
-    margin-right: 36px;
+    /* margin-right: 36px; */
     color: rgba(146, 148, 178, 1);
     font-size: 12px;
 }
 
-.area-info,
 .weatherInfo ul li p {
     flex: 3;
     text-align: center;
@@ -3223,4 +3297,58 @@
 
 .report-close:hover {
     opacity: 0.8;
+}
+
+
+/* 时间轴显示 */
+
+.timePlay {
+    width: 600px;
+    background-color: #fff;
+    display: flex;
+    position: fixed;
+    left: 500px;
+    bottom: 200px;
+    align-items: center;
+}
+
+.timePlay .option {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    background-color: #cae2e7;
+}
+
+.timePlay .option .return img {
+    width: 40px;
+    height: 37px
+}
+
+.timePlay .option .play img {
+    width: 78px;
+    height: 78px;
+    cursor: pointer;
+}
+
+.timePlay .timeLine {
+    flex: 3;
+    height: 10px;
+    background-color: #1478B2;
+    border-radius: 10px;
+}
+
+.timePlay .timeLine .line_box {
+    height: 10px;
+    width: 0px;
+    position: relative;
+}
+
+.timePlay .timeLine .line_box .lineT {
+    width: 20px;
+    height: 10px;
+    background-color: red;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
 }

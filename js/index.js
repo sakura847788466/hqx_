@@ -45,7 +45,9 @@ function resize() {
     } else {
         reBuildHeight(subNavIndex)
         if (currentNavIndex === 3) {
-            $('.subnav-context').height(550 + 'px')
+            // $('.subnav-context').height(550 + 'px')
+            $('.subnav-context').height($('.right').height() - 96 + 'px')
+
         }
     }
     var wrapWidth = $('.header-nav').width()
@@ -58,6 +60,11 @@ function resize() {
             reBuildHeight(subNavIndex)
             if (currentNavIndex === 3) {
                 $('.subnav-context').height(550 + 'px')
+            }
+            //ada
+            if (currentNavIndex === 1 || currentNavIndex === 4 || currentNavIndex === 5) {
+                $('.subnav-context').height(0 + 'px')
+
             }
         }
         var wrapWidth = $('.header-nav').width()
@@ -732,6 +739,7 @@ $(function() {
 
     // 还原按钮
     $('.reback-center-btn').click(function() {
+        removeArrow_Draw_Plugin()
         viewer.camera.flyTo({ destination: Cesium.Cartesian3.fromDegrees(116.373367, 23.549510, 800000) })
     })
 
